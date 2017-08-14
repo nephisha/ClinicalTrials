@@ -72,8 +72,14 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         [FindsBy(How = How.Id, Using = "regGlobalAuditHistory")]
         private IWebElement GlobalAuditHistory { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "//a[@id='regAdministration']/following-sibling::div/ul/li[13]")]
+        private IWebElement EmailLogs { get; set; }
+
         [FindsBy(How = How.XPath, Using = "//ul[@class='nav-tertiary']/li[1]/a")]
         private IWebElement AccountSettings { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//ul[@class='nav-tertiary']/li[2]/a")]
+        private IWebElement LogOff { get; set; }
 
         [FindsBy(How = How.Id, Using = "Email")]
         private IWebElement ProfileEmailAddress { get; set; }
@@ -180,6 +186,19 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             PageHelper.WaitForElement(Driver, Administration).Click();
             PageHelper.WaitForElement(Driver, ReportPeriods).Click();
             PageHelper.WaitForElement(Driver, Extensions).Click();
+        }
+
+        public void LogOffTheApplication()
+        {
+            ToggleMenu.Click();
+            PageHelper.WaitForElement(Driver, LogOff).Click();
+        }
+
+        public void SelectEmailLogsFromToggleMenu()
+        {
+            ToggleMenu.Click();
+            PageHelper.WaitForElement(Driver, Administration).Click();
+            PageHelper.WaitForElement(Driver, EmailLogs).Click();
         }
     }
 }

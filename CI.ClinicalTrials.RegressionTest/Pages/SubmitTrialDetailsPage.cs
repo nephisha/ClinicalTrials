@@ -12,6 +12,9 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         [FindsBy(How = How.Id, Using = "Details_StudyName")]
         private IWebElement ScientificTitle { get; set; }
 
+        [FindsBy(How = How.Id, Using = "Details_PublicTitle")]
+        private IWebElement PublicTitle { get; set; }
+
         [FindsBy(How = How.Id, Using = "Details_SponsorId")]
         private IWebElement Sponsor { get; set; }
 
@@ -136,6 +139,12 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         {
             ScientificTitle.Click();
             ScientificTitle.SendKeys("Title" + text);
+        }
+
+        private void EnterPublicTitle(string title)
+        {
+            PublicTitle.Click();
+            PublicTitle.SendKeys("Public Title" + title);
         }
 
         public void SelectASponsor(string sponsorType)
@@ -264,6 +273,7 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         public void FillUpTrialDetails(string title, string sponsor)
         {
             EnterScientificTitle(title);
+            EnterPublicTitle(title);
             SelectASponsor(sponsor);
             SelectACooperativeGroup();
             EnterNickName(title);
@@ -279,7 +289,7 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             SelectBioMarkerSubstudy();
             SelectAMolecularTarget();
         }
-
+        
         public void FillUpBioMarkerDetails()
         {
             IsthePresenceOfBiomarkerRequiredForTrialEligibility();

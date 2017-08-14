@@ -73,3 +73,14 @@ Scenario Outline: 27341 - Editing user details and access
 	| CTU   | LHD   | Master Trials, Submit New Trial, Reports                                                    |                                          |
 	| LHD   | CTU   | Dashboard, Master Trials, Submit New Trial, My Site Trial, Sign Off My Site Trials, Reports | Extracts, User Resources                 |
 	| CTU   | Admin | Dashboard, Master Trials, Submit New Trial, My Site Trial, Sign Off My Site Trials, Reports | Extracts, User Resources, Administration |
+
+@Users
+Scenario Outline: 27342 - Disable Existing User
+	Given I login to Clinical Trial Application as Administrator
+	And I have an existing <CTU User> who is activated
+	When I disable the user account
+	Then <CTU User> should not be allowed to login the system
+
+	Examples: 
+	| CTU User         | Status   |
+	| RegressionCTU030 | Disabled |

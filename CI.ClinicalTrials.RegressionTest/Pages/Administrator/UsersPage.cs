@@ -1,4 +1,7 @@
-﻿using CI.ClinicalTrials.RegressionTest.Base;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using CI.ClinicalTrials.RegressionTest.Base;
 using CI.ClinicalTrials.RegressionTest.CommonMethods;
 using FluentAssertions;
 using OpenQA.Selenium;
@@ -9,6 +12,7 @@ namespace CI.ClinicalTrials.RegressionTest.Pages.Administrator
     public class UsersPage : PageBase
     {
         private string uName;
+        private string uniqueEmail;
         
         [FindsBy(How = How.Id, Using = "regCreateNewUser")]
         private IWebElement CreateNewUser { get; set; }
@@ -16,20 +20,23 @@ namespace CI.ClinicalTrials.RegressionTest.Pages.Administrator
         [FindsBy(How = How.XPath, Using = "//input[@type='search']")]
         private IWebElement UserSearch { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "//input[@class='check-box']")]
+        private IWebElement AccountEnabled { get; set; }
+
         [FindsBy(How = How.ClassName, Using = "sorting_1")]
         private IWebElement UserSearchResult_UserName { get; set; }
 
         [FindsBy(How = How.XPath, Using = "//table[@id='dataTable']/tbody/tr[1]/td[4]")]
         private IWebElement UserSearchResult_Role { get; set; }
 
-        [FindsBy(How = How.Id, Using = "regEditUser")]
-        private IWebElement EditUser { get; set; }
-
         [FindsBy(How = How.Id, Using = "UserName")]
         private IWebElement UserName { get; set; }
 
         [FindsBy(How = How.Id, Using = "Email")]
         private IWebElement EmailAddress { get; set; }
+
+        [FindsBy(How = How.Id, Using = "Enabled")]
+        private IWebElement UserEnabled { get; set; }
 
         [FindsBy(How = How.Id, Using = "Description")]
         private IWebElement Description { get; set; }
@@ -85,7 +92,8 @@ namespace CI.ClinicalTrials.RegressionTest.Pages.Administrator
         {
             uName = "Regression"+ user + PageHelper.RandomNumber(3);
             UserName.SendKeys(uName);
-            EmailAddress.SendKeys(PageHelper.RandomEmailAddress());
+            uniqueEmail = PageHelper.RandomEmailAddress();
+            EmailAddress.SendKeys(uniqueEmail);
             Description.SendKeys(PageHelper.RandomString(15));
             Title.SendKeys("Dr");
             FirstName.SendKeys("Test");
@@ -161,5 +169,40 @@ namespace CI.ClinicalTrials.RegressionTest.Pages.Administrator
             UserSearch.SendKeys(uName);
             LoginAs.Click();
         }
+
+        public void DisableTheUser()
+        {
+            try
+            {
+                if (AccountEnabled.GetAttribute("checked").Contains("false"))
+                {
+                    return;
+                }
+                EditButton.Click();
+                UserEnabled.Click();
+                SaveUserButton.Click();
+                BackToListButton.Click();
+            }
+            catch (Exception)
+            {
+                EditButton.Click();
+                UserEnabled.Click();
+                SaveUserButton.Click();
+                BackToListButton.Click();
+            }
+        }
+
+        public Tuple<string, string> GetCreatedUserDetails()
+        {
+            return Tuple.Create(uName, uniqueEmail);
+        }
+
+        public void SearchTheExistingUser(string username)
+        {
+            UserSearch.SendKeys(username);
+            UserSearchResult_UserName.Text.Should().BeEquivalentTo(username);
+        }
     }
 }
+
+

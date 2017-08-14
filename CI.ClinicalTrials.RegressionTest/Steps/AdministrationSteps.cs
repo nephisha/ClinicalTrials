@@ -2,6 +2,7 @@
 using CI.ClinicalTrials.RegressionTest.CommonMethods;
 using CI.ClinicalTrials.RegressionTest.Pages;
 using CI.ClinicalTrials.RegressionTest.Pages.Administrator;
+using FluentAssertions;
 using TechTalk.SpecFlow;
 
 namespace CI.ClinicalTrials.RegressionTest.Steps
@@ -9,6 +10,7 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
     [Binding]
     public class AdministrationSteps
     {
+        private readonly LoginPage loginPage = new LoginPage();
         private readonly MenuPage menuPage = new MenuPage();
         private readonly UsersPage usersPage = new UsersPage();
         private readonly SponsorPage sponsorPage = new SponsorPage();
@@ -17,6 +19,8 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
         private readonly HospitalPage hospitalPage = new HospitalPage();
         private readonly ReportPeriodPage reportPeriodPage = new ReportPeriodPage();
         private readonly ExtensionsPage extensionsPage = new ExtensionsPage();
+        private readonly EmailLogPage emailLogPage = new EmailLogPage();
+        
 
         private readonly string editedEmail = PageHelper.EditedEmailAddress();
 
@@ -96,6 +100,43 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
             menuPage.SelectUsersFromToggleMenu();
             usersPage.ClickonCreateNewUser();
             usersPage.FillInUserDetailsAndClickCreate(type);
+        }
+
+        [Given(@"I have an existing (.*) who is activated")]
+        public void GivenIHaveAnExistingUserWhoIsActivated(string username)
+        {
+            menuPage.SelectUsersFromToggleMenu();
+            usersPage.SearchTheExistingUser(username);
+        }
+
+
+        [Given(@"I have an existing (.*) user who is hh")]
+        public void GivenIHaveAnExistingUserWhoIsActgivated(string type)
+        {
+            menuPage.SelectUsersFromToggleMenu();
+            usersPage.ClickonCreateNewUser();
+            usersPage.FillInUserDetailsAndClickCreate(type);
+            var userName =  usersPage.GetCreatedUserDetails().Item1;
+            var email = usersPage.GetCreatedUserDetails().Item2;
+            menuPage.SelectEmailLogsFromToggleMenu();
+            var link = emailLogPage.GetActivationLink(email);
+            menuPage.LogOffTheApplication();
+            
+        }
+        
+        [When(@"I disable the user account")]
+        public void WhenIDisableTheUserAccount()
+        {
+            usersPage.DisableTheUser();
+        }
+
+        [Then(@"(.*) should not be allowed to login the system")]
+        public void ThenCTUUserShouldNotBeAllowedToLoginToTheSystem(string username)
+        {
+            menuPage.LogOffTheApplication();
+            loginPage.LoginToApplication(username, "Welcome@123");
+            loginPage.LoginValidationError.Should()
+                .BeEquivalentTo("Login was unsuccessful. Please correct the errors and try again.");
         }
 
         [When(@"I change the (.*) user access to (.*) and details")]
