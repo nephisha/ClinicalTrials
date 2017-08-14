@@ -31,6 +31,9 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             Submit.Click();
         }
 
-        public string LoginValidationError => LoginError.Text;
+        public string LoginValidationError
+        {
+            get { return LoginError.Text; }
+        } 
     }
 }

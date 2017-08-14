@@ -92,6 +92,9 @@
     <Compile Include="Base\DriverBase.cs" />
     <Compile Include="CommonMethods\DatePicker.cs" />
     <Compile Include="CommonMethods\PageHelper.cs" />
+    <Compile Include="D:\Repository\CI.ClinicalTrials.RegressionTest\Steps\MasterTrialListSteps.cs">
+      <Link>MasterTrialListSteps.cs</Link>
+    </Compile>
     <Compile Include="Features\Administration.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

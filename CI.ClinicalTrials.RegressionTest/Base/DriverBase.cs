@@ -11,8 +11,10 @@ namespace CI.ClinicalTrials.RegressionTest.Base
         public static IWebDriver GetDefaultDriver()
         {
             Driver = new ChromeDriver();
-            //Driver = new ChromeDriver(@"C:\Drivers");
-            new ChromeOptions().AddArguments("--no-sandbox");
+            ChromeOptions options = new ChromeOptions();
+            options.AddArguments("--no-sandbox");
+            //options.AddArgument("--start-maximized");
+            Driver.Manage().Window.Maximize();
             //Driver.Manage().Timeouts().AsynchronousJavaScript = TimeSpan.FromSeconds(30);
             Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
             return Driver;
