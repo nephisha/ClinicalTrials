@@ -7,6 +7,9 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
 {
     public class HomePage : PageBase
     {
+        [FindsBy(How = How.Name, Using = "Query")]
+        private IWebElement SearchIcon { get; set; }
+
         [FindsBy(How = How.Id, Using = "legend-sites")]
         private IWebElement Hospital { get; set; }
 
@@ -14,6 +17,13 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         {
             var select = new SelectElement(Hospital);
             select.SelectByText(hospital);
+        }
+
+        public void SearchByTopNavigationMenu()
+        {
+            SearchIcon.Click();
+            SearchIcon.SendKeys("NickRegTest");
+            SearchIcon.SendKeys(Keys.Enter);
         }
     }
 }

@@ -66,10 +66,12 @@ namespace CI.ClinicalTrials.RegressionTest.Features
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("27067 - Display Current Report Period - MySite Trials")]
         [NUnit.Framework.CategoryAttribute("Clinical")]
+        [NUnit.Framework.CategoryAttribute("Regression")]
         public virtual void _27067_DisplayCurrentReportPeriod_MySiteTrials()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("27067 - Display Current Report Period - MySite Trials", new string[] {
-                        "Clinical"});
+                        "Clinical",
+                        "Regression"});
 #line 5
 this.ScenarioSetup(scenarioInfo);
 #line 6

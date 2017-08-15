@@ -67,11 +67,13 @@ namespace CI.ClinicalTrials.RegressionTest.Features
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("26612 - Submit a Portfolio Clinical Trial")]
         [NUnit.Framework.CategoryAttribute("Clinical")]
+        [NUnit.Framework.CategoryAttribute("Regression")]
         [NUnit.Framework.TestCaseAttribute("Portfolio", "ACT Health", "Interventional", null)]
         public virtual void _26612_SubmitAPortfolioClinicalTrial(string category, string sponsor, string design, string[] exampleTags)
         {
             string[] @__tags = new string[] {
-                    "Clinical"};
+                    "Clinical",
+                    "Regression"};
             if ((exampleTags != null))
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
@@ -84,7 +86,7 @@ namespace CI.ClinicalTrials.RegressionTest.Features
 #line 11
  testRunner.When(string.Format("I submit a new trial with details {0} and {1} and {2}", sponsor, design, category), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 12
- testRunner.Then("I should see the new trial created successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("I should see the new trial created by Administrator", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -92,11 +94,13 @@ namespace CI.ClinicalTrials.RegressionTest.Features
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("26623 - Submit a Non - Portfolio Clinical Trial")]
         [NUnit.Framework.CategoryAttribute("Clinical")]
+        [NUnit.Framework.CategoryAttribute("Regression")]
         [NUnit.Framework.TestCaseAttribute("NonPortfolio", "Cancer Council NSW", "Other", null)]
         public virtual void _26623_SubmitANon_PortfolioClinicalTrial(string category, string sponsor, string design, string[] exampleTags)
         {
             string[] @__tags = new string[] {
-                    "Clinical"};
+                    "Clinical",
+                    "Regression"};
             if ((exampleTags != null))
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
@@ -109,7 +113,7 @@ namespace CI.ClinicalTrials.RegressionTest.Features
 #line 22
  testRunner.When(string.Format("I submit a new trial with details {0} and {1} and {2}", sponsor, design, category), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 23
- testRunner.Then("I should see the new trial created successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("I should see the new trial created by CTU User", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -117,11 +121,13 @@ namespace CI.ClinicalTrials.RegressionTest.Features
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("26625 - Submit a Industrial Clinical Trial")]
         [NUnit.Framework.CategoryAttribute("Clinical")]
+        [NUnit.Framework.CategoryAttribute("Regression")]
         [NUnit.Framework.TestCaseAttribute("Industry", "Kosan", "Interventional", null)]
         public virtual void _26625_SubmitAIndustrialClinicalTrial(string category, string sponsor, string design, string[] exampleTags)
         {
             string[] @__tags = new string[] {
-                    "Clinical"};
+                    "Clinical",
+                    "Regression"};
             if ((exampleTags != null))
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
@@ -134,7 +140,7 @@ namespace CI.ClinicalTrials.RegressionTest.Features
 #line 33
  testRunner.When(string.Format("I submit a new trial with details {0} and {1} and {2}", sponsor, design, category), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 34
- testRunner.Then("I should see the new trial created successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("I should see the new trial created by CTU User", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -142,11 +148,13 @@ namespace CI.ClinicalTrials.RegressionTest.Features
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("26627 - Cancel a Non - Portfolio Clinical Trial")]
         [NUnit.Framework.CategoryAttribute("Clinical")]
+        [NUnit.Framework.CategoryAttribute("Regression")]
         [NUnit.Framework.TestCaseAttribute("NonPortfolio", "Cancer Council NSW", "Other", null)]
         public virtual void _26627_CancelANon_PortfolioClinicalTrial(string category, string sponsor, string design, string[] exampleTags)
         {
             string[] @__tags = new string[] {
-                    "Clinical"};
+                    "Clinical",
+                    "Regression"};
             if ((exampleTags != null))
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));

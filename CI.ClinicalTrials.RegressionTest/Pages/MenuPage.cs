@@ -100,11 +100,13 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
 
         public void SelectSubmitATrialFromToggleMenu()
         {
+            ToggleMenu.Click();
             PageHelper.WaitForElement(Driver, SubmitATrial).Click();
         }
 
         public void SelectMasterTrialFromToggleMenu()
         {
+            ClickOnToggleMenu();
             PageHelper.WaitForElement(Driver, MasterTrials).Click();
         }
 

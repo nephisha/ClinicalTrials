@@ -67,10 +67,12 @@ namespace CI.ClinicalTrials.RegressionTest.Features
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("27012 - Master Trial List - Basic Search")]
         [NUnit.Framework.CategoryAttribute("Search")]
+        [NUnit.Framework.CategoryAttribute("Regression")]
         public virtual void _27012_MasterTrialList_BasicSearch()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("27012 - Master Trial List - Basic Search", new string[] {
-                        "Search"});
+                        "Search",
+                        "Regression"});
 #line 7
 this.ScenarioSetup(scenarioInfo);
 #line 8
@@ -86,10 +88,12 @@ this.ScenarioSetup(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("27013 - Master Trial List Search By Top Navigation")]
         [NUnit.Framework.CategoryAttribute("Search")]
+        [NUnit.Framework.CategoryAttribute("Regression")]
         public virtual void _27013_MasterTrialListSearchByTopNavigation()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("27013 - Master Trial List Search By Top Navigation", new string[] {
-                        "Search"});
+                        "Search",
+                        "Regression"});
 #line 13
 this.ScenarioSetup(scenarioInfo);
 #line 14
@@ -105,10 +109,12 @@ this.ScenarioSetup(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("27015 - Master Trial List - Search By Sponsor")]
         [NUnit.Framework.CategoryAttribute("Search")]
+        [NUnit.Framework.CategoryAttribute("Regression")]
         public virtual void _27015_MasterTrialList_SearchBySponsor()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("27015 - Master Trial List - Search By Sponsor", new string[] {
-                        "Search"});
+                        "Search",
+                        "Regression"});
 #line 19
 this.ScenarioSetup(scenarioInfo);
 #line 20
@@ -116,7 +122,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 21
  testRunner.When("I search by sponsor", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 22
- testRunner.Then("I should see the search results", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("I should see the sponsor search results", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -124,10 +130,12 @@ this.ScenarioSetup(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("27020 - Master Trial List - Search By CTU")]
         [NUnit.Framework.CategoryAttribute("Search")]
+        [NUnit.Framework.CategoryAttribute("Regression")]
         public virtual void _27020_MasterTrialList_SearchByCTU()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("27020 - Master Trial List - Search By CTU", new string[] {
-                        "Search"});
+                        "Search",
+                        "Regression"});
 #line 25
 this.ScenarioSetup(scenarioInfo);
 #line 26
@@ -135,7 +143,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 27
  testRunner.When("I search by CTU", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 28
- testRunner.Then("I should see the search results", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("I should see the CTU search results", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -143,10 +151,12 @@ this.ScenarioSetup(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("27021 - Master Trial List - Search By Tumour Groups")]
         [NUnit.Framework.CategoryAttribute("Search")]
+        [NUnit.Framework.CategoryAttribute("Regression")]
         public virtual void _27021_MasterTrialList_SearchByTumourGroups()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("27021 - Master Trial List - Search By Tumour Groups", new string[] {
-                        "Search"});
+                        "Search",
+                        "Regression"});
 #line 31
 this.ScenarioSetup(scenarioInfo);
 #line 32
@@ -154,7 +164,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 33
  testRunner.When("I search by Tumour Groups", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 34
- testRunner.Then("I should see the search results", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("I should see the Tumour Group search results", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -162,18 +172,20 @@ this.ScenarioSetup(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("27022 - Master Trial List - Search By Trial Classification")]
         [NUnit.Framework.CategoryAttribute("Search")]
+        [NUnit.Framework.CategoryAttribute("Regression")]
         public virtual void _27022_MasterTrialList_SearchByTrialClassification()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("27022 - Master Trial List - Search By Trial Classification", new string[] {
-                        "Search"});
+                        "Search",
+                        "Regression"});
 #line 37
 this.ScenarioSetup(scenarioInfo);
 #line 38
- testRunner.Given("I login to Clinical Trial Application as CTU User", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I login to Clinical Trial Application as Administrator", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 39
  testRunner.When("I search by Trial Classification", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 40
- testRunner.Then("I should see the search results", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("I should see the Trial Classification search results", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -181,18 +193,20 @@ this.ScenarioSetup(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("27023 - Master Trial List - Search By Verification Status")]
         [NUnit.Framework.CategoryAttribute("Search")]
+        [NUnit.Framework.CategoryAttribute("Regression")]
         public virtual void _27023_MasterTrialList_SearchByVerificationStatus()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("27023 - Master Trial List - Search By Verification Status", new string[] {
-                        "Search"});
+                        "Search",
+                        "Regression"});
 #line 43
 this.ScenarioSetup(scenarioInfo);
 #line 44
- testRunner.Given("I login to Clinical Trial Application as CTU User", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I login to Clinical Trial Application as Administrator", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 45
- testRunner.When("I search by verification Status", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I search by verification status", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 46
- testRunner.Then("I should see the search results", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("I should see the verification status search results", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

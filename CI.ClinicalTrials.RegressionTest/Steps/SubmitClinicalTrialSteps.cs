@@ -19,7 +19,6 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
         [When(@"I submit a new trial with details (.*) and (.*) and (.*)")]
         public void WhenISubmitANewTrialWithDetails(string sponsor, string design, string category)
         {
-            menuPage.ClickOnToggleMenu();
             menuPage.SelectSubmitATrialFromToggleMenu();
             submitTrialDetailsPage.FillallTheTrialDetails(_title, sponsor, design, category);
             submitTrialDetailsPage.SubmitTrial();
@@ -28,16 +27,21 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
         [When(@"I cancel a new trial with entered details (.*) and (.*) and (.*)")]
         public void WhenICancelANewTrialWithEnteredDetails(string sponsor, string design, string category)
         {
-            menuPage.ClickOnToggleMenu();
             menuPage.SelectSubmitATrialFromToggleMenu();
             submitTrialDetailsPage.FillallTheTrialDetails(_title, sponsor, design, category);
             submitTrialDetailsPage.CancelTrial();
         }
 
-        [Then(@"I should see the new trial created successfully")]
-        public void ThenIShouldSeeTheNewTrialCreatedSuccessfully()
+        [Then(@"I should see the new trial created by Administrator")]
+        public void ThenIShouldSeeTheNewTrialCreatedByAdministrator()
         {
-            masterTrialListSearchPage.SearchAndVerifyTheCreatedTrial(_title);
+            masterTrialListSearchPage.SearchAndVerifyTheCreatedTrialByAdmin(_title);
+        }
+
+        [Then(@"I should see the new trial created by CTU User")]
+        public void ThenIShouldSeeTheNewTrialCreatedByCTUUser()
+        {
+            masterTrialListSearchPage.SearchAndVerifyTheCreatedTrialByCTUUser(_title);
         }
 
         [Then(@"I should be shown with Master Trial List page")]

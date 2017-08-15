@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using CI.ClinicalTrials.RegressionTest.Base;
 using CI.ClinicalTrials.RegressionTest.CommonMethods;
 using OpenQA.Selenium;
@@ -131,6 +132,9 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
 
         [FindsBy(How = How.XPath, Using = "//button[@value='Create']")]
         private IWebElement SubmitTrialButton { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//button[@class='btn btn-primary dirty-cop-applied']")]
+        private IWebElement SubmitAnywayButton { get; set; }
 
         [FindsBy(How = How.XPath, Using = "//button[@value='Cancel']")]
         private IWebElement CancelButton { get; set; }
@@ -337,6 +341,17 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         public void SubmitTrial()
         {
             SubmitTrialButton.Click();
+            try
+            {
+                if (SubmitAnywayButton.Text.Equals("Submit Anyway"))
+                {
+                    SubmitAnywayButton.Click();
+                }
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
         }
 
         public void FillallTheTrialDetails(string title, string sponsor, string design, string category)

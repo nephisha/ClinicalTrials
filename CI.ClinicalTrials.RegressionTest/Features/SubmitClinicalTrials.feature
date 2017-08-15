@@ -4,40 +4,40 @@
   As a User
   I should be able to submit new Trials
 
-  @Clinical
+  @Clinical @Regression
   Scenario Outline: 26612 - Submit a Portfolio Clinical Trial
 
     Given I login to Clinical Trial Application as Administrator
 	When I submit a new trial with details <Sponsor> and <Design> and <Category>
-	Then I should see the new trial created successfully
+	Then I should see the new trial created by Administrator
 
 	Examples: 
 	| Category  | Sponsor    | Design         |
 	| Portfolio | ACT Health | Interventional |
 
-@Clinical
+@Clinical @Regression
   Scenario Outline: 26623 - Submit a Non - Portfolio Clinical Trial
 
     Given I login to Clinical Trial Application as CTU User
 	When I submit a new trial with details <Sponsor> and <Design> and <Category>
-	Then I should see the new trial created successfully
+	Then I should see the new trial created by CTU User
 
 	Examples: 
 	| Category     |  Sponsor            | Design |
 	| NonPortfolio |  Cancer Council NSW | Other  |
 
-@Clinical
+@Clinical @Regression
   Scenario Outline: 26625 - Submit a Industrial Clinical Trial
 
     Given I login to Clinical Trial Application as CTU User
 	When I submit a new trial with details <Sponsor> and <Design> and <Category>
-	Then I should see the new trial created successfully
+	Then I should see the new trial created by CTU User
 
 	Examples: 
 	| Category |  Sponsor | Design         |
 	| Industry |  Kosan   | Interventional |
 
-@Clinical
+@Clinical @Regression
   Scenario Outline: 26627 - Cancel a Non - Portfolio Clinical Trial
 
     Given I login to Clinical Trial Application as CTU User

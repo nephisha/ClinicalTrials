@@ -145,12 +145,19 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
             usersPage.SearchAndEditTheCreatedUser(fromUser, toUser, editedEmail);
         }
 
-        [Then(@"(.*) user should see the new changes in (.*)")]
-        public void ThenUserShouldSeeTheNewChanges(string type, string[] menu)
+        [Then(@"(.*) user should see the new changes")]
+        public void ThenUserShouldSeeTheNewChanges(string type)
         {
             usersPage.SearchAndLoginAsTheEditedUser();
             menuPage.VerifyTheEditedUser(type, editedEmail);
         }
+
+        //[Then(@"(.*) user should see the new changes in (.*)")]
+        //public void ThenUserShouldSeeTheNewChanges(string type, string[] menu)
+        //{
+        //    usersPage.SearchAndLoginAsTheEditedUser();
+        //    menuPage.VerifyTheEditedUser(type, editedEmail);
+        //}
 
         [When(@"I create new Report Period from the menu option")]
         public void WhenICreateNewReportPeriodFromTheMenuOption()

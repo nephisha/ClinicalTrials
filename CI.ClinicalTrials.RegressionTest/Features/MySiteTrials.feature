@@ -1,7 +1,7 @@
 ﻿Feature: MySiteTrials
 	
 
-@Clinical
+@Clinical @Regression
 Scenario: 27067 - Display Current Report Period - MySite Trials
 	Given I login to Clinical Trial Application as Administrator 
 	And I open MySite trials from menu

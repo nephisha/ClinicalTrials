@@ -67,12 +67,14 @@ namespace CI.ClinicalTrials.RegressionTest.Features
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("27340 - Create new User")]
         [NUnit.Framework.CategoryAttribute("Users")]
+        [NUnit.Framework.CategoryAttribute("Regression")]
         [NUnit.Framework.TestCaseAttribute("CTU", "Clinical Trials Unit", null)]
         [NUnit.Framework.TestCaseAttribute("LHD", "Local Health District", null)]
         public virtual void _27340_CreateNewUser(string userType, string user, string[] exampleTags)
         {
             string[] @__tags = new string[] {
-                    "Users"};
+                    "Users",
+                    "Regression"};
             if ((exampleTags != null))
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
@@ -93,10 +95,12 @@ this.ScenarioSetup(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("27347 - Create new Sponsor")]
         [NUnit.Framework.CategoryAttribute("Users")]
+        [NUnit.Framework.CategoryAttribute("Regression")]
         public virtual void _27347_CreateNewSponsor()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("27347 - Create new Sponsor", new string[] {
-                        "Users"});
+                        "Users",
+                        "Regression"});
 #line 20
 this.ScenarioSetup(scenarioInfo);
 #line 21
@@ -112,10 +116,12 @@ this.ScenarioSetup(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("27352 - Create new Local Health District")]
         [NUnit.Framework.CategoryAttribute("Users")]
+        [NUnit.Framework.CategoryAttribute("Regression")]
         public virtual void _27352_CreateNewLocalHealthDistrict()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("27352 - Create new Local Health District", new string[] {
-                        "Users"});
+                        "Users",
+                        "Regression"});
 #line 26
 this.ScenarioSetup(scenarioInfo);
 #line 27
@@ -131,10 +137,12 @@ this.ScenarioSetup(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("27355 - Create new Clinical Trial Unit")]
         [NUnit.Framework.CategoryAttribute("Users")]
+        [NUnit.Framework.CategoryAttribute("Regression")]
         public virtual void _27355_CreateNewClinicalTrialUnit()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("27355 - Create new Clinical Trial Unit", new string[] {
-                        "Users"});
+                        "Users",
+                        "Regression"});
 #line 32
 this.ScenarioSetup(scenarioInfo);
 #line 33
@@ -150,10 +158,12 @@ this.ScenarioSetup(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("27358 - Create new Hospital")]
         [NUnit.Framework.CategoryAttribute("Users")]
+        [NUnit.Framework.CategoryAttribute("Regression")]
         public virtual void _27358_CreateNewHospital()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("27358 - Create new Hospital", new string[] {
-                        "Users"});
+                        "Users",
+                        "Regression"});
 #line 38
 this.ScenarioSetup(scenarioInfo);
 #line 39
@@ -169,10 +179,12 @@ this.ScenarioSetup(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("27369 - Create new Report Period")]
         [NUnit.Framework.CategoryAttribute("Users")]
+        [NUnit.Framework.CategoryAttribute("Regression")]
         public virtual void _27369_CreateNewReportPeriod()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("27369 - Create new Report Period", new string[] {
-                        "Users"});
+                        "Users",
+                        "Regression"});
 #line 44
 this.ScenarioSetup(scenarioInfo);
 #line 45
@@ -188,10 +200,12 @@ this.ScenarioSetup(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("27370 - 27372 - Modify and Delete Report Period")]
         [NUnit.Framework.CategoryAttribute("Users")]
+        [NUnit.Framework.CategoryAttribute("Regression")]
         public virtual void _27370_27372_ModifyAndDeleteReportPeriod()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("27370 - 27372 - Modify and Delete Report Period", new string[] {
-                        "Users"});
+                        "Users",
+                        "Regression"});
 #line 50
 this.ScenarioSetup(scenarioInfo);
 #line 51
@@ -213,10 +227,12 @@ this.ScenarioSetup(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("27389 - Create new Report Period Extension")]
         [NUnit.Framework.CategoryAttribute("Users")]
+        [NUnit.Framework.CategoryAttribute("Regression")]
         public virtual void _27389_CreateNewReportPeriodExtension()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("27389 - Create new Report Period Extension", new string[] {
-                        "Users"});
+                        "Users",
+                        "Regression"});
 #line 59
 this.ScenarioSetup(scenarioInfo);
 #line 60
@@ -232,15 +248,14 @@ this.ScenarioSetup(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("27341 - Editing user details and access")]
         [NUnit.Framework.CategoryAttribute("Edit")]
-        [NUnit.Framework.TestCaseAttribute("CTU", "LHD", "Master Trials, Submit New Trial, Reports", "", null)]
-        [NUnit.Framework.TestCaseAttribute("LHD", "CTU", "Dashboard, Master Trials, Submit New Trial, My Site Trial, Sign Off My Site Trial" +
-            "s, Reports", "Extracts, User Resources", null)]
-        [NUnit.Framework.TestCaseAttribute("CTU", "Admin", "Dashboard, Master Trials, Submit New Trial, My Site Trial, Sign Off My Site Trial" +
-            "s, Reports", "Extracts, User Resources, Administration", null)]
-        public virtual void _27341_EditingUserDetailsAndAccess(string type1, string type2, string primaryMenu, string secondaryMenu, string[] exampleTags)
+        [NUnit.Framework.CategoryAttribute("Regression")]
+        [NUnit.Framework.TestCaseAttribute("CTU", "LHD", null)]
+        [NUnit.Framework.TestCaseAttribute("LHD", "CTU", null)]
+        public virtual void _27341_EditingUserDetailsAndAccess(string type1, string type2, string[] exampleTags)
         {
             string[] @__tags = new string[] {
-                    "Edit"};
+                    "Edit",
+                    "Regression"};
             if ((exampleTags != null))
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
@@ -255,7 +270,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 68
  testRunner.When(string.Format("I change the {0} user access to {1} and details", type1, type2), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 69
- testRunner.Then(string.Format("{0} user should see the new changes in {1} and {2}", type2, primaryMenu, secondaryMenu), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("{0} user should see the new changes", type2), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -263,25 +278,27 @@ this.ScenarioSetup(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("27342 - Disable Existing User")]
         [NUnit.Framework.CategoryAttribute("Users")]
+        [NUnit.Framework.CategoryAttribute("Regression")]
         [NUnit.Framework.TestCaseAttribute("RegressionCTU030", "Disabled", null)]
         public virtual void _27342_DisableExistingUser(string cTUUser, string status, string[] exampleTags)
         {
             string[] @__tags = new string[] {
-                    "Users"};
+                    "Users",
+                    "Regression"};
             if ((exampleTags != null))
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("27342 - Disable Existing User", @__tags);
-#line 78
+#line 90
 this.ScenarioSetup(scenarioInfo);
-#line 79
+#line 91
  testRunner.Given("I login to Clinical Trial Application as Administrator", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 80
+#line 92
  testRunner.And(string.Format("I have an existing {0} who is activated", cTUUser), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 81
+#line 93
  testRunner.When("I disable the user account", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 82
+#line 94
  testRunner.Then(string.Format("{0} should not be allowed to login the system", cTUUser), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
