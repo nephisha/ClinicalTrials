@@ -130,6 +130,9 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         [FindsBy(How = How.Id, Using = "AddToMySiteListSection_CTUId")]
         private IWebElement ActiveSite { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "//*[@id='notificationTab']/form/div[2]/div[2]/div[2]/button[1]")]
+        private IWebElement EditTrialSaveButton { get; set; }
+
         [FindsBy(How = How.XPath, Using = "//button[@value='Create']")]
         private IWebElement SubmitTrialButton { get; set; }
 
@@ -366,6 +369,18 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         public void CancelTrial()
         {
             CancelButton.Click();
+        }
+
+        public void SaveTheEditedTrial()
+        {
+            ChangeNickName();
+        }
+
+        private void ChangeNickName()
+        {
+            Nickname.Clear();
+            Nickname.SendKeys("Modified" + PageHelper.RandomString(8));
+            EditTrialSaveButton.Click();
         }
     }
 }

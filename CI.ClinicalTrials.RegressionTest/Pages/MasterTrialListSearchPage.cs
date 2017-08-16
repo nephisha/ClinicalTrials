@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using CI.ClinicalTrials.RegressionTest.Base;
 using CI.ClinicalTrials.RegressionTest.CommonMethods;
+using CI.ClinicalTrials.RegressionTest.Pages.Administrator;
 using FluentAssertions;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
@@ -12,8 +13,11 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
 {
     public class MasterTrialListSearchPage : PageBase
     {
+        public string TrialName;
+        public string TrialRegoNumber;
+        public static string TrialAcronym;
         private const string SearchCriteria = "NickRegTest";
-        
+
         [FindsBy(How = How.XPath, Using = "//form[@id='searchForm']/fieldset/legend")]
         private IWebElement MasterTrialListSearch { get; set; }
 
@@ -28,6 +32,9 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
 
         [FindsBy(How = How.Id, Using = "CTUID")]
         private IWebElement CTU { get; set; }
+
+        [FindsBy(How = How.Id, Using = "CTUId")]
+        private IWebElement JoinTrialSite { get; set; }
 
         [FindsBy(How = How.Id, Using = "TumourGroupIDs_chosen")]
         private IWebElement TumourGroup { get; set; }
@@ -44,6 +51,12 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         [FindsBy(How = How.XPath, Using = "//table[@id='dataTable_trials']/tbody/tr[1]/td[6]")]
         private IWebElement AdminSearchTrialResult_Name { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "//table[@id='dataTable_trials']/tbody/tr[1]/td[4]")]
+        private IWebElement AdminSearchTrialResult_Acronym { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//table[@id='dataTable_trials']/tbody/tr[1]/td[7]")]
+        private IWebElement AdminSearchTrialResult_RegoNumber { get; set; }
+
         [FindsBy(How = How.XPath, Using = "//table[@id='dataTable_trials']/tbody/tr[1]/td[5]")]
         private IWebElement CTUSearchTrialResult_Name { get; set; }
 
@@ -56,7 +69,7 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         [FindsBy(How = How.XPath, Using = "//a[@class='paginate_button current']")]
         private IWebElement Load_DataTable { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//table[@id='dataTable_trials']/tbody/tr[1]/td[3]/span")]
+        [FindsBy(How = How.XPath, Using = "//table[@id='dataTable_trials']/tbody/tr[1]/td[3]")]
         private IWebElement CTUSearchTrialResult_Acronym { get; set; }
 
         [FindsBy(How = How.XPath, Using = "//table[@id='dataTable_trials']/tbody/tr[1]/td[12]")]
@@ -65,14 +78,23 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         [FindsBy(How = How.XPath, Using = "//table[@id='dataTable_trials']/tbody/tr[1]/td[11]")]
         private IWebElement AdminSearchTrialResult_VerificationStatus { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//a[@class='btn btn-mini editTrialBtn']")]
+        [FindsBy(How = How.XPath, Using = "//table[@id='dataTable_trials']/tbody/tr/td[1]")]
+        private IWebElement SearchTrialResult { get; set; }
+
+        [FindsBy(How = How.Id, Using = "regEditTrials")]
         private IWebElement EditTrials { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//a[@class='btn btn-mini btn-join-trial']")]
+        [FindsBy(How = How.Id, Using = "regAddToMyTrialsList")]
         private IWebElement AddToMyTrialsList { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//button[@class='btn btn-mini btn-danger removeTrial dirty-cop-applied']")]
+        [FindsBy(How = How.XPath, Using = "//button[@value='Save']")]
+        private IWebElement JoinTrial { get; set; }
+
+        [FindsBy(How = How.Id, Using = "regRemoveFromMasterList")]
         private IWebElement RemoveFromMasterList { get; set; }
+
+        [FindsBy(How = How.Id, Using = "removeTrialConfirm")]
+        private IWebElement ConfirmRemoveTrial { get; set; }
 
 
         public void VerifyMasterTrialListSearchPageIsLoaded()
@@ -93,21 +115,8 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         {
             PageHelper.WaitForElement(Driver, Load_DataTable);
             SearchForCreatedTrial(title);
-
-            try
-            {
-                PageHelper.WaitForElement(Driver, Load_DataTable);
-                PageHelper.WaitForElement(Driver, CTUSearchTrialResult_Name).Text.Should().Contain(title);
-            }
-            catch (Exception e)
-            {
-                var pageSource = Driver.PageSource;
-                Console.WriteLine(e);
-                Console.WriteLine(pageSource);
-                SearchForCreatedTrial(title);
-                PageHelper.WaitForElement(Driver, CTUSearchTrialResult_Name).Text.Should().Contain(title);
-            }
-            
+            PageHelper.WaitForElement(Driver, Load_DataTable);
+            PageHelper.WaitForElement(Driver, CTUSearchTrialResult_Name).Text.Should().Contain(title);
         }
 
         private void SearchForCreatedTrial(string text)
@@ -189,6 +198,74 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         {
             PageHelper.WaitForElement(Driver, Load_DataTable);
             AdminSearchTrialResult_VerificationStatus.Text.Should().BeEquivalentTo("Verified");
+        }
+
+        public void AddTrialToMySiteTrialList()
+        {
+            SearchAndAddTrial();
+            JoinAddedTrialToSite();
+        }
+
+        private void JoinAddedTrialToSite()
+        {
+            PageHelper.PickOnlyEnabledValueFromDropdown(JoinTrialSite);
+            JoinTrial.Click();
+        }
+
+        private void SearchAndAddTrial()
+        {
+            SearchByTrialClassification();
+            TrialAcronym = CTUSearchTrialResult_Acronym.Text;
+            Query.SendKeys(TrialAcronym);
+            SearchButton.Click();
+            PageHelper.WaitForElement(Driver, Load_DataTable);
+            AddToMyTrialsList.Click();
+        }
+
+        public void EditanExistingTrial()
+        {
+            GetanExistingTrialData();
+            EditTrials.Click();
+        }
+
+        private void GetanExistingTrialData()
+        {
+            Query.SendKeys("NickRegTest");
+            SearchButton.Click();
+            TrialRegoNumber = AdminSearchTrialResult_RegoNumber.Text;
+            Query.Clear();
+            Query.SendKeys(TrialRegoNumber);
+            SearchButton.Click();
+        }
+
+        public void SearchAndVerifyTheEditedTrial()
+        {
+            Query.SendKeys(TrialRegoNumber);
+            SearchButton.Click();
+            AdminSearchTrialResult_Acronym.Text.Should().Contain("Modified");
+        }
+
+        public void RemoveAnExistingTrial()
+        {
+            GetanExistingTrialData();
+            RemoveFromMasterList.Click();
+            ConfirmRemoveTrial.Click();
+        }
+
+        public void SearchAndVerifyTheRemovedTrial()
+        {
+            Query.SendKeys(TrialRegoNumber);
+            SearchButton.Click();
+            SearchTrialResult.Text.Should().BeEquivalentTo("No results to show");
+        }
+
+        public void AddCreatedTrialToMySiteTrial(string trialTitle)
+        {
+            Query.SendKeys(trialTitle);
+            SearchButton.Click();
+            PageHelper.WaitForElement(Driver, Load_DataTable);
+            AddToMyTrialsList.Click();
+            JoinAddedTrialToSite();
         }
     }
 }

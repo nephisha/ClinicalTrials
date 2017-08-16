@@ -214,10 +214,12 @@ this.ScenarioSetup(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("27043 - Master Trial - Add to My Site Trial")]
         [NUnit.Framework.CategoryAttribute("Search")]
+        [NUnit.Framework.CategoryAttribute("Regression")]
         public virtual void _27043_MasterTrial_AddToMySiteTrial()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("27043 - Master Trial - Add to My Site Trial", new string[] {
-                        "Search"});
+                        "Search",
+                        "Regression"});
 #line 49
 this.ScenarioSetup(scenarioInfo);
 #line 50
@@ -233,14 +235,16 @@ this.ScenarioSetup(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("27044 - Master Trial - Edit Trial Details")]
         [NUnit.Framework.CategoryAttribute("Search")]
+        [NUnit.Framework.CategoryAttribute("Regression")]
         public virtual void _27044_MasterTrial_EditTrialDetails()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("27044 - Master Trial - Edit Trial Details", new string[] {
-                        "Search"});
+                        "Search",
+                        "Regression"});
 #line 55
 this.ScenarioSetup(scenarioInfo);
 #line 56
- testRunner.Given("I login to Clinical Trial Application as CTU User", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I login to Clinical Trial Application as Administrator", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 57
  testRunner.When("I edit a trial", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 58
@@ -271,10 +275,12 @@ this.ScenarioSetup(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("27048 - Master Trial - Remove Trial")]
         [NUnit.Framework.CategoryAttribute("Search")]
+        [NUnit.Framework.CategoryAttribute("Regression")]
         public virtual void _27048_MasterTrial_RemoveTrial()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("27048 - Master Trial - Remove Trial", new string[] {
-                        "Search"});
+                        "Search",
+                        "Regression"});
 #line 67
 this.ScenarioSetup(scenarioInfo);
 #line 68

@@ -14,7 +14,7 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
         private readonly MasterTrialListSearchPage masterTrialListSearchPage = new MasterTrialListSearchPage();
         private readonly MySiteTrialsPage mySiteTrialsPage = new MySiteTrialsPage();
 
-        private readonly string _title = "RegTest_" + PageHelper.RandomString(8);
+        public readonly string _title = "RegTest_" + PageHelper.RandomString(8);
 
         [When(@"I submit a new trial with details (.*) and (.*) and (.*)")]
         public void WhenISubmitANewTrialWithDetails(string sponsor, string design, string category)

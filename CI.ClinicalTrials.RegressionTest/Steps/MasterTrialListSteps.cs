@@ -7,10 +7,13 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
     [Binding]
     public class MasterTrialListSteps
     {
-
-        private readonly MenuPage menuPage = new MenuPage();
-        private readonly MasterTrialListSearchPage masterTrialListSearchPage = new MasterTrialListSearchPage();
+        
         private readonly HomePage homePage = new HomePage();
+        private readonly MenuPage menuPage = new MenuPage();
+        private readonly MySiteTrialsPage mySiteTrialsPage = new MySiteTrialsPage();
+        private readonly SubmitTrialDetailsPage submitTrialDetailsPage = new SubmitTrialDetailsPage();
+        private readonly MasterTrialListSearchPage masterTrialListSearchPage = new MasterTrialListSearchPage();
+        
 
         [When(@"I perform a basic search in Master Trial")]
         public void WhenIPerformABasicSearchInMasterTrial()
@@ -100,51 +103,61 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
         [When(@"I add a trial to my site")]
         public void WhenIAddATrialToMySite()
         {
-            ScenarioContext.Current.Pending();
+            menuPage.SelectMasterTrialFromToggleMenu();
+            masterTrialListSearchPage.AddTrialToMySiteTrialList();
         }
-        
+
+        [When(@"I add the created trial to my site")]
+        public void WhenIAddTheCreatedTrialToMySite()
+        {
+            var trialTitle = new SubmitAClinicalTrialForThePatientSteps()._title;
+            masterTrialListSearchPage.AddCreatedTrialToMySiteTrial(trialTitle);
+        }
+
+
+        [Then(@"I should see the trial added successfully")]
+        public void ThenIShouldSeeTheTrialAddedSuccessfully()
+        {
+            mySiteTrialsPage.SearchAndVerifyTheAddedTrial();
+        }
+
         [When(@"I edit a trial")]
         public void WhenIEditATrial()
         {
-            ScenarioContext.Current.Pending();
+            menuPage.SelectMasterTrialFromToggleMenu();
+            masterTrialListSearchPage.EditanExistingTrial();
+            submitTrialDetailsPage.SaveTheEditedTrial();
         }
-        
-        [When(@"I select the location tab")]
-        public void WhenISelectTheLocationTab()
+
+        [Then(@"I should see the trial details added successfully")]
+        public void ThenIShouldSeeTheTrialDetailsAddedSuccessfully()
         {
-            ScenarioContext.Current.Pending();
+            masterTrialListSearchPage.SearchAndVerifyTheEditedTrial();
         }
         
         [When(@"I remove a trial")]
         public void WhenIRemoveATrial()
         {
-            ScenarioContext.Current.Pending();
+            menuPage.SelectMasterTrialFromToggleMenu();
+            masterTrialListSearchPage.RemoveAnExistingTrial();
         }
-        
-        
-        
-        [Then(@"I should see the trial added successfully")]
-        public void ThenIShouldSeeTheTrialAddedSuccessfully()
-        {
-            ScenarioContext.Current.Pending();
-        }
-        
-        [Then(@"I should see the trial details added successfully")]
-        public void ThenIShouldSeeTheTrialDetailsAddedSuccessfully()
-        {
-            ScenarioContext.Current.Pending();
-        }
-        
-        [Then(@"I should see the location details")]
-        public void ThenIShouldSeeTheLocationDetails()
-        {
-            ScenarioContext.Current.Pending();
-        }
-        
+
         [Then(@"I should see the trial getting removed successfully")]
         public void ThenIShouldSeeTheTrialGettingRemovedSuccessfully()
         {
-            ScenarioContext.Current.Pending();
+            masterTrialListSearchPage.SearchAndVerifyTheRemovedTrial();
+        }
+
+        [When(@"I select the location tab")]
+        public void WhenISelectTheLocationTab()
+        {
+            
+        }
+
+        [Then(@"I should see the location details")]
+        public void ThenIShouldSeeTheLocationDetails()
+        {
+            
         }
     }
 }

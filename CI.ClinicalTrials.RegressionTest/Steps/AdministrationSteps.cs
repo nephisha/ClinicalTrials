@@ -21,7 +21,6 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
         private readonly ExtensionsPage extensionsPage = new ExtensionsPage();
         private readonly EmailLogPage emailLogPage = new EmailLogPage();
         
-
         private readonly string editedEmail = PageHelper.EditedEmailAddress();
 
         [When(@"I create new (.*) user from the user menu option")]

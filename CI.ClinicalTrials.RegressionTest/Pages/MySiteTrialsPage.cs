@@ -25,6 +25,9 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         [FindsBy(How = How.XPath, Using = "//input[@type='search']")]
         private IWebElement MySiteTrialsSearch { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "//table[@id='siteTrialList']/tbody/tr[1]/td[2]")]
+        private IWebElement CTUMySiteTrialResult_Acronym { get; set; }
+
         [FindsBy(How = How.XPath, Using = "//label[@for='rbtnExact']/following-sibling::div[1]/select[1]")]
         private IWebElement SiteTarget_ExactDropdown { get; set; }
 
@@ -74,6 +77,13 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             ReportPeriodHeading.Text.Should()
                 .MatchRegex(
                     @"Report Period: (\d+)[-.\/](\d+)[-.\/](\d+) - (\d+)[-.\/](\d+)[-.\/](\d+) Submission Due Date: (\d+)[-.\/](\d+)[-.\/](\d+)");
+        }
+
+        public void SearchAndVerifyTheAddedTrial()
+        {
+            var acronymSearch = MasterTrialListSearchPage.TrialAcronym;
+            MySiteTrialsSearch.SendKeys(acronymSearch);
+            CTUMySiteTrialResult_Acronym.Text.Should().BeEquivalentTo(acronymSearch);
         }
     }
 }

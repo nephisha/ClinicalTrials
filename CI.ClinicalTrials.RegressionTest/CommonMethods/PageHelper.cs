@@ -7,7 +7,7 @@ using OpenQA.Selenium.Support.UI;
 
 namespace CI.ClinicalTrials.RegressionTest.CommonMethods
 {
-    public class PageHelper
+    public static class PageHelper
     {
         private static readonly Random Random = new Random();
 
@@ -127,6 +127,21 @@ namespace CI.ClinicalTrials.RegressionTest.CommonMethods
             CultureInfo provider = CultureInfo.InvariantCulture;
             var result = DateTime.ParseExact(dateString, format, provider);
             return result;
+        }
+
+        public static void PickOnlyEnabledValueFromDropdown(IWebElement element)
+        {
+            var select = new SelectElement(element);
+            var count = Random.Next(select.Options.Count);
+            try
+            {
+                select.Options[count].Click();
+            }
+            catch (Exception)
+            {
+                count = Random.Next(select.Options.Count);
+                select.Options[count].Click();
+            }
         }
     }
 }
