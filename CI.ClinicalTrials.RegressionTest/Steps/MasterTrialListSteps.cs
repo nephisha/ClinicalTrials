@@ -1,5 +1,7 @@
 ﻿using System;
+using CI.ClinicalTrials.RegressionTest.CommonMethods;
 using CI.ClinicalTrials.RegressionTest.Pages;
+using NUnit.Framework;
 using TechTalk.SpecFlow;
 
 namespace CI.ClinicalTrials.RegressionTest.Steps
@@ -7,13 +9,18 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
     [Binding]
     public class MasterTrialListSteps
     {
+        private readonly UI_TestContext context;
         
         private readonly HomePage homePage = new HomePage();
         private readonly MenuPage menuPage = new MenuPage();
         private readonly MySiteTrialsPage mySiteTrialsPage = new MySiteTrialsPage();
         private readonly SubmitTrialDetailsPage submitTrialDetailsPage = new SubmitTrialDetailsPage();
         private readonly MasterTrialListSearchPage masterTrialListSearchPage = new MasterTrialListSearchPage();
-        
+
+        public MasterTrialListSteps(UI_TestContext context)
+        {
+            this.context = context;
+        }
 
         [When(@"I perform a basic search in Master Trial")]
         public void WhenIPerformABasicSearchInMasterTrial()
@@ -104,21 +111,25 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
         public void WhenIAddATrialToMySite()
         {
             menuPage.SelectMasterTrialFromToggleMenu();
-            masterTrialListSearchPage.AddTrialToMySiteTrialList();
+            context.Acronym = masterTrialListSearchPage.AddTrialToMySiteTrialList();
         }
 
         [When(@"I add the created trial to my site")]
         public void WhenIAddTheCreatedTrialToMySite()
         {
-            var trialTitle = new SubmitAClinicalTrialForThePatientSteps()._title;
-            masterTrialListSearchPage.AddCreatedTrialToMySiteTrial(trialTitle);
+            masterTrialListSearchPage.AddCreatedTrialToMySiteTrial(context.TrialTitle);
         }
 
+        [Then(@"I should see the created trial added successfully")]
+        public void ThenIShouldSeeTheCreatedTrialAddedSuccessfully()
+        {
+            mySiteTrialsPage.SearchAndVerifyTheCreatedTrial(context.TrialTitle);
+        }
 
         [Then(@"I should see the trial added successfully")]
         public void ThenIShouldSeeTheTrialAddedSuccessfully()
         {
-            mySiteTrialsPage.SearchAndVerifyTheAddedTrial();
+            mySiteTrialsPage.SearchAndVerifyTheAddedTrial(context.Acronym);
         }
 
         [When(@"I edit a trial")]

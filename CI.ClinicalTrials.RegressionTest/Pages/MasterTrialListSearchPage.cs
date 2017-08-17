@@ -96,6 +96,9 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         [FindsBy(How = How.Id, Using = "removeTrialConfirm")]
         private IWebElement ConfirmRemoveTrial { get; set; }
 
+        [FindsBy(How = How.Id, Using = "removeTrialModalLabel")]
+        private IWebElement RemoveTrialPopUp { get; set; }
+
 
         public void VerifyMasterTrialListSearchPageIsLoaded()
         {
@@ -200,10 +203,11 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             AdminSearchTrialResult_VerificationStatus.Text.Should().BeEquivalentTo("Verified");
         }
 
-        public void AddTrialToMySiteTrialList()
+        public string AddTrialToMySiteTrialList()
         {
-            SearchAndAddTrial();
+            var sAcronym = SearchAndAddTrial();
             JoinAddedTrialToSite();
+            return sAcronym;
         }
 
         private void JoinAddedTrialToSite()
@@ -212,7 +216,7 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             JoinTrial.Click();
         }
 
-        private void SearchAndAddTrial()
+        private string SearchAndAddTrial()
         {
             SearchByTrialClassification();
             TrialAcronym = CTUSearchTrialResult_Acronym.Text;
@@ -220,6 +224,7 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             SearchButton.Click();
             PageHelper.WaitForElement(Driver, Load_DataTable);
             AddToMyTrialsList.Click();
+            return TrialAcronym;
         }
 
         public void EditanExistingTrial()
@@ -248,19 +253,23 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         public void RemoveAnExistingTrial()
         {
             GetanExistingTrialData();
-            RemoveFromMasterList.Click();
+            PageHelper.WaitForElement(Driver, RemoveFromMasterList).Click();
+            PageHelper.WaitForElement(Driver, RemoveTrialPopUp);
             ConfirmRemoveTrial.Click();
         }
 
         public void SearchAndVerifyTheRemovedTrial()
         {
+            Query.Clear();
             Query.SendKeys(TrialRegoNumber);
             SearchButton.Click();
+            Thread.Sleep(TimeSpan.FromMilliseconds(2000));
             SearchTrialResult.Text.Should().BeEquivalentTo("No results to show");
         }
 
         public void AddCreatedTrialToMySiteTrial(string trialTitle)
         {
+            Query.Clear();
             Query.SendKeys(trialTitle);
             SearchButton.Click();
             PageHelper.WaitForElement(Driver, Load_DataTable);

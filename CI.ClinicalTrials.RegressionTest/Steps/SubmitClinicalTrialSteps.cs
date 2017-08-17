@@ -9,6 +9,13 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
     [Binding]
     public class SubmitAClinicalTrialForThePatientSteps
     {
+        private readonly UI_TestContext context;
+
+        public SubmitAClinicalTrialForThePatientSteps(UI_TestContext context)
+        {
+            this.context = context;
+        }
+
         private readonly MenuPage menuPage = new MenuPage();
         private readonly SubmitTrialDetailsPage submitTrialDetailsPage = new SubmitTrialDetailsPage();
         private readonly MasterTrialListSearchPage masterTrialListSearchPage = new MasterTrialListSearchPage();
@@ -42,6 +49,7 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
         public void ThenIShouldSeeTheNewTrialCreatedByCTUUser()
         {
             masterTrialListSearchPage.SearchAndVerifyTheCreatedTrialByCTUUser(_title);
+            context.TrialTitle = "Title" + _title;
         }
 
         [Then(@"I should be shown with Master Trial List page")]

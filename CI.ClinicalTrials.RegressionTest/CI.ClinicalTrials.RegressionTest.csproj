@@ -50,9 +50,6 @@
       <HintPath>..\packages\FluentAssertions.4.19.3\lib\net45\FluentAssertions.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -92,6 +89,7 @@
     <Compile Include="Base\DriverBase.cs" />
     <Compile Include="CommonMethods\DatePicker.cs" />
     <Compile Include="CommonMethods\PageHelper.cs" />
+    <Compile Include="CommonMethods\UI_TestContext.cs" />
     <Compile Include="Features\Administration.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -135,6 +133,11 @@
     <Compile Include="Pages\SubmitTrialDetailsPage.cs" />
     <Compile Include="Pages\Administrator\UsersPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\ErrorMessages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ErrorMessages.resx</DependentUpon>
+    </Compile>
     <Compile Include="Resources\UserCredentials.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -189,6 +192,10 @@
     <Folder Include="Tools\NUnit3_Console\addins\" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Resources\ErrorMessages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ErrorMessages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\UserCredentials.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>UserCredentials.Designer.cs</LastGenOutput>
