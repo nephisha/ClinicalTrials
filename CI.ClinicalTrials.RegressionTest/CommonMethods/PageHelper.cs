@@ -135,7 +135,7 @@ namespace CI.ClinicalTrials.RegressionTest.CommonMethods
             var count = Random.Next(select.Options.Count);
             try
             {
-                select.Options[count].Click();
+                select.Options[2].Click();
             }
             catch (Exception)
             {

@@ -62,5 +62,17 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
         {
             mySiteTrialsPage.ArchiveTheAbandonedTrial(context.TrialTitle);
         }
+
+        [Then(@"I should be able to see trial under (.*) filter")]
+        public void ThenIShouldBeAbleToSeeTrialUnderFilter(string filter)
+        {
+            mySiteTrialsPage.ApplyFilterAndVerifyTrialData(filter, context.TrialTitle);
+        }
+
+        [When(@"I save the trial data for the trial")]
+        public void WhenISaveTheTrialDataForTheTrial()
+        {
+            mySiteTrialsPage.FillinTrialDataAndSave(context.TrialTitle);
+        }
     }
 }

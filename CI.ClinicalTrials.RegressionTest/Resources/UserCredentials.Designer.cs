@@ -81,6 +81,24 @@ namespace CI.ClinicalTrials.RegressionTest.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Welcome@123.
         /// </summary>
+        internal static string AutoCTU_Password {
+            get {
+                return ResourceManager.GetString("AutoCTU_Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AutomationUserCTU.
+        /// </summary>
+        internal static string AutoCTU_UserName {
+            get {
+                return ResourceManager.GetString("AutoCTU_UserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Welcome@123.
+        /// </summary>
         internal static string CTU_Password {
             get {
                 return ResourceManager.GetString("CTU_Password", resourceCulture);

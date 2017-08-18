@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using CI.ClinicalTrials.RegressionTest.Base;
 using CI.ClinicalTrials.RegressionTest.CommonMethods;
@@ -33,6 +34,12 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         [FindsBy(How = How.XPath, Using = "//table[@id='siteTrialList']/tbody/tr[1]/td[5]")]
         private IWebElement CTUMySiteTrialResult_Title { get; set; }
 
+        [FindsBy(How = How.Id, Using = "regRGONotApplicable")]
+        private IWebElement RGONotApplicable { get; set; }
+
+        [FindsBy(How = How.Id, Using = "RecruitmentOpen")]
+        private IWebElement RecruitmentOpen { get; set; }
+
         [FindsBy(How = How.Id, Using = "rbtnExact")]
         private IWebElement SiteTarget_Exact_RadioButton { get; set; }
 
@@ -54,32 +61,35 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         [FindsBy(How = How.XPath, Using = "//label[@for='rbtnRange']/following-sibling::div[1]/select[1]")]
         private IWebElement SiteTarget_RangeDropdown { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//table[@id='siteTrialActivity']/tbody/tr[1]/td[2]/div/input[@class='control-field dirty-cop-applied']")]
+        [FindsBy(How = How.Id, Using = "regPreScreened")]
         private IWebElement PreScreened { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//table[@id='siteTrialActivity']/tbody/tr[1]/td[3]/input[@class='control-field dirty-cop-applied']")]
+        [FindsBy(How = How.Id, Using = "regScreenFailures")]
         private IWebElement ScreenFailures { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//table[@id='siteTrialActivity']/tbody/tr[1]/td[4]/input[@class='control-field dirty-cop-applied']")]
+        [FindsBy(How = How.Id, Using = "regNewEnrollment")]
         private IWebElement NewEnrollment { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//table[@id='siteTrialActivity']/tbody/tr[1]/td[5]/input[@class='control-field dirty-cop-applied']")]
+        [FindsBy(How = How.Id, Using = "regActiveIntervention")]
         private IWebElement ActiveIntervention { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//table[@id='siteTrialActivity']/tbody/tr[1]/td[6]/input[@class='control-field dirty-cop-applied']")]
+        [FindsBy(How = How.Id, Using = "regCompletedIntervention")]
         private IWebElement CompletedIntervention { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//table[@id='siteTrialActivity']/tbody/tr[1]/td[7]/input[@class='control-field dirty-cop-applied']")]
+        [FindsBy(How = How.Id, Using = "regFollowUp")]
         private IWebElement FollowUp { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//table[@id='siteTrialActivity']/tbody/tr[1]/td[8]/input[@class='control-field dirty-cop-applied']")]
+        [FindsBy(How = How.Id, Using = "regDiscontinued")]
         private IWebElement Discontinued { get; set; }
 
         [FindsBy(How = How.Id, Using = "regSaveTrialDetails")]
         private IWebElement SaveTrialDetails { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//div[@class='esd-actions']/div[1]/a")]
+        [FindsBy(How = How.Id, Using = "regSaveAll")]
         private IWebElement SaveAll { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//div[@id='mysite-table-filters']/button[6]")]
+        private IWebElement FilterArchived { get; set; }
 
         [FindsBy(How = How.XPath, Using = "//div[@class='dropdown']/button")]
         private IWebElement ActionDropDown { get; set; }
@@ -117,7 +127,7 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         [FindsBy(How = How.XPath, Using = "//*[@class='ui-datepicker-calendar']")]
         private IWebElement Calender { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//*[@class='ui-state-default ui-state-highlight']")]
+        [FindsBy(How = How.XPath, Using = "//*[@class=' ui-datepicker-days-cell-over  ui-datepicker-today']")]
         private IWebElement CalenderToday { get; set; }
 
         public void VerifyMySiteTrialsPageIsLoaded()
@@ -170,12 +180,13 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
 
         public void AbandonTheCreatedTrial(string contextTrialTitle)
         {
-            CreatedTrialRecord.Click();
-            PageHelper.WaitForElement(Driver, SiteTarget_Exact_RadioButton);
-            SiteTarget_Exact_RadioButton.Click();
-            SiteTarget_Exact_Input.SendKeys("10");
-            PageHelper.PickRandomValueFromDropdown(SiteTarget_ExactDropdown);
-            FillInTrialDetails();
+            FIllInMandatoryTrialDates();
+            TrialAbandoned.Click();
+            Thread.Sleep(TimeSpan.FromSeconds(2));
+            CalenderToday.Click();
+            FillInTrialDetailsAndActivity();
+            SaveTrialDetails.Click();
+            Thread.Sleep(TimeSpan.FromSeconds(8));
             PageHelper.WaitForElement(Driver, ActionDropDown);
             ActionDropDown.Click();
             ArchiveButton.Click();
@@ -183,11 +194,20 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             ConfirmArchiveButton.Click();
         }
 
-        private void FillInTrialDetails()
+        private void FIllInMandatoryTrialDates()
+        {
+            CreatedTrialRecord.Click();
+            Thread.Sleep(TimeSpan.FromSeconds(5));
+            SiteTarget_Exact_RadioButton.Click();
+            SiteTarget_Exact_Input.SendKeys("10");
+            PageHelper.PickRandomValueFromDropdown(SiteTarget_ExactDropdown);
+        }
+
+        private void FillInTrialDetailsAndActivity()
         {
             PrincipalInvestigator.SendKeys("RgPrincipal");
             Key_Contact.SendKeys("RgKey");
-            SaveTrialDetails.Click();
+            Site_Responsible.Click();
         }
 
         public void ArchiveTheAbandonedTrial(string contextTrialTitle)
@@ -196,6 +216,45 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             MySiteTrialsSearch.Clear();
             MySiteTrialsSearch.SendKeys(contextTrialTitle);
             SearchTrialResult.Text.Should().BeEquivalentTo("No results to show");
+        }
+
+        public void ApplyFilterAndVerifyTrialData(string filter, string contextTrialTitle)
+        {
+            Driver.Navigate().Refresh();
+            if (filter.ToLower().Equals("archived"))
+            {
+                FilterArchived.Click();
+            }
+            MySiteTrialsSearch.Clear();
+            MySiteTrialsSearch.SendKeys(contextTrialTitle);
+            CTUMySiteTrialResult_Title.Text.Should().BeEquivalentTo(contextTrialTitle);
+        }
+
+        public void FillinTrialDataAndSave(string contextTrialTitle)
+        {
+            FillInTrialDateDetails();
+            FillInTrialDetailsAndActivity();
+            FillInCancerParticipantsData();
+            SaveAll.Click();
+        }
+
+        private void FillInCancerParticipantsData()
+        {
+            PreScreened.SendKeys("5");
+            ScreenFailures.SendKeys("3");
+            NewEnrollment.SendKeys("4");
+            ActiveIntervention.SendKeys("2");
+            CompletedIntervention.SendKeys("1");
+            FollowUp.SendKeys("2");
+            Discontinued.SendKeys("1");
+        }
+
+        private void FillInTrialDateDetails()
+        {
+            FIllInMandatoryTrialDates();
+            RGONotApplicable.Click();
+            RecruitmentOpen.Click();
+            PageHelper.WaitForElement(Driver, CalenderToday).Click();
         }
     }
 }

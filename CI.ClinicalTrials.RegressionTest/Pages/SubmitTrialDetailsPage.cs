@@ -270,6 +270,7 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         private void SelectaActiveSite()
         {
             PageHelper.PickRandomValueFromDropdown(ActiveSite);
+            //PageHelper.SelectValueFromDropdown(ActiveSite, "RegCTU98757");
         }
 
         private void SelectAddToMyTrialsList()

@@ -105,6 +105,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MySiteTrials.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\SignOffTrials.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SignOffTrials.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Reconciliation.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reconciliation.feature</DependentUpon>
+    </Compile>
     <Compile Include="Hooks\Hooks.cs" />
     <Compile Include="Base\PageBase.cs" />
     <Compile Include="Features\Dashboard.feature.cs">
@@ -147,6 +157,7 @@
     <Compile Include="Steps\LoginSteps.cs" />
     <Compile Include="Steps\MasterTrialListSteps.cs" />
     <Compile Include="Steps\MySiteTrialSteps.cs" />
+    <Compile Include="Steps\SignOffTrialsSteps.cs" />
     <Compile Include="Steps\SubmitClinicalTrialSteps.cs" />
     <Compile Include="Steps\AdministrationSteps.cs" />
   </ItemGroup>
@@ -167,6 +178,14 @@
     <None Include="Features\MySiteTrials.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>MySiteTrials.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\SignOffTrials.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>SignOffTrials.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\Reconciliation.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Reconciliation.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\SubmitClinicalTrials.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

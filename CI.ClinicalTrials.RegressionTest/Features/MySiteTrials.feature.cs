@@ -122,13 +122,11 @@ this.ScenarioSetup(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("27087 - Archive a Trial from My Site Trials")]
         [NUnit.Framework.CategoryAttribute("Regression")]
-        [NUnit.Framework.CategoryAttribute("Working")]
-        [NUnit.Framework.TestCaseAttribute("NonPortfolio", "Cancer Council NSW", "Other", null)]
-        public virtual void _27087_ArchiveATrialFromMySiteTrials(string category, string sponsor, string design, string[] exampleTags)
+        [NUnit.Framework.TestCaseAttribute("NonPortfolio", "Cancer Council NSW", "Other", "Archived", null)]
+        public virtual void _27087_ArchiveATrialFromMySiteTrials(string category, string sponsor, string design, string trialCategory, string[] exampleTags)
         {
             string[] @__tags = new string[] {
-                    "Regression",
-                    "Working"};
+                    "Regression"};
             if ((exampleTags != null))
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
@@ -137,7 +135,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 26
 this.ScenarioSetup(scenarioInfo);
 #line 27
- testRunner.Given("I login to Clinical Trial Application as CTU User", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I login to Clinical Trial Application as AutomationCTU User", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 28
  testRunner.When(string.Format("I submit a new trial with details {0} and {1} and {2}", sponsor, design, category), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 29
@@ -150,6 +148,8 @@ this.ScenarioSetup(scenarioInfo);
  testRunner.And("When I abandon the trial from my site", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 33
  testRunner.Then("I should be able to archive the trial", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 34
+ testRunner.And(string.Format("I should be able to see trial under {0} filter", trialCategory), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }

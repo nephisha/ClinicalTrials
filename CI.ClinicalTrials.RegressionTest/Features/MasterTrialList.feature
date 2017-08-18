@@ -45,13 +45,13 @@ Scenario: 27023 - Master Trial List - Search By Verification Status
 	When I search by verification status
 	Then I should see the verification status search results
 
-@Search @Regression1
+@Search @Regression
 Scenario: 27043 - Master Trial - Add to My Site Trial
 	Given I login to Clinical Trial Application as CTU User
 	When I add a trial to my site
 	Then I should see the trial added successfully
 
-@Search @Regression1
+@Search @Regression
 Scenario: 27044 - Master Trial - Edit Trial Details
 	Given I login to Clinical Trial Application as Administrator
 	When I edit a trial
@@ -63,7 +63,7 @@ Scenario: 27045 - Master Trial - View Locations
 	When I select the location tab
 	Then I should see the location details
 
-@Search @Regression1
+@Search @Regression
 Scenario: 27048 - Master Trial - Remove Trial 
 	Given I login to Clinical Trial Application as Administrator
 	When I remove a trial

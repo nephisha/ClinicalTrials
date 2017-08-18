@@ -26,5 +26,13 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
             loginPage.LaunchTheApplication();
             loginPage.LoginToApplication(UserCredentials.CTU_UserName, UserCredentials.CTU_Password);
         }
+
+        [Given(@"I login to Clinical Trial Application as AutomationCTU User")]
+        public void GivenILoginToClinicalTrialApplicationAsAutomationCTUUser()
+        {
+            loginPage.LaunchTheApplication();
+            loginPage.LoginToApplication(UserCredentials.AutoCTU_UserName, UserCredentials.AutoCTU_Password);
+        }
+
     }
 }

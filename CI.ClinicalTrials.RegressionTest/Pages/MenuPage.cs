@@ -110,6 +110,12 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             PageHelper.WaitForElement(Driver, MasterTrials).Click();
         }
 
+        public void SelectSignOffMySiteTrialsFromToggleMenu()
+        {
+            ClickOnToggleMenu();
+            PageHelper.WaitForElement(Driver, SignOffMySiteTrials).Click();
+        }
+
         public void SelectUsersFromToggleMenu()
         {
             ClickOnToggleMenu();

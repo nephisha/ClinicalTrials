@@ -214,12 +214,12 @@ this.ScenarioSetup(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("27043 - Master Trial - Add to My Site Trial")]
         [NUnit.Framework.CategoryAttribute("Search")]
-        [NUnit.Framework.CategoryAttribute("Regression1")]
+        [NUnit.Framework.CategoryAttribute("Regression")]
         public virtual void _27043_MasterTrial_AddToMySiteTrial()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("27043 - Master Trial - Add to My Site Trial", new string[] {
                         "Search",
-                        "Regression1"});
+                        "Regression"});
 #line 49
 this.ScenarioSetup(scenarioInfo);
 #line 50
@@ -235,12 +235,12 @@ this.ScenarioSetup(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("27044 - Master Trial - Edit Trial Details")]
         [NUnit.Framework.CategoryAttribute("Search")]
-        [NUnit.Framework.CategoryAttribute("Regression1")]
+        [NUnit.Framework.CategoryAttribute("Regression")]
         public virtual void _27044_MasterTrial_EditTrialDetails()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("27044 - Master Trial - Edit Trial Details", new string[] {
                         "Search",
-                        "Regression1"});
+                        "Regression"});
 #line 55
 this.ScenarioSetup(scenarioInfo);
 #line 56
@@ -275,12 +275,12 @@ this.ScenarioSetup(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("27048 - Master Trial - Remove Trial")]
         [NUnit.Framework.CategoryAttribute("Search")]
-        [NUnit.Framework.CategoryAttribute("Regression1")]
+        [NUnit.Framework.CategoryAttribute("Regression")]
         public virtual void _27048_MasterTrial_RemoveTrial()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("27048 - Master Trial - Remove Trial", new string[] {
                         "Search",
-                        "Regression1"});
+                        "Regression"});
 #line 67
 this.ScenarioSetup(scenarioInfo);
 #line 68

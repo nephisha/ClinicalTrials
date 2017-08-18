@@ -22,17 +22,18 @@ Scenario Outline: 27086 - Remove a Trial from My Site Trials
 	| Category |  Sponsor | Design         |
 	| Industry |  Kosan   | Interventional |
 
-@Regression @Working
+@Regression
 Scenario Outline: 27087 - Archive a Trial from My Site Trials
-	Given I login to Clinical Trial Application as CTU User
+	Given I login to Clinical Trial Application as AutomationCTU User
 	When I submit a new trial with details <Sponsor> and <Design> and <Category>
 	Then I should see the new trial created by CTU User
 	When I add the created trial to my site
 	Then I should see the created trial added successfully
 	And When I abandon the trial from my site
 	Then I should be able to archive the trial
+	And I should be able to see trial under <TrialCategory> filter
 
 	Examples: 
-	| Category     |  Sponsor            | Design |
-	| NonPortfolio |  Cancer Council NSW | Other  |
+	| Category     | Sponsor            | Design | TrialCategory |
+	| NonPortfolio | Cancer Council NSW | Other  | Archived      |
 
