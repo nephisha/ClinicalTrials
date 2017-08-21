@@ -5,8 +5,6 @@
 
 @Users @Regression
 Scenario Outline: 27340 - Create new User
-# This will test that you can create three users that match the three different user
-# types that the system recognises
 	Given I login to Clinical Trial Application as Administrator
 	When I create new <UserType> user from the user menu option
 	Then I should see the <User> user created successfully
@@ -96,3 +94,15 @@ Scenario Outline: 27342 - Disable Existing User
 	Examples: 
 	| CTU User         | Status   |
 	| RegressionCTU030 | Disabled |
+
+@Users @Regression
+Scenario: 27348 - 27350 Edit and Disable Sponsor
+	Given I login to Clinical Trial Application as Administrator
+	When I create new sponsor from the menu option
+	Then I should see the sponsor created successfully
+
+@Users @Regression
+Scenario: 27356 - 27357 Edit and Deprecate Clinical Trial Unit
+	Given I login to Clinical Trial Application as Administrator
+	When I create new CTU from the menu option
+	Then I should see the CTU created successfully

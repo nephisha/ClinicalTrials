@@ -208,5 +208,12 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             PageHelper.WaitForElement(Driver, Administration).Click();
             PageHelper.WaitForElement(Driver, EmailLogs).Click();
         }
+
+        public void SelectReconciliationFromToggleMenu()
+        {
+            ToggleMenu.Click();
+            PageHelper.WaitForElement(Driver, Administration).Click();
+            PageHelper.WaitForElement(Driver, Reconciliation).Click();
+        }
     }
 }

@@ -81,6 +81,39 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         [FindsBy(How = How.XPath, Using = "//table[@id='dataTable_trials']/tbody/tr/td[1]")]
         private IWebElement SearchTrialResult { get; set; }
 
+        [FindsBy(How = How.Id, Using = "verified")]
+        private IWebElement Verified { get; set; }
+
+        [FindsBy(How = How.Id, Using = "verify-comment")]
+        private IWebElement VerifyComment { get; set; }
+
+        [FindsBy(How = How.Id, Using = "rejected")]
+        private IWebElement Rejected { get; set; }
+
+        [FindsBy(How = How.Id, Using = "verify-in-review")]
+        private IWebElement VerifyInReview { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//div[@id='classification-verification-section']/div[2]/p")]
+        private IWebElement ClassificationSection { get; set; }
+
+        [FindsBy(How = How.Id, Using = "classify")]
+        private IWebElement Classified { get; set; }
+
+        [FindsBy(How = How.Id, Using = "classify-in-review")]
+        private IWebElement ClassifyInReview { get; set; }
+
+        [FindsBy(How = How.Id, Using = "classification-select")]
+        private IWebElement ClassificationType { get; set; }
+
+        [FindsBy(How = How.Id, Using = "paymentlevel-select")]
+        private IWebElement PortfolioCategory { get; set; }
+
+        [FindsBy(How = How.Id, Using = "TrialClassifyAndVerifySection_ClassificationExceptionComment")]
+        private IWebElement ClassificationComment { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='classify']/div[2]/button[1]")]
+        private IWebElement SaveClassification { get; set; }
+
         [FindsBy(How = How.Id, Using = "regEditTrials")]
         private IWebElement EditTrials { get; set; }
 
@@ -275,6 +308,43 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             PageHelper.WaitForElement(Driver, Load_DataTable);
             AddToMyTrialsList.Click();
             JoinAddedTrialToSite();
+        }
+
+        public void VerifyAndClassifyTheTrial(string contextTrialTitle)
+        {
+            Query.Clear();
+            Query.SendKeys(contextTrialTitle);
+            SearchButton.Click();
+            PageHelper.WaitForElement(Driver, Load_DataTable);
+            EditTrials.Click();
+            VerifyTheTrial();
+            ClassifyTheTrial();
+        }
+
+        public void SearchAndVerifyTheClassifiedTrial(string contextTrialTitle)
+        {
+            PageHelper.WaitForElement(Driver, Load_DataTable);
+            Query.Clear();
+            Query.SendKeys(contextTrialTitle);
+            SearchButton.Click();
+            PageHelper.WaitForElement(Driver, Load_DataTable);
+            AdminSearchTrialResult_ClassificationStatus.Text.Should().BeEquivalentTo("Portfolio");
+        }
+
+        private void VerifyTheTrial()
+        {
+            Verified.Click();
+            VerifyComment.SendKeys("Verified by Automated Regression Test");
+        }
+
+        private void ClassifyTheTrial()
+        {
+            ClassificationSection.Click();
+            PageHelper.WaitForElement(Driver, Classified).Click();
+            PageHelper.SelectValueFromDropdown(ClassificationType, "Portfolio");
+            PageHelper.PickRandomValueFromDropdown(PortfolioCategory);
+            ClassificationComment.SendKeys("Classified by Automated Regression Test");
+            SaveClassification.Click();
         }
     }
 }

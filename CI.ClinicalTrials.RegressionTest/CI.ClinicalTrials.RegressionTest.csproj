@@ -129,6 +129,7 @@
     </Compile>
     <Compile Include="Pages\Administrator\CTUPage.cs" />
     <Compile Include="Pages\Administrator\ExtensionsPage.cs" />
+    <Compile Include="Pages\Administrator\ReconciliationPage.cs" />
     <Compile Include="Pages\Administrator\ReportPeriodPage.cs" />
     <Compile Include="Pages\EmailLogPage.cs" />
     <Compile Include="Pages\HomePage.cs" />
@@ -157,7 +158,9 @@
     <Compile Include="Steps\LoginSteps.cs" />
     <Compile Include="Steps\MasterTrialListSteps.cs" />
     <Compile Include="Steps\MySiteTrialSteps.cs" />
+    <Compile Include="Steps\ReconciliationSteps.cs" />
     <Compile Include="Steps\SignOffTrialsSteps.cs" />
+    <Compile Include="Steps\LogoffSteps.cs" />
     <Compile Include="Steps\SubmitClinicalTrialSteps.cs" />
     <Compile Include="Steps\AdministrationSteps.cs" />
   </ItemGroup>

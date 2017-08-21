@@ -10,7 +10,7 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
     public class MasterTrialListSteps
     {
         private readonly UI_TestContext context;
-        
+        private readonly LoginSteps loginSteps = new LoginSteps();
         private readonly HomePage homePage = new HomePage();
         private readonly MenuPage menuPage = new MenuPage();
         private readonly MySiteTrialsPage mySiteTrialsPage = new MySiteTrialsPage();
@@ -27,6 +27,12 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
         {
             menuPage.SelectMasterTrialFromToggleMenu();
             masterTrialListSearchPage.SearchByQuery();
+        }
+
+        [Given(@"I see created trial in MasterTrial List")]
+        public void GivenISeeCreatedTrialInMasterTrialList()
+        {
+            menuPage.SelectMasterTrialFromToggleMenu();
         }
 
         [Then(@"I should see the search results")]
@@ -169,6 +175,29 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
         public void ThenIShouldSeeTheLocationDetails()
         {
             
+        }
+
+        [When(@"I verify and classify the trial")]
+        public void WhenIVerifyAndClassifyTheTrial()
+        {
+            menuPage.SelectMasterTrialFromToggleMenu();
+            masterTrialListSearchPage.VerifyAndClassifyTheTrial(context.TrialTitle);
+        }
+
+        [Then(@"I should see the trial classified successfully")]
+        public void ThenIShouldSeeTheTrialClassifiedSuccessfully()
+        {
+            masterTrialListSearchPage.SearchAndVerifyTheClassifiedTrial(context.TrialTitle);
+        }
+
+        [Then(@"as an Admin I should be able to verify and classify the trial")]
+        public void ThenAsAnAdminIShouldBeAbleToVerifyAndClassifyTheTrial()
+        {
+            menuPage.LogOffTheApplication();
+            loginSteps.GivenILoginToClinicalTrialApplicationAsAdministrator();
+            menuPage.SelectMasterTrialFromToggleMenu();
+            masterTrialListSearchPage.VerifyAndClassifyTheTrial(context.TrialTitle);
+            menuPage.LogOffTheApplication();
         }
     }
 }
