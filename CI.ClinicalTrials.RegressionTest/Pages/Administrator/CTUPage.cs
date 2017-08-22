@@ -35,6 +35,9 @@ namespace CI.ClinicalTrials.RegressionTest.Pages.Administrator
         [FindsBy(How = How.Id, Using = "ReportingStartDate")]
         private IWebElement ReportingStartDate { get; set; }
 
+        [FindsBy(How = How.Id, Using = "Deprecated")]
+        private IWebElement Deprecated { get; set; }
+
         [FindsBy(How = How.ClassName, Using = "btn")]
         private IWebElement BackToListButton { get; set; }
 
@@ -43,6 +46,9 @@ namespace CI.ClinicalTrials.RegressionTest.Pages.Administrator
 
         [FindsBy(How = How.XPath, Using = "//table[@id='dataTable']/tbody/tr[1]/td[2]")]
         private IWebElement CTUSearchResult_Name { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//table[@id='dataTable']/tbody/tr[1]/td[4]")]
+        private IWebElement CTUSearchResult_Description { get; set; }
 
         [FindsBy(How = How.Id, Using = "regEditCTU")]
         private IWebElement EditCTU { get; set; }
@@ -73,6 +79,32 @@ namespace CI.ClinicalTrials.RegressionTest.Pages.Administrator
         {
             CTUSearch.SendKeys(cName);
             CTUSearchResult_Name.Text.Should().BeEquivalentTo(cName);
+        }
+
+        public void SearchAndEditTheCTU()
+        {
+            CTUSearch.SendKeys(cName);
+            PageHelper.WaitForElement(Driver, EditCTU).Click();
+            Description.Clear();
+            Description.SendKeys("Edited CTU details");
+            SaveCTUButton.Click();
+            BackToListButton.Click();
+        }
+
+        public void SerchAndVerifyTheEditedCTU()
+        {
+            CTUSearch.SendKeys(cName);
+            CTUSearchResult_Description.Text.Should().BeEquivalentTo("Edited CTU details");
+        }
+
+        public string DeprecateClinicalTrialUnit()
+        {
+            CTUSearch.SendKeys(cName);
+            PageHelper.WaitForElement(Driver, EditCTU).Click();
+            Deprecated.Click();
+            SaveCTUButton.Click();
+            BackToListButton.Click();
+            return cName;
         }
     }
 }

@@ -10,6 +10,13 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
     [Binding]
     public class AdministrationSteps
     {
+        private readonly UI_TestContext context;
+
+        public AdministrationSteps(UI_TestContext context)
+        {
+            this.context = context;
+        }
+
         private readonly LoginPage loginPage = new LoginPage();
         private readonly MenuPage menuPage = new MenuPage();
         private readonly UsersPage usersPage = new UsersPage();
@@ -35,6 +42,14 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
         public void ThenIShouldSeeTheUserCreatedSuccessfully(string user)
         {
             usersPage.SearchAndVerifyTheCreatedUser(user);
+        }
+
+        [Given(@"I have an existing sponsor")]
+        public void GivenIHaveAnExistingSponsor()
+        {
+            menuPage.SelectSponsorsFromToggleMenu();
+            sponsorPage.ClickonCreateNewSponsor();
+            sponsorPage.FillInSponsorDetailsAndClickCreate();
         }
 
         [When(@"I create new sponsor from the menu option")]
@@ -71,6 +86,32 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
             menuPage.SelectCTUsFromToggleMenu();
             ctuPage.ClickonCreateNewCTU();
             ctuPage.FillInCTUDetailsAndClickCreate();
+        }
+
+        [Given(@"I have an existing clinical trial unit")]
+        public void GivenIHaveAnExistingClinicalTrialUnit()
+        {
+            menuPage.SelectCTUsFromToggleMenu();
+            ctuPage.ClickonCreateNewCTU();
+            ctuPage.FillInCTUDetailsAndClickCreate();
+        }
+
+        [When(@"I edit the clinical trial unit")]
+        public void WhenIEditTheClinicalTrialUnit()
+        {
+            ctuPage.SearchAndEditTheCTU();
+        }
+
+        [Then(@"I should see the changes made for the clinical trial unit")]
+        public void ThenIShouldSeeTheChangesMadeForTheClinicalTrialUnit()
+        {
+            ctuPage.SerchAndVerifyTheEditedCTU();
+        }
+
+        [When(@"I deprecate the clinical trial unit")]
+        public void WhenIDeprecateTheClinicalTrialUnit()
+        {
+            context.DeprecatedCTU = ctuPage.DeprecateClinicalTrialUnit();
         }
 
         [Then(@"I should see the CTU created successfully")]
@@ -150,6 +191,25 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
             usersPage.SearchAndLoginAsTheEditedUser();
             menuPage.VerifyTheEditedUser(type, editedEmail);
         }
+
+        [When(@"I edit the sponsor")]
+        public void WhenIEditTheSponsor()
+        {
+            sponsorPage.SearchAndEditTheCreatedSponsor();
+        }
+
+        [Then(@"I should see the changes made for the sponsor")]
+        public void ThenIShouldSeeTheChangesMadeForTheSponsor()
+        {
+            sponsorPage.SearchAndVerifyTheEditedSponsor();
+        }
+
+        [When(@"I deprecate the sponsor")]
+        public void WhenIDeprecateTheSponsor()
+        {
+            context.DeprecatedSponsor = sponsorPage.DeprecateASponsor();
+        }
+
 
         //[Then(@"(.*) user should see the new changes in (.*)")]
         //public void ThenUserShouldSeeTheNewChanges(string type, string[] menu)

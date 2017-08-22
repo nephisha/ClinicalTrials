@@ -167,6 +167,7 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
 
         public void SearchAndVerifyTheRemovedTrial(string contextTrialTitle)
         {
+            Driver.Navigate().Refresh();
             MySiteTrialsSearch.Clear();
             MySiteTrialsSearch.SendKeys(contextTrialTitle);
             SearchTrialResult.Text.Should().BeEquivalentTo("No results to show");

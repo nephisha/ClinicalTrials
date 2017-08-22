@@ -1,6 +1,7 @@
 ﻿using System;
 using CI.ClinicalTrials.RegressionTest.CommonMethods;
 using CI.ClinicalTrials.RegressionTest.Pages;
+using FluentAssertions;
 using NUnit.Framework;
 using TechTalk.SpecFlow;
 
@@ -53,6 +54,20 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
         {
             menuPage.SelectMasterTrialFromToggleMenu();
             masterTrialListSearchPage.SearchBySponsor();
+        }
+
+        [Then(@"I should not see the sponsor in dropdowns")]
+        public void ThenIShouldNotSeeTheSponsorInDropdowns()
+        {
+            menuPage.SelectMasterTrialFromToggleMenu();
+            masterTrialListSearchPage.VerifyDeprecatedSponsorIsNotListed(context.DeprecatedSponsor).Should().BeTrue();
+        }
+
+        [Then(@"I should not see the clinical trial unit in dropdowns")]
+        public void ThenIShouldNotSeeTheClinicalTrialUnitInDropdowns()
+        {
+            menuPage.SelectMasterTrialFromToggleMenu();
+            masterTrialListSearchPage.VerifyDeprecatedCTUIsNotListed(context.DeprecatedCTU).Should().BeTrue();
         }
 
         [Then(@"I should see the sponsor search results")]

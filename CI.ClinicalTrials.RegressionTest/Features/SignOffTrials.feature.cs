@@ -65,11 +65,11 @@ namespace CI.ClinicalTrials.RegressionTest.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("27096 - Sign Off Trials for Approval")]
+        [NUnit.Framework.DescriptionAttribute("27095 - Trial SignOff - Trial Summary List")]
         [NUnit.Framework.CategoryAttribute("SignOff")]
         [NUnit.Framework.CategoryAttribute("Regression")]
         [NUnit.Framework.TestCaseAttribute("Portfolio", "ACT Health", "Interventional", null)]
-        public virtual void _27096_SignOffTrialsForApproval(string category, string sponsor, string design, string[] exampleTags)
+        public virtual void _27095_TrialSignOff_TrialSummaryList(string category, string sponsor, string design, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "SignOff",
@@ -78,7 +78,7 @@ namespace CI.ClinicalTrials.RegressionTest.Features
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("27096 - Sign Off Trials for Approval", @__tags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("27095 - Trial SignOff - Trial Summary List", @__tags);
 #line 7
 this.ScenarioSetup(scenarioInfo);
 #line 8
@@ -94,6 +94,41 @@ this.ScenarioSetup(scenarioInfo);
 #line 13
  testRunner.When("I save the trial data for the trial", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 14
+ testRunner.Then("I should verify the trial summary details", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("27096 - Sign Off Trials for Approval")]
+        [NUnit.Framework.CategoryAttribute("SignOff")]
+        [NUnit.Framework.CategoryAttribute("Regression")]
+        [NUnit.Framework.TestCaseAttribute("Portfolio", "ACT Health", "Interventional", null)]
+        public virtual void _27096_SignOffTrialsForApproval(string category, string sponsor, string design, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "SignOff",
+                    "Regression"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("27096 - Sign Off Trials for Approval", @__tags);
+#line 22
+this.ScenarioSetup(scenarioInfo);
+#line 23
+ testRunner.Given("I login to Clinical Trial Application as AutomationCTU User", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 24
+ testRunner.When(string.Format("I submit a new trial with details {0} and {1} and {2}", sponsor, design, category), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 25
+ testRunner.Then("I should see the new trial created by CTU User", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 26
+ testRunner.When("I add the created trial to my site", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 27
+ testRunner.Then("I should see the created trial added successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 28
+ testRunner.When("I save the trial data for the trial", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 29
  testRunner.Then("I should be able to signoff the trial", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

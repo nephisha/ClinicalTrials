@@ -60,5 +60,10 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             SignOffTrialHistorySearch.SendKeys(contextTrialTitle);
             SignOffTrialHistoryResult_Title.Text.Should().BeEquivalentTo(contextTrialTitle);
         }
+
+        public void VerifyTrialSummaryDetails(string contextTrialTitle)
+        {
+            
+        }
     }
 }

@@ -293,6 +293,7 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
 
         public void SearchAndVerifyTheRemovedTrial()
         {
+            Driver.Navigate().Refresh();
             Query.Clear();
             Query.SendKeys(TrialRegoNumber);
             SearchButton.Click();
@@ -345,6 +346,34 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             PageHelper.PickRandomValueFromDropdown(PortfolioCategory);
             ClassificationComment.SendKeys("Classified by Automated Regression Test");
             SaveClassification.Click();
+        }
+
+        public bool VerifyDeprecatedSponsorIsNotListed(string deprecatedSponsor)
+        {
+            try
+            {
+                var select = new SelectElement(Sponsor);
+                select.SelectByText(deprecatedSponsor);
+                return false;
+            }
+            catch (Exception)
+            {
+                return true;
+            }
+        }
+
+        public bool VerifyDeprecatedCTUIsNotListed(string deprecatedCTU)
+        {
+            try
+            {
+                var select = new SelectElement(Sponsor);
+                select.SelectByText(deprecatedCTU);
+                return false;
+            }
+            catch (Exception)
+            {
+                return true;
+            }
         }
     }
 }

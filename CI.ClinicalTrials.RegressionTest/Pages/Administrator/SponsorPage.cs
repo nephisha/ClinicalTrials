@@ -37,6 +37,9 @@ namespace CI.ClinicalTrials.RegressionTest.Pages.Administrator
         [FindsBy(How = How.XPath, Using = "//table[@id='dataTable']/tbody/tr[1]/td[2]")]
         private IWebElement SponsorSearchResult_Name { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "//table[@id='dataTable']/tbody/tr[1]/td[3]")]
+        private IWebElement SponsorSearchResult_Description { get; set; }
+
         [FindsBy(How = How.Id, Using = "regEditSponsor")]
         private IWebElement EditSponsor { get; set; }
 
@@ -62,6 +65,32 @@ namespace CI.ClinicalTrials.RegressionTest.Pages.Administrator
         {
             SponsorSearch.SendKeys(sName);
             SponsorSearchResult_Name.Text.Should().BeEquivalentTo(sName);
+        }
+
+        public void SearchAndEditTheCreatedSponsor()
+        {
+            SponsorSearch.SendKeys(sName);
+            PageHelper.WaitForElement(Driver, EditSponsor).Click();
+            Description.Clear();
+            Description.SendKeys("Edited Sponsor Details");
+            SaveSponsorButton.Click();
+            BackToListButton.Click();
+        }
+
+        public void SearchAndVerifyTheEditedSponsor()
+        {
+            SponsorSearch.SendKeys(sName);
+            SponsorSearchResult_Description.Text.Should().BeEquivalentTo("Edited Sponsor Details");
+        }
+
+        public string DeprecateASponsor()
+        {
+            SponsorSearch.SendKeys(sName);
+            PageHelper.WaitForElement(Driver, EditSponsor).Click();
+            Deprecated.Click();
+            SaveSponsorButton.Click();
+            BackToListButton.Click();
+            return sName;
         }
     }
 }

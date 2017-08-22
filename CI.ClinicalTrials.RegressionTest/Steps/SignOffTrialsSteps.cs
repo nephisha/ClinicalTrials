@@ -25,5 +25,11 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
             signOffMySiteTrialsPage.SearchAndSignOffTrials(context.TrialTitle);
             signOffMySiteTrialsPage.VerifySignedOffTrials(context.TrialTitle);
         }
+
+        [Then(@"I should verify the trial summary details")]
+        public void ThenIShouldVerifyTheTrialSummaryDetails()
+        {
+            signOffMySiteTrialsPage.VerifyTrialSummaryDetails(context.TrialTitle);
+        }
     }
 }

@@ -96,13 +96,29 @@ Scenario Outline: 27342 - Disable Existing User
 	| RegressionCTU030 | Disabled |
 
 @Users @Regression
-Scenario: 27348 - 27350 Edit and Disable Sponsor
+Scenario: 27348 - Edit Sponsor Details
 	Given I login to Clinical Trial Application as Administrator
-	When I create new sponsor from the menu option
-	Then I should see the sponsor created successfully
+	And I have an existing sponsor
+	When I edit the sponsor
+	Then I should see the changes made for the sponsor
 
 @Users @Regression
-Scenario: 27356 - 27357 Edit and Deprecate Clinical Trial Unit
+Scenario: 27350 Deprecate Sponsor
 	Given I login to Clinical Trial Application as Administrator
-	When I create new CTU from the menu option
-	Then I should see the CTU created successfully
+	And I have an existing sponsor
+	When I deprecate the sponsor
+	Then I should not see the sponsor in dropdowns
+
+@Users @Regression
+Scenario: 27356 - Edit Clinical Trial Unit Details
+	Given I login to Clinical Trial Application as Administrator
+	And I have an existing clinical trial unit
+	When I edit the clinical trial unit
+	Then I should see the changes made for the clinical trial unit
+
+@Users @Regression
+Scenario: 27357 Deprecate Clinical Trial Unit
+	Given I login to Clinical Trial Application as Administrator
+	And I have an existing clinical trial unit
+	When I deprecate the clinical trial unit
+	Then I should not see the clinical trial unit in dropdowns
