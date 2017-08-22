@@ -29,6 +29,7 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
         [Then(@"I should verify the trial summary details")]
         public void ThenIShouldVerifyTheTrialSummaryDetails()
         {
+            menuPage.SelectSignOffMySiteTrialsFromToggleMenu();
             signOffMySiteTrialsPage.VerifyTrialSummaryDetails(context.TrialTitle);
         }
     }

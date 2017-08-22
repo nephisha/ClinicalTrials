@@ -44,6 +44,27 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         [FindsBy(How = How.XPath, Using = "//a[@class='paginate_button current']")]
         private IWebElement Load_DataTable { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "//tr[@class='trial-details-edit']/td/div[6]/div[1]/p/span/label")]
+        private IWebElement TrialSummary_ScreenFailure { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//tr[@class='trial-details-edit']/td/div[6]/div[2]/p/span/label")]
+        private IWebElement TrialSummary_ActiveOnTrial { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//tr[@class='trial-details-edit']/td/div[6]/div[3]/p/span/label")]
+        private IWebElement TrialSummary_PatientFollowUp { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//tr[@class='trial-details-edit']/td/div[6]/div[4]/p/span/label")]
+        private IWebElement TrialSummary_PatientsDiscontinued { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//tr[@class='trial-details-edit']/td/div[5]/div[2]/p/span/label")]
+        private IWebElement TrialSummary_CurrentEnrollment { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//tr[@class='trial-details-edit']/td/div[4]/div[3]/p/span/label")]
+        private IWebElement TrialSummary_RecruitmentTarget { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//tr[@class='trial-details-edit']/td/div[3]/div[3]/p/span/label")]
+        private IWebElement TrialSummary_RecruitmentOpen { get; set; }
+
         public void SearchAndSignOffTrials(string contextTrialTitle)
         {
             SignOffTrialSummarySearch.SendKeys(contextTrialTitle);
@@ -63,7 +84,18 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
 
         public void VerifyTrialSummaryDetails(string contextTrialTitle)
         {
-            
+            var today = DateTime.Now.ToString("dd/MM/yyyy");
+            SignOffTrialSummarySearch.SendKeys(contextTrialTitle);
+            SignOffTrialSummaryResult_Title.Text.Should().BeEquivalentTo(contextTrialTitle);
+            SignOffTrialSummaryResult_Title.Click();
+            PageHelper.WaitForElement(Driver, TrialSummary_RecruitmentOpen);
+            TrialSummary_RecruitmentOpen.Text.Should().BeEquivalentTo(today);
+            TrialSummary_RecruitmentTarget.Text.Should().BeEquivalentTo("10");
+            TrialSummary_CurrentEnrollment.Text.Should().BeEquivalentTo("4");
+            TrialSummary_ScreenFailure.Text.Should().BeEquivalentTo("3");
+            TrialSummary_ActiveOnTrial.Text.Should().BeEquivalentTo("2");
+            TrialSummary_PatientFollowUp.Text.Should().BeEquivalentTo("2");
+            TrialSummary_PatientsDiscontinued.Text.Should().BeEquivalentTo("1");
         }
     }
 }
