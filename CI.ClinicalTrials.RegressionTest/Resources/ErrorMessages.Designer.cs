@@ -61,6 +61,17 @@ namespace CI.ClinicalTrials.RegressionTest.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please correct the following errors before continuing:
+        ///A trial can only be marked as &apos;Classified&apos; or &apos;In Review&apos; once it has been verified.
+        ///A trial can only have a Classification, once it has been verified..
+        /// </summary>
+        internal static string ClassificationError {
+            get {
+                return ResourceManager.GetString("ClassificationError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to If a trial has been added to My Site Trials list in error without any underlying data, you can remove it. Contact clinical.trials@cancerinstitute.org.au for queries about removing trials from your list..
         /// </summary>
         internal static string RemoveTrial_MySiteTrial {

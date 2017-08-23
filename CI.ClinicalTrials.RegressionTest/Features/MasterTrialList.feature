@@ -68,3 +68,69 @@ Scenario: 27048 - Master Trial - Remove Trial
 	Given I login to Clinical Trial Application as Administrator
 	When I remove a trial
 	Then I should see the trial getting removed successfully
+
+@Verify @Regression
+Scenario: 26999 - Trial Verification - Verify A Trial 
+	Given I login to Clinical Trial Application as Administrator
+	And I have an existing trial pending for verification
+	When I verify the trial
+	Then I should see the trial getting verified successfully
+
+@Verify @Regression
+Scenario: 27000 - Trial Verification - Reject A Trial 
+	Given I login to Clinical Trial Application as Administrator
+	And I have an existing trial pending for verification
+	When I reject the trial
+	Then I should see the trial getting rejected successfully
+
+@Verify @Regression
+Scenario: 27001 - Trial Verification - In Review 
+	Given I login to Clinical Trial Application as Administrator
+	And I have an existing trial pending for verification
+	When I review the trial
+	Then I should see the trial getting reviewed successfully
+
+@Classify @Regression
+Scenario: 27002 - Trial Classification - In Review 
+	Given I login to Clinical Trial Application as Administrator
+	And I have an existing portfolio trial pending for verification
+	When I verify the trial
+	Then I should see the trial getting verified successfully
+	And When I classify the trial as In Review
+	Then I should see the trial classified as In Review successfully
+
+@Classify @Regression
+Scenario: 27003 - Trial Classification - Portfolio
+	Given I login to Clinical Trial Application as Administrator
+	And I have an existing portfolio trial pending for verification
+	When I verify the trial
+	Then I should see the trial getting verified successfully
+	And When I classify the trial as Portfolio
+	Then I should see the trial classified as Portfolio successfully
+
+@Classify @Regression
+Scenario: 27004 - Trial Classification - NonPortfolio
+	Given I login to Clinical Trial Application as Administrator
+	And I have an existing portfolio trial pending for verification
+	When I verify the trial
+	Then I should see the trial getting verified successfully
+	And When I classify the trial as Non-Portfolio
+	Then I should see the trial classified as Non-Portfolio successfully
+
+@Classify @Regression
+Scenario: 27010 - Trial History - Capture Changes
+	Given I login to Clinical Trial Application as Administrator
+	And I have an existing portfolio trial pending for verification
+	When I verify the trial
+	Then I should see the trial getting verified successfully
+	And When I classify the trial as Portfolio
+	Then I should see the trial classified as Portfolio successfully
+	When I open the history tab
+	Then I should see the history of all changes made into this trial
+
+@Classify @Regression
+Scenario: 29523 - Trial Classification - User cannot classify before verification 
+	Given I login to Clinical Trial Application as Administrator
+	And I have an existing portfolio trial pending for verification
+	When I try to classify the trial before verifying it
+	Then I should see the error messages

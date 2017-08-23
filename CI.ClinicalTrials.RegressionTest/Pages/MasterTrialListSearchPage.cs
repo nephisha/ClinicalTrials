@@ -4,6 +4,7 @@ using System.Threading;
 using CI.ClinicalTrials.RegressionTest.Base;
 using CI.ClinicalTrials.RegressionTest.CommonMethods;
 using CI.ClinicalTrials.RegressionTest.Pages.Administrator;
+using CI.ClinicalTrials.RegressionTest.Resources;
 using FluentAssertions;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
@@ -44,6 +45,12 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
 
         [FindsBy(How = How.Id, Using = "TrialVerification")]
         private IWebElement TrialVerification { get; set; }
+
+        [FindsBy(How = How.Id, Using = "portfolio_exlusion_reasons_chosen")]
+        private IWebElement PortfolioExclusion { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='portfolio_exlusion_reasons_chosen']/div/ul/li")]
+        private IList<IWebElement> PortfolioExclusionResult { get; set; }
 
         [FindsBy(How = How.XPath, Using = "//*[@id='TumourGroupIDs_chosen']/div/ul/li")]
         private IList<IWebElement> TumourGroupResult { get; set; }
@@ -93,10 +100,13 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         [FindsBy(How = How.Id, Using = "verify-in-review")]
         private IWebElement VerifyInReview { get; set; }
 
+        [FindsBy(How = How.Id, Using = "verify-save")]
+        private IWebElement SaveVerifyButton { get; set; }
+
         [FindsBy(How = How.XPath, Using = "//div[@id='classification-verification-section']/div[2]/p")]
         private IWebElement ClassificationSection { get; set; }
 
-        [FindsBy(How = How.Id, Using = "classify")]
+        [FindsBy(How = How.XPath, Using = "//input[@id='classify']")]
         private IWebElement Classified { get; set; }
 
         [FindsBy(How = How.Id, Using = "classify-in-review")]
@@ -132,6 +142,8 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         [FindsBy(How = How.Id, Using = "removeTrialModalLabel")]
         private IWebElement RemoveTrialPopUp { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "//div[@class='validation-summary-errors']")]
+        private IWebElement ValidationError { get; set; }
 
         public void VerifyMasterTrialListSearchPageIsLoaded()
         {
@@ -318,7 +330,8 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             SearchButton.Click();
             PageHelper.WaitForElement(Driver, Load_DataTable);
             EditTrials.Click();
-            VerifyTheTrial();
+            Verified.Click();
+            VerifyComment.SendKeys("Verified by Automated Regression Test");
             ClassifyTheTrial();
         }
 
@@ -332,13 +345,14 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             AdminSearchTrialResult_ClassificationStatus.Text.Should().BeEquivalentTo("Portfolio");
         }
 
-        private void VerifyTheTrial()
+        public void VerifyTheTrial()
         {
             Verified.Click();
             VerifyComment.SendKeys("Verified by Automated Regression Test");
+            SaveVerifyButton.Click();
         }
 
-        private void ClassifyTheTrial()
+        public void ClassifyTheTrial()
         {
             ClassificationSection.Click();
             PageHelper.WaitForElement(Driver, Classified).Click();
@@ -374,6 +388,111 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             {
                 return true;
             }
+        }
+
+        public string SearchForPendingVerificationTrials()
+        {
+            PageHelper.SelectValueFromDropdown(TrialVerification, "Pending Verification");
+            SearchButton.Click();
+            return AdminSearchTrialResult_Acronym.Text;
+        }
+
+        public string SearchForPortfolioPendingVerificationTrials()
+        {
+            PageHelper.SelectValueFromDropdown(Sponsor, "ACT Health");
+            PageHelper.SelectValueFromDropdown(TrialVerification, "Pending Verification");
+            SearchButton.Click();
+            return AdminSearchTrialResult_Acronym.Text;
+        }
+
+        public void SearchAndEditTheSelectedTrial(string contextSelectedTrial)
+        {
+            Query.Clear();
+            Query.SendKeys(contextSelectedTrial);
+            SearchButton.Click();
+            PageHelper.WaitForElement(Driver, Load_DataTable);
+            PageHelper.WaitForElement(Driver, EditTrials).Click();
+        }
+
+        public void SearchAndVerifyTheVerifiedTrial(string contextSelectedTrial)
+        {
+            Query.Clear();
+            Query.SendKeys(contextSelectedTrial);
+            SearchButton.Click();
+            PageHelper.WaitForElement(Driver, Load_DataTable);
+            AdminSearchTrialResult_VerificationStatus.Text.Should().BeEquivalentTo("Verified");
+        }
+
+        public void RejectTheTrial()
+        {
+            Rejected.Click();
+            VerifyComment.SendKeys("Rejected by Automated Regression Test");
+            SaveVerifyButton.Click();
+        }
+
+        public void SearchAndVerifyTheRejectedTrial(string contextSelectedTrial)
+        {
+            Query.Clear();
+            Query.SendKeys(contextSelectedTrial);
+            SearchButton.Click();
+            PageHelper.WaitForElement(Driver, Load_DataTable);
+            AdminSearchTrialResult_VerificationStatus.Text.Should().BeEquivalentTo("Rejected");
+        }
+
+        public void ReviewTheTrial()
+        {
+            VerifyInReview.Click();
+            VerifyComment.SendKeys("Reviewed by Automated Regression Test");
+            SaveVerifyButton.Click();
+        }
+
+        public void SearchAndVerifyTheReviewedTrial(string contextSelectedTrial)
+        {
+            Query.Clear();
+            Query.SendKeys(contextSelectedTrial);
+            SearchButton.Click();
+            PageHelper.WaitForElement(Driver, Load_DataTable);
+            AdminSearchTrialResult_VerificationStatus.Text.Should().BeEquivalentTo("Pending Verification (In Review)");
+        }
+
+        public void ClassifyTheVerifiedTrialAsInReview()
+        {
+            PageHelper.WaitForElement(Driver, ClassifyInReview).Click();
+            ClassificationComment.SendKeys("Review needed by Automated Regression Test");
+            SaveClassification.Click();
+        }
+
+        public void SearchAndVerifyTheClassifiedTrialStatus(string contextSelectedTrial, string status)
+        {
+            Query.Clear();
+            Query.SendKeys(contextSelectedTrial);
+            SearchButton.Click();
+            PageHelper.WaitForElement(Driver, Load_DataTable);
+            AdminSearchTrialResult_ClassificationStatus.Text.Should().BeEquivalentTo(status);
+        }
+
+        public void ClassifyTheVerifiedTrialAsPortfolio()
+        {
+            PageHelper.WaitForElement(Driver, Classified).Click();
+            PageHelper.SelectValueFromDropdown(ClassificationType, "Portfolio");
+            PageHelper.PickRandomValueFromDropdown(PortfolioCategory);
+            ClassificationComment.SendKeys("Classified Portfolio by Automated Regression Test");
+            SaveClassification.Click();
+        }
+
+        public void ClassifyTheVerifiedTrialAsNonPortfolio()
+        {
+            PageHelper.WaitForElement(Driver, Classified).Click();
+            PageHelper.SelectValueFromDropdown(ClassificationType, "Non-Portfolio");
+            PortfolioExclusion.Click();
+            PageHelper.PickRandomValueFromDropList(PortfolioExclusionResult);
+            ClassificationComment.SendKeys("Classified Non-Portfolio by Automated Regression Test");
+            SaveClassification.Click();
+        }
+
+        public void VerifyThatTrialSubmissionErrorIsDisplayed()
+        {
+            ValidationError.Text.Should().BeEquivalentTo(ErrorMessages.ClassificationError);
         }
     }
 }

@@ -214,5 +214,111 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
             masterTrialListSearchPage.VerifyAndClassifyTheTrial(context.TrialTitle);
             menuPage.LogOffTheApplication();
         }
+
+        [Given(@"I have an existing trial pending for verification")]
+        public void GivenIHaveAnExistingTrialPendingForVerification()
+        {
+            menuPage.SelectMasterTrialFromToggleMenu();
+            context.SelectedTrial = masterTrialListSearchPage.SearchForPendingVerificationTrials();
+        }
+
+        [Given(@"I have an existing portfolio trial pending for verification")]
+        public void GivenIHaveAnExistingPortfolioTrialPendingForVerification()
+        {
+            menuPage.SelectMasterTrialFromToggleMenu();
+            context.SelectedTrial = masterTrialListSearchPage.SearchForPortfolioPendingVerificationTrials();
+        }
+
+        [When(@"I verify the trial")]
+        public void WhenIVerifyTheTrial()
+        {
+            masterTrialListSearchPage.SearchAndEditTheSelectedTrial(context.SelectedTrial);
+            masterTrialListSearchPage.VerifyTheTrial();
+        }
+
+        [Then(@"I should see the trial getting verified successfully")]
+        public void ThenIShouldSeeTheTrialGettingVerifiedSuccessfully()
+        {
+            masterTrialListSearchPage.SearchAndVerifyTheVerifiedTrial(context.SelectedTrial);
+        }
+
+        [When(@"I reject the trial")]
+        public void WhenIRejectTheTrial()
+        {
+            masterTrialListSearchPage.SearchAndEditTheSelectedTrial(context.SelectedTrial);
+            masterTrialListSearchPage.RejectTheTrial();
+        }
+
+        [Then(@"I should see the trial getting rejected successfully")]
+        public void ThenIShouldSeeTheTrialGettingRejectedSuccessfully()
+        {
+            masterTrialListSearchPage.SearchAndVerifyTheRejectedTrial(context.SelectedTrial);
+        }
+
+        [When(@"I review the trial")]
+        public void WhenIReviewTheTrial()
+        {
+            masterTrialListSearchPage.SearchAndEditTheSelectedTrial(context.SelectedTrial);
+            masterTrialListSearchPage.ReviewTheTrial();
+        }
+
+        [Then(@"I should see the trial getting reviewed successfully")]
+        public void ThenIShouldSeeTheTrialGettingReviewedSuccessfully()
+        {
+            masterTrialListSearchPage.SearchAndVerifyTheReviewedTrial(context.SelectedTrial);
+        }
+
+        [Then(@"When I classify the trial as In Review")]
+        public void ThenWhenIClassifyTheTrialAsInReview()
+        {
+            masterTrialListSearchPage.SearchAndEditTheSelectedTrial(context.SelectedTrial);
+            masterTrialListSearchPage.ClassifyTheVerifiedTrialAsInReview();
+        }
+
+        [Then(@"I should see the trial classified as In Review successfully")]
+        public void ThenIShouldSeeTheTrialClassifiedAsInReviewSuccessfully()
+        {
+            masterTrialListSearchPage.SearchAndVerifyTheClassifiedTrialStatus(context.SelectedTrial, "In Review");
+        }
+
+        [Then(@"When I classify the trial as Portfolio")]
+        public void ThenWhenIClassifyTheTrialAsPortfolio()
+        {
+            masterTrialListSearchPage.SearchAndEditTheSelectedTrial(context.SelectedTrial);
+            masterTrialListSearchPage.ClassifyTheVerifiedTrialAsPortfolio();
+        }
+
+        [Then(@"I should see the trial classified as Portfolio successfully")]
+        public void ThenIShouldSeeTheTrialClassifiedAsPortfolioSuccessfully()
+        {
+            masterTrialListSearchPage.SearchAndVerifyTheClassifiedTrialStatus(context.SelectedTrial, "Portfolio");
+        }
+
+        [Then(@"When I classify the trial as Non-Portfolio")]
+        public void ThenWhenIClassifyTheTrialAsNon_Portfolio()
+        {
+            masterTrialListSearchPage.SearchAndEditTheSelectedTrial(context.SelectedTrial);
+            masterTrialListSearchPage.ClassifyTheVerifiedTrialAsNonPortfolio();
+        }
+
+        [Then(@"I should see the trial classified as Non-Portfolio successfully")]
+        public void ThenIShouldSeeTheTrialClassifiedAsNon_PortfolioSuccessfully()
+        {
+            masterTrialListSearchPage.SearchAndVerifyTheClassifiedTrialStatus(context.SelectedTrial, "Non-Portfolio");
+        }
+
+        [When(@"I try to classify the trial before verifying it")]
+        public void WhenITryToClassifyTheTrialBeforeVerifyingIt()
+        {
+            masterTrialListSearchPage.SearchAndEditTheSelectedTrial(context.SelectedTrial);
+            masterTrialListSearchPage.ClassifyTheTrial();
+        }
+
+        [Then(@"I should see the error messages")]
+        public void ThenIShouldSeeTheErrorMessages()
+        {
+            masterTrialListSearchPage.VerifyThatTrialSubmissionErrorIsDisplayed();
+        }
+
     }
 }

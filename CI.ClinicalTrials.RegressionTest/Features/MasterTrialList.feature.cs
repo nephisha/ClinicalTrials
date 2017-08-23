@@ -292,6 +292,210 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("26999 - Trial Verification - Verify A Trial")]
+        [NUnit.Framework.CategoryAttribute("Verify")]
+        [NUnit.Framework.CategoryAttribute("Regression")]
+        public virtual void _26999_TrialVerification_VerifyATrial()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("26999 - Trial Verification - Verify A Trial", new string[] {
+                        "Verify",
+                        "Regression"});
+#line 73
+this.ScenarioSetup(scenarioInfo);
+#line 74
+ testRunner.Given("I login to Clinical Trial Application as Administrator", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 75
+ testRunner.And("I have an existing trial pending for verification", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 76
+ testRunner.When("I verify the trial", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 77
+ testRunner.Then("I should see the trial getting verified successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("27000 - Trial Verification - Reject A Trial")]
+        [NUnit.Framework.CategoryAttribute("Verify")]
+        [NUnit.Framework.CategoryAttribute("Regression")]
+        public virtual void _27000_TrialVerification_RejectATrial()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("27000 - Trial Verification - Reject A Trial", new string[] {
+                        "Verify",
+                        "Regression"});
+#line 80
+this.ScenarioSetup(scenarioInfo);
+#line 81
+ testRunner.Given("I login to Clinical Trial Application as Administrator", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 82
+ testRunner.And("I have an existing trial pending for verification", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 83
+ testRunner.When("I reject the trial", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 84
+ testRunner.Then("I should see the trial getting rejected successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("27001 - Trial Verification - In Review")]
+        [NUnit.Framework.CategoryAttribute("Verify")]
+        [NUnit.Framework.CategoryAttribute("Regression")]
+        public virtual void _27001_TrialVerification_InReview()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("27001 - Trial Verification - In Review", new string[] {
+                        "Verify",
+                        "Regression"});
+#line 87
+this.ScenarioSetup(scenarioInfo);
+#line 88
+ testRunner.Given("I login to Clinical Trial Application as Administrator", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 89
+ testRunner.And("I have an existing trial pending for verification", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 90
+ testRunner.When("I review the trial", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 91
+ testRunner.Then("I should see the trial getting reviewed successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("27002 - Trial Classification - In Review")]
+        [NUnit.Framework.CategoryAttribute("Classify")]
+        [NUnit.Framework.CategoryAttribute("Regression")]
+        public virtual void _27002_TrialClassification_InReview()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("27002 - Trial Classification - In Review", new string[] {
+                        "Classify",
+                        "Regression"});
+#line 94
+this.ScenarioSetup(scenarioInfo);
+#line 95
+ testRunner.Given("I login to Clinical Trial Application as Administrator", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 96
+ testRunner.And("I have an existing portfolio trial pending for verification", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 97
+ testRunner.When("I verify the trial", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 98
+ testRunner.Then("I should see the trial getting verified successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 99
+ testRunner.And("When I classify the trial as In Review", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 100
+ testRunner.Then("I should see the trial classified as In Review successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("27003 - Trial Classification - Portfolio")]
+        [NUnit.Framework.CategoryAttribute("Classify")]
+        [NUnit.Framework.CategoryAttribute("Regression")]
+        public virtual void _27003_TrialClassification_Portfolio()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("27003 - Trial Classification - Portfolio", new string[] {
+                        "Classify",
+                        "Regression"});
+#line 103
+this.ScenarioSetup(scenarioInfo);
+#line 104
+ testRunner.Given("I login to Clinical Trial Application as Administrator", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 105
+ testRunner.And("I have an existing portfolio trial pending for verification", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 106
+ testRunner.When("I verify the trial", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 107
+ testRunner.Then("I should see the trial getting verified successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 108
+ testRunner.And("When I classify the trial as Portfolio", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 109
+ testRunner.Then("I should see the trial classified as Portfolio successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("27004 - Trial Classification - NonPortfolio")]
+        [NUnit.Framework.CategoryAttribute("Classify")]
+        [NUnit.Framework.CategoryAttribute("Regression")]
+        public virtual void _27004_TrialClassification_NonPortfolio()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("27004 - Trial Classification - NonPortfolio", new string[] {
+                        "Classify",
+                        "Regression"});
+#line 112
+this.ScenarioSetup(scenarioInfo);
+#line 113
+ testRunner.Given("I login to Clinical Trial Application as Administrator", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 114
+ testRunner.And("I have an existing portfolio trial pending for verification", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 115
+ testRunner.When("I verify the trial", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 116
+ testRunner.Then("I should see the trial getting verified successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 117
+ testRunner.And("When I classify the trial as Non-Portfolio", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 118
+ testRunner.Then("I should see the trial classified as Non-Portfolio successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("27010 - Trial History - Capture Changes")]
+        [NUnit.Framework.CategoryAttribute("Classify")]
+        [NUnit.Framework.CategoryAttribute("Regression")]
+        public virtual void _27010_TrialHistory_CaptureChanges()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("27010 - Trial History - Capture Changes", new string[] {
+                        "Classify",
+                        "Regression"});
+#line 121
+this.ScenarioSetup(scenarioInfo);
+#line 122
+ testRunner.Given("I login to Clinical Trial Application as Administrator", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 123
+ testRunner.And("I have an existing portfolio trial pending for verification", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 124
+ testRunner.When("I verify the trial", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 125
+ testRunner.Then("I should see the trial getting verified successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 126
+ testRunner.And("When I classify the trial as Portfolio", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 127
+ testRunner.Then("I should see the trial classified as Portfolio successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 128
+ testRunner.When("I open the history tab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 129
+ testRunner.Then("I should see the history of all changes made into this trial", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("29523 - Trial Classification - User cannot classify before verification")]
+        [NUnit.Framework.CategoryAttribute("Classify")]
+        [NUnit.Framework.CategoryAttribute("Regression")]
+        public virtual void _29523_TrialClassification_UserCannotClassifyBeforeVerification()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("29523 - Trial Classification - User cannot classify before verification", new string[] {
+                        "Classify",
+                        "Regression"});
+#line 132
+this.ScenarioSetup(scenarioInfo);
+#line 133
+ testRunner.Given("I login to Clinical Trial Application as Administrator", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 134
+ testRunner.And("I have an existing portfolio trial pending for verification", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 135
+ testRunner.When("I try to classify the trial before verifying it", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 136
+ testRunner.Then("I should see the error messages", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using CI.ClinicalTrials.RegressionTest.CommonMethods;
 using CI.ClinicalTrials.RegressionTest.Pages;
 using CI.ClinicalTrials.RegressionTest.Pages.Administrator;
@@ -210,13 +212,18 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
             context.DeprecatedSponsor = sponsorPage.DeprecateASponsor();
         }
 
-
-        //[Then(@"(.*) user should see the new changes in (.*)")]
-        //public void ThenUserShouldSeeTheNewChanges(string type, string[] menu)
-        //{
-        //    usersPage.SearchAndLoginAsTheEditedUser();
-        //    menuPage.VerifyTheEditedUser(type, editedEmail);
-        //}
+        [StepArgumentTransformation]
+        public List<string> TransformToListOfString(string commaseperatedlist)
+        {
+            return commaseperatedlist.Split(',').ToList();
+        }
+        
+        [Then(@"(.*) user should see the new changes in '(.*)' and '(.*)'")]
+        public void ThenUserShouldSeeTheNewChanges(string type, List<string> pValues, List<string> sValues)
+        {
+            usersPage.SearchAndLoginAsTheEditedUser();
+            menuPage.VerifyTheEditedUser(type, editedEmail);
+        }
 
         [When(@"I create new Report Period from the menu option")]
         public void WhenICreateNewReportPeriodFromTheMenuOption()

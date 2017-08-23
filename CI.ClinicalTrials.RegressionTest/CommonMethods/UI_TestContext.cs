@@ -12,5 +12,6 @@ namespace CI.ClinicalTrials.RegressionTest.CommonMethods
         public string Acronym { get; set; }
         public string DeprecatedSponsor { get; set; }
         public string DeprecatedCTU { get; set; }
+        public string SelectedTrial { get; set; }
     }
 }

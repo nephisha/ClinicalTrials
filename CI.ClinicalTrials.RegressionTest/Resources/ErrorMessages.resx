@@ -117,6 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ClassificationError" xml:space="preserve">
+    <value>Please correct the following errors before continuing:
+A trial can only be marked as 'Classified' or 'In Review' once it has been verified.
+A trial can only have a Classification, once it has been verified.</value>
+  </data>
   <data name="RemoveTrial_MySiteTrial" xml:space="preserve">
     <value>If a trial has been added to My Site Trials list in error without any underlying data, you can remove it. Contact clinical.trials@cancerinstitute.org.au for queries about removing trials from your list.</value>
   </data>
