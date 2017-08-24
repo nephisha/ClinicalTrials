@@ -41,6 +41,7 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
         {
             masterTrialListSearchPage.VerifyMasterTrialListSearchPageIsLoaded();
             masterTrialListSearchPage.VerifySearchResults();
+            
         }
 
         [When(@"I search in the top navigation bar")]
@@ -318,6 +319,18 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
         public void ThenIShouldSeeTheErrorMessages()
         {
             masterTrialListSearchPage.VerifyThatTrialSubmissionErrorIsDisplayed();
+        }
+
+        [When(@"I open the history tab")]
+        public void WhenIOpenTheHistoryTab()
+        {
+            
+        }
+
+        [Then(@"I should see the history of all changes made into this trial")]
+        public void ThenIShouldSeeTheHistoryOfAllChangesMadeIntoThisTrial()
+        {
+            
         }
 
     }

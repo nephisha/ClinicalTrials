@@ -153,6 +153,45 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("27089 - My Site Trial - Trial data mandatory fields")]
+        [NUnit.Framework.CategoryAttribute("Regression")]
+        [NUnit.Framework.CategoryAttribute("Working")]
+        [NUnit.Framework.TestCaseAttribute("NonPortfolio", "Cancer Council NSW", "Other", "Archived", null)]
+        public virtual void _27089_MySiteTrial_TrialDataMandatoryFields(string category, string sponsor, string design, string trialCategory, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "Regression",
+                    "Working"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("27089 - My Site Trial - Trial data mandatory fields", @__tags);
+#line 41
+this.ScenarioSetup(scenarioInfo);
+#line 42
+ testRunner.Given("I login to Clinical Trial Application as AutomationCTU User", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 43
+ testRunner.When(string.Format("I submit a new trial with details {0} and {1} and {2}", sponsor, design, category), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 44
+ testRunner.Then("I should see the new trial created by CTU User", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 45
+ testRunner.When("I add the created trial to my site", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 46
+ testRunner.Then("I should see the created trial added successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 47
+ testRunner.When("I save the trial leaving the trial details blank", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 48
+ testRunner.Then("I should see the trial detail mandatory error messages", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 49
+ testRunner.When("I save the trial leaving the participant details blank", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 50
+ testRunner.Then("I should see the participant detail mandatory error messages", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore

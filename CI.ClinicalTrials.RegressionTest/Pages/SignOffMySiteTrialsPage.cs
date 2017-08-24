@@ -29,6 +29,9 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         [FindsBy(How = How.Id, Using = "btnSignOff")]
         private IWebElement Submit { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "//div[@class='span3 complete-sign-off-view']")]
+        private IWebElement SignOffDisclaimer { get; set; }
+
         [FindsBy(How = How.XPath, Using = "//*[@id='signoffTrialList_filter']/label/input")]
         private IWebElement SignOffTrialSummarySearch { get; set; }
 
@@ -84,6 +87,8 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
 
         public void VerifyTrialSummaryDetails(string contextTrialTitle)
         {
+            PageHelper.WaitForElement(Driver, SignOffTrialSummarySearch);
+            Thread.Sleep(TimeSpan.FromSeconds(3));
             var today = DateTime.Now.ToString("dd/MM/yyyy");
             SignOffTrialSummarySearch.SendKeys(contextTrialTitle);
             SignOffTrialSummaryResult_Title.Text.Should().BeEquivalentTo(contextTrialTitle);
@@ -96,6 +101,11 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             TrialSummary_ActiveOnTrial.Text.Should().BeEquivalentTo("2");
             TrialSummary_PatientFollowUp.Text.Should().BeEquivalentTo("2");
             TrialSummary_PatientsDiscontinued.Text.Should().BeEquivalentTo("1");
+        }
+
+        public bool IsSignOffOptionDisplayed()
+        {
+            return SignOffDisclaimer.Text.Contains("Report Period Sign-Off Disclaimer");
         }
     }
 }

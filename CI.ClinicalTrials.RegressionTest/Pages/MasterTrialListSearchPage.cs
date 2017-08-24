@@ -171,7 +171,7 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         {
             Query.Clear();
             Query.SendKeys("Title" + text);
-            SearchButton.Click();
+            PageHelper.WaitForElement(Driver, SearchButton).Click();
             Thread.Sleep(TimeSpan.FromMilliseconds(100));
         }
 

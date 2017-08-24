@@ -122,7 +122,23 @@
 A trial can only be marked as 'Classified' or 'In Review' once it has been verified.
 A trial can only have a Classification, once it has been verified.</value>
   </data>
+  <data name="EmptyParticipantErrorMessage" xml:space="preserve">
+    <value>Screen Failures must be a positive number or 0
+New Enrollments must be a positive number or 0.
+Active On Intervention must be a positive number or 0.
+Follow-up must be a positive number or 0.
+Discontinued must be a positive number or 0.</value>
+  </data>
+  <data name="EmptyTrialDetailMessage" xml:space="preserve">
+    <value>A site target must not be left blank.
+Principal Investigator must not be left blank.
+Key Contact must not be left blank.
+Select an option for Site Responsible</value>
+  </data>
   <data name="RemoveTrial_MySiteTrial" xml:space="preserve">
     <value>If a trial has been added to My Site Trials list in error without any underlying data, you can remove it. Contact clinical.trials@cancerinstitute.org.au for queries about removing trials from your list.</value>
+  </data>
+  <data name="SignedOffTrialData" xml:space="preserve">
+    <value>This trial data has been signed off for the current report period.</value>
   </data>
 </root>

@@ -130,6 +130,15 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         [FindsBy(How = How.XPath, Using = "//*[@class=' ui-datepicker-days-cell-over  ui-datepicker-today']")]
         private IWebElement CalenderToday { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "//div[@class='alert alert-info']/h4")]
+        private IWebElement SignOffTrialDataMessage { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//ul[@class='error-messages']")]
+        private IWebElement EmptyTrialDetailsMessage { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//div[@class='alert alert-info']/h4")]
+        private IWebElement EmptyParticipatDetailsErrorMessage { get; set; }
+
         public void VerifyMySiteTrialsPageIsLoaded()
         {
             PageHelper.WaitForElement(Driver, MySiteTrialsTitle).Text.Should()
@@ -181,6 +190,7 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
 
         public void AbandonTheCreatedTrial(string contextTrialTitle)
         {
+            CreatedTrialRecord.Click();
             FIllInMandatoryTrialDates();
             TrialAbandoned.Click();
             Thread.Sleep(TimeSpan.FromSeconds(2));
@@ -192,12 +202,12 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             ActionDropDown.Click();
             ArchiveButton.Click();
             PageHelper.WaitForElement(Driver, ArchiveTrialPopUp);
+            Thread.Sleep(TimeSpan.FromSeconds(2));
             ConfirmArchiveButton.Click();
         }
 
         private void FIllInMandatoryTrialDates()
         {
-            CreatedTrialRecord.Click();
             Thread.Sleep(TimeSpan.FromSeconds(5));
             SiteTarget_Exact_RadioButton.Click();
             SiteTarget_Exact_Input.SendKeys("10");
@@ -233,6 +243,7 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
 
         public void FillinTrialDataAndSave(string contextTrialTitle)
         {
+            CreatedTrialRecord.Click();
             FillInTrialDateDetails();
             FillInTrialDetailsAndActivity();
             FillInCancerParticipantsData();
@@ -256,6 +267,49 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             RGONotApplicable.Click();
             RecruitmentOpen.Click();
             PageHelper.WaitForElement(Driver, CalenderToday).Click();
+        }
+
+        public void SearchAndOpenTheSignedOffTrial(string contextTrialTitle)
+        {
+            PageHelper.WaitForElement(Driver, MySiteTrialsSearch);
+            MySiteTrialsSearch.SendKeys(contextTrialTitle);
+            SearchTrialResult.Click();
+        }
+
+        public void VerifyTheTrialDataIsDisabled()
+        {
+            PageHelper.WaitForElement(Driver, SignOffTrialDataMessage).Text.Should().BeEquivalentTo(ErrorMessages.SignedOffTrialData);
+        }
+
+        public void SaveEmptyTrialDetails()
+        {
+            CreatedTrialRecord.Click();
+            Thread.Sleep(TimeSpan.FromSeconds(2));
+            PageHelper.WaitForElement(Driver, SaveTrialDetails);
+            SaveTrialDetails.Click();
+        }
+
+        public void VerifyTrialDetailMandatoryErrorMessages()
+        {
+            PageHelper.WaitForElement(Driver, EmptyTrialDetailsMessage).Text.Should()
+                .BeEquivalentTo(ErrorMessages.EmptyTrialDetailMessage);
+        }
+
+        public void SaveEmptyParticipantDetails()
+        {
+            PageHelper.WaitForElement(Driver, SaveAll).Click();
+        }
+
+        public void VerifyParticipantMandatoryErrorMessages()
+        {
+            PageHelper.WaitForElement(Driver, EmptyTrialDetailsMessage).Text.Should()
+                .BeEquivalentTo(ErrorMessages.EmptyParticipantErrorMessage);
+        }
+
+        public void FillInTrialDateAndActivityDetails()
+        {
+            FillInTrialDateDetails();
+            FillInTrialDetailsAndActivity();
         }
     }
 }

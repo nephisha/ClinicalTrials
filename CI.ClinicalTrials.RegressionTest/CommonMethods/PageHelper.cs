@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Threading;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
@@ -60,6 +61,7 @@ namespace CI.ClinicalTrials.RegressionTest.CommonMethods
 
         public static IWebElement WaitForElement(IWebDriver driver, IWebElement element)
         {
+            Thread.Sleep(TimeSpan.FromMilliseconds(200));
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
             wait.Until(ExpectedConditions.ElementToBeClickable(element));
             return element;

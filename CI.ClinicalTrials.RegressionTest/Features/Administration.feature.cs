@@ -241,6 +241,8 @@ this.ScenarioSetup(scenarioInfo);
  testRunner.When("I create new Report Period Extension from the menu option", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 60
  testRunner.Then("I should see the Extension created successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 61
+ testRunner.And("I delete the extension created", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -261,15 +263,15 @@ this.ScenarioSetup(scenarioInfo);
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("27341 - Editing user details and access", @__tags);
-#line 63
-this.ScenarioSetup(scenarioInfo);
 #line 64
- testRunner.Given("I login to Clinical Trial Application as Administrator", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+this.ScenarioSetup(scenarioInfo);
 #line 65
- testRunner.And(string.Format("I have an existing active {0} user", type1), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given("I login to Clinical Trial Application as Administrator", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 66
- testRunner.When(string.Format("I change the {0} user access to {1} and details", type1, type2), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And(string.Format("I have an existing active {0} user", type1), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 67
+ testRunner.When(string.Format("I change the {0} user access to {1} and details", type1, type2), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 68
  testRunner.Then(string.Format("{0} user should see the new changes", type2), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -290,15 +292,15 @@ this.ScenarioSetup(scenarioInfo);
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("27342 - Disable Existing User", @__tags);
-#line 75
+#line 89
 this.ScenarioSetup(scenarioInfo);
-#line 76
+#line 90
  testRunner.Given("I login to Clinical Trial Application as Administrator", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 77
+#line 91
  testRunner.And(string.Format("I have an existing {0} who is activated", cTUUser), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 78
+#line 92
  testRunner.When("I disable the user account", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 79
+#line 93
  testRunner.Then(string.Format("{0} should not be allowed to login the system", cTUUser), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -313,15 +315,15 @@ this.ScenarioSetup(scenarioInfo);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("27348 - Edit Sponsor Details", new string[] {
                         "Users",
                         "Regression"});
-#line 86
+#line 100
 this.ScenarioSetup(scenarioInfo);
-#line 87
+#line 101
  testRunner.Given("I login to Clinical Trial Application as Administrator", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 88
+#line 102
  testRunner.And("I have an existing sponsor", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 89
+#line 103
  testRunner.When("I edit the sponsor", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 90
+#line 104
  testRunner.Then("I should see the changes made for the sponsor", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -336,15 +338,15 @@ this.ScenarioSetup(scenarioInfo);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("27350 Deprecate Sponsor", new string[] {
                         "Users",
                         "Regression"});
-#line 93
+#line 107
 this.ScenarioSetup(scenarioInfo);
-#line 94
+#line 108
  testRunner.Given("I login to Clinical Trial Application as Administrator", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 95
+#line 109
  testRunner.And("I have an existing sponsor", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 96
+#line 110
  testRunner.When("I deprecate the sponsor", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 97
+#line 111
  testRunner.Then("I should not see the sponsor in dropdowns", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -359,15 +361,15 @@ this.ScenarioSetup(scenarioInfo);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("27356 - Edit Clinical Trial Unit Details", new string[] {
                         "Users",
                         "Regression"});
-#line 100
+#line 114
 this.ScenarioSetup(scenarioInfo);
-#line 101
+#line 115
  testRunner.Given("I login to Clinical Trial Application as Administrator", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 102
+#line 116
  testRunner.And("I have an existing clinical trial unit", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 103
+#line 117
  testRunner.When("I edit the clinical trial unit", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 104
+#line 118
  testRunner.Then("I should see the changes made for the clinical trial unit", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -382,15 +384,15 @@ this.ScenarioSetup(scenarioInfo);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("27357 Deprecate Clinical Trial Unit", new string[] {
                         "Users",
                         "Regression"});
-#line 107
+#line 121
 this.ScenarioSetup(scenarioInfo);
-#line 108
+#line 122
  testRunner.Given("I login to Clinical Trial Application as Administrator", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 109
+#line 123
  testRunner.And("I have an existing clinical trial unit", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 110
+#line 124
  testRunner.When("I deprecate the clinical trial unit", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 111
+#line 125
  testRunner.Then("I should not see the clinical trial unit in dropdowns", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

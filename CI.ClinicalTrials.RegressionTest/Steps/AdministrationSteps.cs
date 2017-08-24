@@ -285,5 +285,12 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
         {
             extensionsPage.SearchAndVerifyTheCreatedExtension();
         }
+
+        [Then(@"I delete the extension created")]
+        public void ThenIDeleteTheExtensionCreated()
+        {
+            extensionsPage.DeleteTheCreatedExtension();
+        }
+
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using CI.ClinicalTrials.RegressionTest.CommonMethods;
 using CI.ClinicalTrials.RegressionTest.Pages;
+using FluentAssertions;
 using TechTalk.SpecFlow;
 
 namespace CI.ClinicalTrials.RegressionTest.Steps
@@ -32,5 +33,12 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
             menuPage.SelectSignOffMySiteTrialsFromToggleMenu();
             signOffMySiteTrialsPage.VerifyTrialSummaryDetails(context.TrialTitle);
         }
+
+        [Then(@"I should not see the sign off option")]
+        public void ThenIShouldNotSeeTheSignOffOption()
+        {
+            signOffMySiteTrialsPage.IsSignOffOptionDisplayed().Should().BeFalse();
+        }
+
     }
 }

@@ -58,6 +58,7 @@ Scenario: 27389 - Create new Report Period Extension
 	Given I login to Clinical Trial Application as Administrator
 	When I create new Report Period Extension from the menu option
 	Then I should see the Extension created successfully
+	And I delete the extension created
 
 @Edit @Regression
 Scenario Outline: 27341 - Editing user details and access

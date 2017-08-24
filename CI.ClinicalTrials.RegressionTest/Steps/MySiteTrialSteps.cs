@@ -74,5 +74,43 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
         {
             mySiteTrialsPage.FillinTrialDataAndSave(context.TrialTitle);
         }
+
+        [Then(@"When I open the signed off trial in My Site trials")]
+        public void ThenWhenIOpenTheSignedOffTrialInMySiteTrials()
+        {
+            menuPage.SelectMySiteTrialsFromToggleMenu();
+            mySiteTrialsPage.SearchAndOpenTheSignedOffTrial(context.TrialTitle);
+        }
+
+        [Then(@"I should see the trial data disabled")]
+        public void ThenIShouldSeeTheTrialDataDisabled()
+        {
+            mySiteTrialsPage.VerifyTheTrialDataIsDisabled();
+        }
+
+        [When(@"I save the trial leaving the trial details blank")]
+        public void WhenISaveTheTrialLeavingTheTrialDetailsBlank()
+        {
+            mySiteTrialsPage.SaveEmptyTrialDetails();
+        }
+
+        [Then(@"I should see the trial detail mandatory error messages")]
+        public void ThenIShouldSeeTheTrialDetailMandatoryErrorMessages()
+        {
+            mySiteTrialsPage.VerifyTrialDetailMandatoryErrorMessages();
+        }
+
+        [When(@"I save the trial leaving the participant details blank")]
+        public void WhenISaveTheTrialLeavingTheParticipantDetailsBlank()
+        {
+            mySiteTrialsPage.FillInTrialDateAndActivityDetails();
+            mySiteTrialsPage.SaveEmptyParticipantDetails();
+        }
+
+        [Then(@"I should see the participant detail mandatory error messages")]
+        public void ThenIShouldSeeTheParticipantDetailMandatoryErrorMessages()
+        {
+            mySiteTrialsPage.VerifyParticipantMandatoryErrorMessages();
+        }
     }
 }

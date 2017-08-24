@@ -130,6 +130,49 @@ this.ScenarioSetup(scenarioInfo);
  testRunner.When("I save the trial data for the trial", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 29
  testRunner.Then("I should be able to signoff the trial", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 30
+ testRunner.And("I should not see the sign off option", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("27102 - Disable MySite Trials after SignOff")]
+        [NUnit.Framework.CategoryAttribute("SignOff")]
+        [NUnit.Framework.CategoryAttribute("Regression")]
+        [NUnit.Framework.CategoryAttribute("Working")]
+        [NUnit.Framework.TestCaseAttribute("Portfolio", "ACT Health", "Interventional", null)]
+        public virtual void _27102_DisableMySiteTrialsAfterSignOff(string category, string sponsor, string design, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "SignOff",
+                    "Regression",
+                    "Working"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("27102 - Disable MySite Trials after SignOff", @__tags);
+#line 37
+this.ScenarioSetup(scenarioInfo);
+#line 38
+ testRunner.Given("I login to Clinical Trial Application as AutomationCTU User", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 39
+ testRunner.When(string.Format("I submit a new trial with details {0} and {1} and {2}", sponsor, design, category), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 40
+ testRunner.Then("I should see the new trial created by CTU User", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 41
+ testRunner.When("I add the created trial to my site", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 42
+ testRunner.Then("I should see the created trial added successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 43
+ testRunner.When("I save the trial data for the trial", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 44
+ testRunner.Then("I should be able to signoff the trial", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 45
+ testRunner.And("When I open the signed off trial in My Site trials", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 46
+ testRunner.Then("I should see the trial data disabled", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

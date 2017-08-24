@@ -72,11 +72,45 @@ namespace CI.ClinicalTrials.RegressionTest.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Screen Failures must be a positive number or 0
+        ///New Enrollments must be a positive number or 0.
+        ///Active On Intervention must be a positive number or 0.
+        ///Follow-up must be a positive number or 0.
+        ///Discontinued must be a positive number or 0..
+        /// </summary>
+        internal static string EmptyParticipantErrorMessage {
+            get {
+                return ResourceManager.GetString("EmptyParticipantErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A site target must not be left blank.
+        ///Principal Investigator must not be left blank.
+        ///Key Contact must not be left blank.
+        ///Select an option for Site Responsible.
+        /// </summary>
+        internal static string EmptyTrialDetailMessage {
+            get {
+                return ResourceManager.GetString("EmptyTrialDetailMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to If a trial has been added to My Site Trials list in error without any underlying data, you can remove it. Contact clinical.trials@cancerinstitute.org.au for queries about removing trials from your list..
         /// </summary>
         internal static string RemoveTrial_MySiteTrial {
             get {
                 return ResourceManager.GetString("RemoveTrial_MySiteTrial", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This trial data has been signed off for the current report period..
+        /// </summary>
+        internal static string SignedOffTrialData {
+            get {
+                return ResourceManager.GetString("SignedOffTrialData", resourceCulture);
             }
         }
     }

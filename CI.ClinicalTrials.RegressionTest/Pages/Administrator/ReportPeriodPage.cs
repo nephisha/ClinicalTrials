@@ -13,7 +13,7 @@ namespace CI.ClinicalTrials.RegressionTest.Pages.Administrator
     {
         private readonly string rDescription = "RegTest" + PageHelper.RandomNumber(5);
 
-        [FindsBy(How = How.XPath, Using = "//a[@class='btn btn-mini btn-primary']")]
+        [FindsBy(How = How.Id, Using = "regCreateNewReportReriod")]
         private IWebElement CreateNewReportReriod { get; set; }
 
         [FindsBy(How = How.Id, Using = "Name")]
@@ -22,7 +22,7 @@ namespace CI.ClinicalTrials.RegressionTest.Pages.Administrator
         [FindsBy(How = How.Id, Using = "Description")]
         private IWebElement Description { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//label[@for='BeginsOn']/following-sibling::label")]
+        [FindsBy(How = How.Id, Using = "regBeginsOn")]
         private IWebElement BeginsOn { get; set; }
 
         [FindsBy(How = How.Id, Using = "BeginsOn")]
@@ -43,8 +43,11 @@ namespace CI.ClinicalTrials.RegressionTest.Pages.Administrator
         [FindsBy(How = How.Id, Using = "FiscalYear")]
         private IWebElement FiscalYear { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//button[@class='btn btn-primary']")]
+        [FindsBy(How = How.Id, Using = "regCreateReportingPeriodButton")]
         private IWebElement CreateReportingPeriodButton { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//button[@class='btn btn-primary']")]
+        private IWebElement SaveReportingPeriodButton { get; set; }
 
         [FindsBy(How = How.XPath, Using = "//a[@class='btn']")]
         private IWebElement BackToList { get; set; }
@@ -55,10 +58,10 @@ namespace CI.ClinicalTrials.RegressionTest.Pages.Administrator
         [FindsBy(How = How.XPath, Using = "//table[@id='dataTable']/tbody/tr[1]/td[2]")]
         private IWebElement ReportPeriodSearchResult_Desc { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//a[@class='btn btn-mini'][1]")]
+        [FindsBy(How = How.Id, Using = "regEditButton")]
         private IWebElement EditButton { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//div[@class='btn btn-mini btnDelete']")]
+        [FindsBy(How = How.Id, Using = "regDeleteButton")]
         private IWebElement DeleteButton { get; set; }
 
         [FindsBy(How = How.Id, Using = "deleteReportPeriodConfirm")]
@@ -77,14 +80,15 @@ namespace CI.ClinicalTrials.RegressionTest.Pages.Administrator
             var dateString = BeginsOn.Text;
             var endDate = PageHelper.ConvertDateToFormat(dateString, "dd/MM/yyyy");
             var eDate = endDate.AddDays(2).ToString("dd/MM/yyyy");
-
-            Name.SendKeys("ReportPeriod Q3 2017");
+            Name.SendKeys(endDate.ToString("dd/MM")+" - "+eDate.Substring(0,5));
             Description.SendKeys(rDescription);
             Driver.ExecuteJavaScript(@"$('#EndsOn').val('" + eDate + "')");
             Driver.ExecuteJavaScript(@"$('#SubmissionDueDate').val('" + eDate + "')");
             Driver.ExecuteJavaScript(@"$('#PaymentDate').val('" + eDate + "')");
-            CalendarYear.SendKeys("2018");
-            FiscalYear.SendKeys("2018");
+            CalendarYear.Clear();
+            CalendarYear.SendKeys(endDate.Year.ToString());
+            FiscalYear.Clear();
+            FiscalYear.SendKeys(endDate.Year.ToString());
             CreateReportingPeriodButton.Click();
             BackToList.Click();
         }
@@ -111,7 +115,7 @@ namespace CI.ClinicalTrials.RegressionTest.Pages.Administrator
             Driver.ExecuteJavaScript(@"$('#PaymentDate').val('" + eDate + "')");
             CalendarYear.SendKeys("2018");
             FiscalYear.SendKeys("2018");
-            CreateReportingPeriodButton.Click();
+            SaveReportingPeriodButton.Click();
             BackToList.Click();
         }
 

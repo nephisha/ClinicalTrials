@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using CI.ClinicalTrials.RegressionTest.Base;
 using CI.ClinicalTrials.RegressionTest.CommonMethods;
 using FluentAssertions;
@@ -72,13 +73,13 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         [FindsBy(How = How.Id, Using = "regGlobalAuditHistory")]
         private IWebElement GlobalAuditHistory { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//a[@id='regAdministration']/following-sibling::div/ul/li[13]")]
+        [FindsBy(How = How.Id, Using = "regEmailLogs")]
         private IWebElement EmailLogs { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//ul[@class='nav-tertiary']/li[1]/a")]
+        [FindsBy(How = How.Id, Using = "regAccountSettings")]
         private IWebElement AccountSettings { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//ul[@class='nav-tertiary']/li[2]/a")]
+        [FindsBy(How = How.Id, Using = "regLogOff")]
         private IWebElement LogOff { get; set; }
 
         [FindsBy(How = How.Id, Using = "Email")]
@@ -199,6 +200,7 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         public void LogOffTheApplication()
         {
             ToggleMenu.Click();
+            Thread.Sleep(TimeSpan.FromSeconds(2));
             PageHelper.WaitForElement(Driver, LogOff).Click();
         }
 
