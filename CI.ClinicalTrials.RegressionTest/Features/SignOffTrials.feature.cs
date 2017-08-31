@@ -140,14 +140,12 @@ this.ScenarioSetup(scenarioInfo);
         [NUnit.Framework.DescriptionAttribute("27102 - Disable MySite Trials after SignOff")]
         [NUnit.Framework.CategoryAttribute("SignOff")]
         [NUnit.Framework.CategoryAttribute("Regression")]
-        [NUnit.Framework.CategoryAttribute("Working")]
         [NUnit.Framework.TestCaseAttribute("Portfolio", "ACT Health", "Interventional", null)]
         public virtual void _27102_DisableMySiteTrialsAfterSignOff(string category, string sponsor, string design, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "SignOff",
-                    "Regression",
-                    "Working"};
+                    "Regression"};
             if ((exampleTags != null))
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));

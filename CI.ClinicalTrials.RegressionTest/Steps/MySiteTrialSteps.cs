@@ -49,30 +49,35 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
         public void ThenIShouldSeeTheTrialRemovedFromMySiteTrials()
         {
             mySiteTrialsPage.SearchAndVerifyTheRemovedTrial(context.TrialTitle);
+            Console.WriteLine(context.TrialTitle);
         }
 
         [Then(@"When I abandon the trial from my site")]
         public void ThenWhenIAbandonTheTrialFromMySite()
         {
             mySiteTrialsPage.AbandonTheCreatedTrial(context.TrialTitle);
+            Console.WriteLine(context.TrialTitle);
         }
 
         [Then(@"I should be able to archive the trial")]
         public void ThenIShouldBeAbleToArchiveTheTrial()
         {
             mySiteTrialsPage.ArchiveTheAbandonedTrial(context.TrialTitle);
+            Console.WriteLine(context.TrialTitle);
         }
 
         [Then(@"I should be able to see trial under (.*) filter")]
         public void ThenIShouldBeAbleToSeeTrialUnderFilter(string filter)
         {
             mySiteTrialsPage.ApplyFilterAndVerifyTrialData(filter, context.TrialTitle);
+            Console.WriteLine(context.TrialTitle);
         }
 
         [When(@"I save the trial data for the trial")]
         public void WhenISaveTheTrialDataForTheTrial()
         {
             mySiteTrialsPage.FillinTrialDataAndSave(context.TrialTitle);
+            Console.WriteLine(context.TrialTitle);
         }
 
         [Then(@"When I open the signed off trial in My Site trials")]
@@ -80,6 +85,7 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
         {
             menuPage.SelectMySiteTrialsFromToggleMenu();
             mySiteTrialsPage.SearchAndOpenTheSignedOffTrial(context.TrialTitle);
+            Console.WriteLine(context.TrialTitle);
         }
 
         [Then(@"I should see the trial data disabled")]

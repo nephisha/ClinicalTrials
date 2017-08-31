@@ -1,4 +1,5 @@
-﻿using CI.ClinicalTrials.RegressionTest.CommonMethods;
+﻿using System;
+using CI.ClinicalTrials.RegressionTest.CommonMethods;
 using CI.ClinicalTrials.RegressionTest.Pages;
 using CI.ClinicalTrials.RegressionTest.Resources;
 using NUnit.Framework;
@@ -21,13 +22,13 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
         private readonly MasterTrialListSearchPage masterTrialListSearchPage = new MasterTrialListSearchPage();
         private readonly MySiteTrialsPage mySiteTrialsPage = new MySiteTrialsPage();
 
-        public readonly string _title = "RegTest_" + PageHelper.RandomString(8);
+        private readonly string title = "RegTest_" + PageHelper.RandomString(8);
 
         [When(@"I submit a new trial with details (.*) and (.*) and (.*)")]
         public void WhenISubmitANewTrialWithDetails(string sponsor, string design, string category)
         {
             menuPage.SelectSubmitATrialFromToggleMenu();
-            submitTrialDetailsPage.FillallTheTrialDetails(_title, sponsor, design, category);
+            submitTrialDetailsPage.FillallTheTrialDetails(title, sponsor, design, category);
             submitTrialDetailsPage.SubmitTrial();
         }
 
@@ -35,21 +36,23 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
         public void WhenICancelANewTrialWithEnteredDetails(string sponsor, string design, string category)
         {
             menuPage.SelectSubmitATrialFromToggleMenu();
-            submitTrialDetailsPage.FillallTheTrialDetails(_title, sponsor, design, category);
+            submitTrialDetailsPage.FillallTheTrialDetails(title, sponsor, design, category);
             submitTrialDetailsPage.CancelTrial();
         }
 
         [Then(@"I should see the new trial created by Administrator")]
         public void ThenIShouldSeeTheNewTrialCreatedByAdministrator()
         {
-            masterTrialListSearchPage.SearchAndVerifyTheCreatedTrialByAdmin(_title);
+            masterTrialListSearchPage.SearchAndVerifyTheCreatedTrialByAdmin(title);
+            Console.WriteLine(title);
         }
 
         [Then(@"I should see the new trial created by CTU User")]
         public void ThenIShouldSeeTheNewTrialCreatedByCTUUser()
         {
-            masterTrialListSearchPage.SearchAndVerifyTheCreatedTrialByCTUUser(_title);
-            context.TrialTitle = "Title" + _title;
+            masterTrialListSearchPage.SearchAndVerifyTheCreatedTrialByCTUUser(title);
+            context.TrialTitle = "Title" + title;
+            Console.WriteLine(context.TrialTitle);
         }
 
         [Then(@"I should be shown with Master Trial List page")]

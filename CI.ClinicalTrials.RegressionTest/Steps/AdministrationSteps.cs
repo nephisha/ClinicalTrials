@@ -114,6 +114,7 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
         public void WhenIDeprecateTheClinicalTrialUnit()
         {
             context.DeprecatedCTU = ctuPage.DeprecateClinicalTrialUnit();
+            Console.WriteLine(context.DeprecatedCTU);
         }
 
         [Then(@"I should see the CTU created successfully")]
@@ -210,6 +211,7 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
         public void WhenIDeprecateTheSponsor()
         {
             context.DeprecatedSponsor = sponsorPage.DeprecateASponsor();
+            Console.WriteLine(context.DeprecatedSponsor);
         }
 
         [StepArgumentTransformation]
@@ -264,8 +266,7 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
         {
             reportPeriodPage.DeleteTheReportPeriod();
         }
-
-
+        
         [Then(@"the report period should be deleted successfully")]
         public void ThenTheReportPeriodShouldBeDeletedSuccessfully()
         {
@@ -291,6 +292,5 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
         {
             extensionsPage.DeleteTheCreatedExtension();
         }
-
     }
 }

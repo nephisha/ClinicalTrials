@@ -157,13 +157,11 @@ this.ScenarioSetup(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("27089 - My Site Trial - Trial data mandatory fields")]
         [NUnit.Framework.CategoryAttribute("Regression")]
-        [NUnit.Framework.CategoryAttribute("Working")]
         [NUnit.Framework.TestCaseAttribute("NonPortfolio", "Cancer Council NSW", "Other", "Archived", null)]
         public virtual void _27089_MySiteTrial_TrialDataMandatoryFields(string category, string sponsor, string design, string trialCategory, string[] exampleTags)
         {
             string[] @__tags = new string[] {
-                    "Regression",
-                    "Working"};
+                    "Regression"};
             if ((exampleTags != null))
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));

@@ -196,11 +196,15 @@
     </None>
     <None Include="packages.config" />
     <None Include="Scripts\ci_uat_test.bat" />
-    <None Include="Tools\NUnit3_Console\nunit-agent-x86.exe.config" />
+    <None Include="Tools\NUnit3_Console\nunit-agent-x86.exe.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Tools\NUnit3_Console\nunit-agent.exe.config" />
     <None Include="Tools\NUnit3_Console\nunit.engine.addins" />
     <None Include="Tools\NUnit3_Console\nunit3-console.exe.config" />
-    <None Include="Tools\Specflow\app.config" />
+    <None Include="Tools\Specflow\app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Tools\Specflow\plugincompability.config" />
     <None Include="Tools\Specflow\specflow.exe.config" />
     <None Include="Tools\Specflow\TechTalk.SpecFlow.targets" />

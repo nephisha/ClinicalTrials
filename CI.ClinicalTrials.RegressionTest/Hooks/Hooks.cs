@@ -42,17 +42,20 @@ namespace CI.ClinicalTrials.RegressionTest.Hooks
         {
             try
             {
-                if (!Equals(TestContext.CurrentContext.Result.Outcome, ResultState.Success))
-                {
-                    const string path = @"C:\Reports\Screenshot\";
-                    var timestamp = DateTime.Now.ToString("MM-dd-hh-mm-ss");
-                    var screenshot = ((ITakesScreenshot)_driver).GetScreenshot();
-                    screenshot.SaveAsFile(path + timestamp+".jpeg", ScreenshotImageFormat.Jpeg);
-                }
+                if (Equals(TestContext.CurrentContext.Result.Outcome, ResultState.Success)) return;
+                const string path = @"C:\Reports\Screenshot\";
+                var timestamp = DateTime.Now.ToString("MM-dd-hh-mm-ss");
+                var screenshot = ((ITakesScreenshot)_driver).GetScreenshot();
+                screenshot.SaveAsFile(path + timestamp+".jpeg", ScreenshotImageFormat.Jpeg);
             }
             catch (Exception e)
             {
-                Console.WriteLine("Exception while taking screen shot: {0}", e);
+                _driver.SwitchTo().Alert().Accept();
+                const string path = @"C:\Reports\Screenshot\";
+                var timestamp = DateTime.Now.ToString("MM-dd-hh-mm-ss");
+                var screenshot = ((ITakesScreenshot)_driver).GetScreenshot();
+                screenshot.SaveAsFile(path + timestamp + ".jpeg", ScreenshotImageFormat.Jpeg);
+                Console.WriteLine(@"Exception while taking screen shot: {0}", e);
             }
         }
     }

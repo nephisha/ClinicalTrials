@@ -61,6 +61,7 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
         public void ThenIShouldNotSeeTheSponsorInDropdowns()
         {
             menuPage.SelectMasterTrialFromToggleMenu();
+            Console.WriteLine(context.DeprecatedSponsor);
             masterTrialListSearchPage.VerifyDeprecatedSponsorIsNotListed(context.DeprecatedSponsor).Should().BeTrue();
         }
 
@@ -68,6 +69,7 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
         public void ThenIShouldNotSeeTheClinicalTrialUnitInDropdowns()
         {
             menuPage.SelectMasterTrialFromToggleMenu();
+            Console.WriteLine(context.DeprecatedCTU);
             masterTrialListSearchPage.VerifyDeprecatedCTUIsNotListed(context.DeprecatedCTU).Should().BeTrue();
         }
 
@@ -134,24 +136,28 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
         {
             menuPage.SelectMasterTrialFromToggleMenu();
             context.Acronym = masterTrialListSearchPage.AddTrialToMySiteTrialList();
+            Console.WriteLine(context.Acronym);
         }
 
         [When(@"I add the created trial to my site")]
         public void WhenIAddTheCreatedTrialToMySite()
         {
             masterTrialListSearchPage.AddCreatedTrialToMySiteTrial(context.TrialTitle);
+            Console.WriteLine(context.TrialTitle);
         }
 
         [Then(@"I should see the created trial added successfully")]
         public void ThenIShouldSeeTheCreatedTrialAddedSuccessfully()
         {
             mySiteTrialsPage.SearchAndVerifyTheCreatedTrial(context.TrialTitle);
+            Console.WriteLine(context.TrialTitle);
         }
 
         [Then(@"I should see the trial added successfully")]
         public void ThenIShouldSeeTheTrialAddedSuccessfully()
         {
             mySiteTrialsPage.SearchAndVerifyTheAddedTrial(context.Acronym);
+            Console.WriteLine(context.Acronym);
         }
 
         [When(@"I edit a trial")]
@@ -198,12 +204,14 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
         {
             menuPage.SelectMasterTrialFromToggleMenu();
             masterTrialListSearchPage.VerifyAndClassifyTheTrial(context.TrialTitle);
+            Console.WriteLine(context.TrialTitle);
         }
 
         [Then(@"I should see the trial classified successfully")]
         public void ThenIShouldSeeTheTrialClassifiedSuccessfully()
         {
             masterTrialListSearchPage.SearchAndVerifyTheClassifiedTrial(context.TrialTitle);
+            Console.WriteLine(context.TrialTitle);
         }
 
         [Then(@"as an Admin I should be able to verify and classify the trial")]
@@ -213,6 +221,7 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
             loginSteps.GivenILoginToClinicalTrialApplicationAsAdministrator();
             menuPage.SelectMasterTrialFromToggleMenu();
             masterTrialListSearchPage.VerifyAndClassifyTheTrial(context.TrialTitle);
+            Console.WriteLine(context.TrialTitle);
             menuPage.LogOffTheApplication();
         }
 
@@ -221,6 +230,7 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
         {
             menuPage.SelectMasterTrialFromToggleMenu();
             context.SelectedTrial = masterTrialListSearchPage.SearchForPendingVerificationTrials();
+            Console.WriteLine(context.SelectedTrial);
         }
 
         [Given(@"I have an existing portfolio trial pending for verification")]
@@ -228,12 +238,14 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
         {
             menuPage.SelectMasterTrialFromToggleMenu();
             context.SelectedTrial = masterTrialListSearchPage.SearchForPortfolioPendingVerificationTrials();
+            Console.WriteLine(context.SelectedTrial);
         }
 
         [When(@"I verify the trial")]
         public void WhenIVerifyTheTrial()
         {
             masterTrialListSearchPage.SearchAndEditTheSelectedTrial(context.SelectedTrial);
+            Console.WriteLine(context.SelectedTrial);
             masterTrialListSearchPage.VerifyTheTrial();
         }
 
@@ -241,12 +253,14 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
         public void ThenIShouldSeeTheTrialGettingVerifiedSuccessfully()
         {
             masterTrialListSearchPage.SearchAndVerifyTheVerifiedTrial(context.SelectedTrial);
+            Console.WriteLine(context.SelectedTrial);
         }
 
         [When(@"I reject the trial")]
         public void WhenIRejectTheTrial()
         {
             masterTrialListSearchPage.SearchAndEditTheSelectedTrial(context.SelectedTrial);
+            Console.WriteLine(context.SelectedTrial);
             masterTrialListSearchPage.RejectTheTrial();
         }
 
@@ -254,12 +268,14 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
         public void ThenIShouldSeeTheTrialGettingRejectedSuccessfully()
         {
             masterTrialListSearchPage.SearchAndVerifyTheRejectedTrial(context.SelectedTrial);
+            Console.WriteLine(context.SelectedTrial);
         }
 
         [When(@"I review the trial")]
         public void WhenIReviewTheTrial()
         {
             masterTrialListSearchPage.SearchAndEditTheSelectedTrial(context.SelectedTrial);
+            Console.WriteLine(context.SelectedTrial);
             masterTrialListSearchPage.ReviewTheTrial();
         }
 
@@ -267,12 +283,14 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
         public void ThenIShouldSeeTheTrialGettingReviewedSuccessfully()
         {
             masterTrialListSearchPage.SearchAndVerifyTheReviewedTrial(context.SelectedTrial);
+            Console.WriteLine(context.SelectedTrial);
         }
 
         [Then(@"When I classify the trial as In Review")]
         public void ThenWhenIClassifyTheTrialAsInReview()
         {
             masterTrialListSearchPage.SearchAndEditTheSelectedTrial(context.SelectedTrial);
+            Console.WriteLine(context.SelectedTrial);
             masterTrialListSearchPage.ClassifyTheVerifiedTrialAsInReview();
         }
 
@@ -280,12 +298,14 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
         public void ThenIShouldSeeTheTrialClassifiedAsInReviewSuccessfully()
         {
             masterTrialListSearchPage.SearchAndVerifyTheClassifiedTrialStatus(context.SelectedTrial, "In Review");
+            Console.WriteLine(context.SelectedTrial);
         }
 
         [Then(@"When I classify the trial as Portfolio")]
         public void ThenWhenIClassifyTheTrialAsPortfolio()
         {
             masterTrialListSearchPage.SearchAndEditTheSelectedTrial(context.SelectedTrial);
+            Console.WriteLine(context.SelectedTrial);
             masterTrialListSearchPage.ClassifyTheVerifiedTrialAsPortfolio();
         }
 
@@ -293,12 +313,14 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
         public void ThenIShouldSeeTheTrialClassifiedAsPortfolioSuccessfully()
         {
             masterTrialListSearchPage.SearchAndVerifyTheClassifiedTrialStatus(context.SelectedTrial, "Portfolio");
+            Console.WriteLine(context.SelectedTrial);
         }
 
         [Then(@"When I classify the trial as Non-Portfolio")]
         public void ThenWhenIClassifyTheTrialAsNon_Portfolio()
         {
             masterTrialListSearchPage.SearchAndEditTheSelectedTrial(context.SelectedTrial);
+            Console.WriteLine(context.SelectedTrial);
             masterTrialListSearchPage.ClassifyTheVerifiedTrialAsNonPortfolio();
         }
 
@@ -306,12 +328,14 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
         public void ThenIShouldSeeTheTrialClassifiedAsNon_PortfolioSuccessfully()
         {
             masterTrialListSearchPage.SearchAndVerifyTheClassifiedTrialStatus(context.SelectedTrial, "Non-Portfolio");
+            Console.WriteLine(context.SelectedTrial);
         }
 
         [When(@"I try to classify the trial before verifying it")]
         public void WhenITryToClassifyTheTrialBeforeVerifyingIt()
         {
             masterTrialListSearchPage.SearchAndEditTheSelectedTrial(context.SelectedTrial);
+            Console.WriteLine(context.SelectedTrial);
             masterTrialListSearchPage.ClassifyTheTrial();
         }
 

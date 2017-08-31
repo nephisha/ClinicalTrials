@@ -61,7 +61,7 @@ namespace CI.ClinicalTrials.RegressionTest.CommonMethods
 
         public static IWebElement WaitForElement(IWebDriver driver, IWebElement element)
         {
-            Thread.Sleep(TimeSpan.FromMilliseconds(200));
+            Thread.Sleep(TimeSpan.FromMilliseconds(1000));
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
             wait.Until(ExpectedConditions.ElementToBeClickable(element));
             return element;

@@ -171,6 +171,7 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         {
             Query.Clear();
             Query.SendKeys("Title" + text);
+            Thread.Sleep(TimeSpan.FromMilliseconds(100));
             PageHelper.WaitForElement(Driver, SearchButton).Click();
             Thread.Sleep(TimeSpan.FromMilliseconds(100));
         }
@@ -178,7 +179,7 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         public void SearchByQuery()
         {
             Query.SendKeys(SearchCriteria);
-            SearchButton.Click();
+            PageHelper.WaitForElement(Driver, SearchButton).Click();
         }
 
         public void VerifySearchResults()
@@ -191,7 +192,7 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         public void SearchBySponsor()
         {
             PageHelper.SelectValueFromDropdown(Sponsor, "Abbott");
-            SearchButton.Click();
+            PageHelper.WaitForElement(Driver, SearchButton).Click();
         }
 
         public void VerifySponsorSearchResults()
@@ -203,7 +204,7 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         public void SearchByCTU()
         {
             PageHelper.SelectValueFromDropdown(CTU, "Bankstown Hospital");
-            SearchButton.Click();
+            PageHelper.WaitForElement(Driver, SearchButton).Click();
         }
 
         public void VerifyCTUSearchResults()
@@ -215,7 +216,7 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         {
             TumourGroup.Click();
             PageHelper.SelectValueFromDropList(TumourGroupResult, "Brain");
-            SearchButton.Click();
+            PageHelper.WaitForElement(Driver, SearchButton).Click();
         }
 
         public void VerifyTumourGroupResults()
@@ -227,7 +228,7 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         public void SearchByTrialClassification()
         {
             PageHelper.SelectValueFromDropdown(TrialClassification, "Portfolio");
-            SearchButton.Click();
+            PageHelper.WaitForElement(Driver, SearchButton).Click();
         }
 
         public void VerifyClassificationSearchResults()
@@ -239,7 +240,7 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         public void SearchByVerificationStatus()
         {
             PageHelper.SelectValueFromDropdown(TrialVerification, "Verified");
-            SearchButton.Click();
+            PageHelper.WaitForElement(Driver, SearchButton).Click();
         }
 
         public void VerifyVerificationStatusSearchResults()
@@ -266,7 +267,7 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             SearchByTrialClassification();
             TrialAcronym = CTUSearchTrialResult_Acronym.Text;
             Query.SendKeys(TrialAcronym);
-            SearchButton.Click();
+            PageHelper.WaitForElement(Driver, SearchButton).Click();
             PageHelper.WaitForElement(Driver, Load_DataTable);
             AddToMyTrialsList.Click();
             return TrialAcronym;
@@ -281,17 +282,17 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         private void GetanExistingTrialData()
         {
             Query.SendKeys("NickRegTest");
-            SearchButton.Click();
+            PageHelper.WaitForElement(Driver, SearchButton).Click();
             TrialRegoNumber = AdminSearchTrialResult_RegoNumber.Text;
             Query.Clear();
             Query.SendKeys(TrialRegoNumber);
-            SearchButton.Click();
+            PageHelper.WaitForElement(Driver, SearchButton).Click();
         }
 
         public void SearchAndVerifyTheEditedTrial()
         {
             Query.SendKeys(TrialRegoNumber);
-            SearchButton.Click();
+            PageHelper.WaitForElement(Driver, SearchButton).Click();
             AdminSearchTrialResult_Acronym.Text.Should().Contain("Modified");
         }
 
@@ -308,7 +309,7 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             Driver.Navigate().Refresh();
             Query.Clear();
             Query.SendKeys(TrialRegoNumber);
-            SearchButton.Click();
+            PageHelper.WaitForElement(Driver, SearchButton).Click();
             Thread.Sleep(TimeSpan.FromMilliseconds(2000));
             SearchTrialResult.Text.Should().BeEquivalentTo("No results to show");
         }
@@ -317,7 +318,7 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         {
             Query.Clear();
             Query.SendKeys(trialTitle);
-            SearchButton.Click();
+            PageHelper.WaitForElement(Driver, SearchButton).Click();
             PageHelper.WaitForElement(Driver, Load_DataTable);
             AddToMyTrialsList.Click();
             JoinAddedTrialToSite();
@@ -327,7 +328,7 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         {
             Query.Clear();
             Query.SendKeys(contextTrialTitle);
-            SearchButton.Click();
+            PageHelper.WaitForElement(Driver, SearchButton).Click();
             PageHelper.WaitForElement(Driver, Load_DataTable);
             EditTrials.Click();
             Verified.Click();
@@ -340,7 +341,7 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             PageHelper.WaitForElement(Driver, Load_DataTable);
             Query.Clear();
             Query.SendKeys(contextTrialTitle);
-            SearchButton.Click();
+            PageHelper.WaitForElement(Driver, SearchButton).Click();
             PageHelper.WaitForElement(Driver, Load_DataTable);
             AdminSearchTrialResult_ClassificationStatus.Text.Should().BeEquivalentTo("Portfolio");
         }
@@ -393,7 +394,7 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         public string SearchForPendingVerificationTrials()
         {
             PageHelper.SelectValueFromDropdown(TrialVerification, "Pending Verification");
-            SearchButton.Click();
+            PageHelper.WaitForElement(Driver, SearchButton).Click();
             return AdminSearchTrialResult_Acronym.Text;
         }
 
@@ -401,7 +402,7 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         {
             PageHelper.SelectValueFromDropdown(Sponsor, "ACT Health");
             PageHelper.SelectValueFromDropdown(TrialVerification, "Pending Verification");
-            SearchButton.Click();
+            PageHelper.WaitForElement(Driver, SearchButton).Click();
             return AdminSearchTrialResult_Acronym.Text;
         }
 
@@ -409,7 +410,7 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         {
             Query.Clear();
             Query.SendKeys(contextSelectedTrial);
-            SearchButton.Click();
+            PageHelper.WaitForElement(Driver, SearchButton).Click();
             PageHelper.WaitForElement(Driver, Load_DataTable);
             PageHelper.WaitForElement(Driver, EditTrials).Click();
         }
@@ -418,7 +419,7 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         {
             Query.Clear();
             Query.SendKeys(contextSelectedTrial);
-            SearchButton.Click();
+            PageHelper.WaitForElement(Driver, SearchButton).Click();
             PageHelper.WaitForElement(Driver, Load_DataTable);
             AdminSearchTrialResult_VerificationStatus.Text.Should().BeEquivalentTo("Verified");
         }
@@ -434,7 +435,7 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         {
             Query.Clear();
             Query.SendKeys(contextSelectedTrial);
-            SearchButton.Click();
+            PageHelper.WaitForElement(Driver, SearchButton).Click();
             PageHelper.WaitForElement(Driver, Load_DataTable);
             AdminSearchTrialResult_VerificationStatus.Text.Should().BeEquivalentTo("Rejected");
         }
@@ -450,7 +451,7 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         {
             Query.Clear();
             Query.SendKeys(contextSelectedTrial);
-            SearchButton.Click();
+            PageHelper.WaitForElement(Driver, SearchButton).Click();
             PageHelper.WaitForElement(Driver, Load_DataTable);
             AdminSearchTrialResult_VerificationStatus.Text.Should().BeEquivalentTo("Pending Verification (In Review)");
         }
@@ -466,7 +467,7 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         {
             Query.Clear();
             Query.SendKeys(contextSelectedTrial);
-            SearchButton.Click();
+            PageHelper.WaitForElement(Driver, SearchButton).Click();
             PageHelper.WaitForElement(Driver, Load_DataTable);
             AdminSearchTrialResult_ClassificationStatus.Text.Should().BeEquivalentTo(status);
         }

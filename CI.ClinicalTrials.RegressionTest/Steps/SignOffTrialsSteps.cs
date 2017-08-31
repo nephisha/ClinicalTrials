@@ -23,6 +23,7 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
         public void ThenIShouldBeAbleToSignoffTheTrial()
         {
             menuPage.SelectSignOffMySiteTrialsFromToggleMenu();
+            Console.WriteLine(context.TrialTitle);
             signOffMySiteTrialsPage.SearchAndSignOffTrials(context.TrialTitle);
             signOffMySiteTrialsPage.VerifySignedOffTrials(context.TrialTitle);
         }
@@ -31,6 +32,7 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
         public void ThenIShouldVerifyTheTrialSummaryDetails()
         {
             menuPage.SelectSignOffMySiteTrialsFromToggleMenu();
+            Console.WriteLine(context.TrialTitle);
             signOffMySiteTrialsPage.VerifyTrialSummaryDetails(context.TrialTitle);
         }
 

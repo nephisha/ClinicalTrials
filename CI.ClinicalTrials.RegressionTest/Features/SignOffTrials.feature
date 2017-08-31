@@ -33,7 +33,7 @@ Scenario Outline: 27096 - Sign Off Trials for Approval
 	| Category  | Sponsor    | Design         |
 	| Portfolio | ACT Health | Interventional |
 
-@SignOff @Regression @Working
+@SignOff @Regression
 Scenario Outline: 27102 - Disable MySite Trials after SignOff
 	Given I login to Clinical Trial Application as AutomationCTU User
 	When I submit a new trial with details <Sponsor> and <Design> and <Category>

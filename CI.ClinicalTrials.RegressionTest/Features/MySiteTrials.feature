@@ -37,7 +37,7 @@ Scenario Outline: 27087 - Archive a Trial from My Site Trials
 	| Category     | Sponsor            | Design | TrialCategory |
 	| NonPortfolio | Cancer Council NSW | Other  | Archived      |
 
-@Regression @Working
+@Regression
 Scenario Outline: 27089 - My Site Trial - Trial data mandatory fields
 	Given I login to Clinical Trial Application as AutomationCTU User
 	When I submit a new trial with details <Sponsor> and <Design> and <Category>
