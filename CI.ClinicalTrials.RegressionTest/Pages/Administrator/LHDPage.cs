@@ -46,7 +46,7 @@ namespace CI.ClinicalTrials.RegressionTest.Pages.Administrator
         {
             lName = "RegTestLHD" + PageHelper.RandomNumber(4);
             Name.SendKeys(lName);
-            Acronym.SendKeys("RGT"+ PageHelper.RandomNumber(2));
+            Acronym.SendKeys("RGT"+ PageHelper.RandomNumber(4));
             PeriodicCoreFunding.SendKeys("20000");
             SaveLHDButton.Click();
             BackToListButton.Click();
@@ -56,6 +56,24 @@ namespace CI.ClinicalTrials.RegressionTest.Pages.Administrator
         {
             LHDSearch.SendKeys(lName);
             LHDSearchResult_Name.Text.Should().BeEquivalentTo(lName);
+        }
+
+        public void SearchAndEditTheLHD()
+        {
+            PageHelper.WaitForElement(Driver, LHDSearch).Click();
+            LHDSearch.SendKeys(lName);
+            PageHelper.WaitForElement(Driver, EditLHD).Click();
+            Name.Click();
+            Name.Clear();
+            Name.SendKeys("Edited"+lName);
+            SaveLHDButton.Click();
+            BackToListButton.Click();
+        }
+
+        public void SearchAndVerifyTheEditedLHD()
+        {
+            LHDSearch.SendKeys("Edited" + lName);
+            LHDSearchResult_Name.Text.Should().BeEquivalentTo("Edited" + lName);
         }
     }
 }

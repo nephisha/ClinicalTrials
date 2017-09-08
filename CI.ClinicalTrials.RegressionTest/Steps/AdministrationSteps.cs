@@ -29,6 +29,7 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
         private readonly ReportPeriodPage reportPeriodPage = new ReportPeriodPage();
         private readonly ExtensionsPage extensionsPage = new ExtensionsPage();
         private readonly EmailLogPage emailLogPage = new EmailLogPage();
+        private readonly SignOffHistoryPage signOffHistoryPage = new SignOffHistoryPage();
         
         private readonly string editedEmail = PageHelper.EditedEmailAddress();
 
@@ -76,10 +77,30 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
             lhdPage.FillInLHDDetailsAndClickCreate();
         }
 
+        [Given(@"I have an existing Local Health District")]
+        public void GivenIHaveAnExistingLocalHealthDistrict()
+        {
+            menuPage.SelectLHDsFromToggleMenu();
+            lhdPage.ClickonCreateNewLHD();
+            lhdPage.FillInLHDDetailsAndClickCreate();
+        }
+
+        [When(@"I edit the Local Health District")]
+        public void WhenIEditTheLocalHealthDistrict()
+        {
+            lhdPage.SearchAndEditTheLHD();
+        }
+
         [Then(@"I should see the LHD created successfully")]
         public void ThenIShouldSeeTheLhdCreatedSuccessfully()
         {
             lhdPage.SearchAndVerifyTheCreatedLHD();
+        }
+
+        [Then(@"I should see the changes made for the Local Health District")]
+        public void ThenIShouldSeeTheChangesMadeForTheLocalHealthDistrict()
+        {
+            lhdPage.SearchAndVerifyTheEditedLHD();
         }
 
         [When(@"I create new CTU from the menu option")]
@@ -129,6 +150,26 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
             menuPage.SelectHospitalListingFromToggleMenu();
             hospitalPage.ClickonCreateNewHospital();
             hospitalPage.FillInHospitalDetailsAndClickCreate();
+        }
+
+        [Given(@"I have an existing hospital")]
+        public void GivenIHaveAnExistingHospital()
+        {
+            menuPage.SelectHospitalListingFromToggleMenu();
+            hospitalPage.ClickonCreateNewHospital();
+            hospitalPage.FillInHospitalDetailsAndClickCreate();
+        }
+
+        [When(@"I edit the hospital")]
+        public void WhenIEditTheHospital()
+        {
+            hospitalPage.SearchAndEditHospital();
+        }
+
+        [Then(@"I should see the changes made for the hospital")]
+        public void ThenIShouldSeeTheChangesMadeForTheHospital()
+        {
+            hospitalPage.SearchAndVerifyTheEditedHospital();
         }
 
         [Then(@"I should see the Hospital created successfully")]
@@ -291,6 +332,19 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
         public void ThenIDeleteTheExtensionCreated()
         {
             extensionsPage.DeleteTheCreatedExtension();
+        }
+
+        [When(@"I see the sign off history page")]
+        public void WhenISeeTheSignOffHistoryPage()
+        {
+            menuPage.ClickOnSignOffHistory();
+        }
+
+        [Then(@"I should see the sign off date listed for this CTU")]
+        public void ThenIShouldSeeTheSignOffDateListedForThisCTU()
+        {
+            signOffHistoryPage.RunReportForCurrentReportPeriod(context.ReportPeriod);
+            signOffHistoryPage.SearchAndVerifySignOffHistoryDetails();
         }
     }
 }

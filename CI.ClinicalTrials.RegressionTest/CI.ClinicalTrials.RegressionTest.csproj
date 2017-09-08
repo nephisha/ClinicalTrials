@@ -105,6 +105,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MySiteTrials.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\SignOffHistory.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SignOffHistory.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\SignOffTrials.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -131,6 +136,7 @@
     <Compile Include="Pages\Administrator\ExtensionsPage.cs" />
     <Compile Include="Pages\Administrator\ReconciliationPage.cs" />
     <Compile Include="Pages\Administrator\ReportPeriodPage.cs" />
+    <Compile Include="Pages\Administrator\SignOffHistoryPage.cs" />
     <Compile Include="Pages\EmailLogPage.cs" />
     <Compile Include="Pages\HomePage.cs" />
     <Compile Include="Pages\Administrator\HospitalPage.cs" />
@@ -182,6 +188,10 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>MySiteTrials.feature.cs</LastGenOutput>
     </None>
+    <None Include="Features\SignOffHistory.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>SignOffHistory.feature.cs</LastGenOutput>
+    </None>
     <None Include="Features\SignOffTrials.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>SignOffTrials.feature.cs</LastGenOutput>
@@ -195,28 +205,117 @@
       <LastGenOutput>SubmitClinicalTrials.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
-    <None Include="Scripts\ci_uat_test.bat" />
+    <None Include="Scripts\ci_uat_test.bat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Scripts\RunTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Tools\NUnit3_Console\nunit-agent-x86.exe.config">
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\NUnit3_Console\nunit-agent.exe.config" />
-    <None Include="Tools\NUnit3_Console\nunit.engine.addins" />
-    <None Include="Tools\NUnit3_Console\nunit3-console.exe.config" />
+    <None Include="Tools\NUnit3_Console\nunit-agent.exe.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\NUnit3_Console\nunit.engine.addins">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\NUnit3_Console\nunit3-console.exe.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Tools\Specflow\app.config">
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Tools\Specflow\plugincompability.config" />
-    <None Include="Tools\Specflow\specflow.exe.config" />
-    <None Include="Tools\Specflow\TechTalk.SpecFlow.targets" />
-    <None Include="Tools\Specflow\TechTalk.SpecFlow.tasks" />
+    <None Include="Tools\Specflow\plugincompability.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\Specflow\specflow.exe.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\Specflow\TechTalk.SpecFlow.targets">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\Specflow\TechTalk.SpecFlow.tasks">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Tools\NUnit3_Console\nunit.engine.addin.xml" />
-    <Content Include="Tools\NUnit3_Console\nunit.engine.api.xml" />
+    <None Include="Tools\NUnit3_Console\addins\nunit-project-loader.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\NUnit3_Console\addins\nunit-v2-result-writer.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\NUnit3_Console\addins\nunit.core.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\NUnit3_Console\addins\nunit.core.interfaces.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\NUnit3_Console\addins\nunit.v2.driver.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\NUnit3_Console\addins\vs-project-loader.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\NUnit3_Console\Mono.Cecil.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\NUnit3_Console\nunit-agent-x86.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\NUnit3_Console\nunit-agent.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\NUnit3_Console\nunit.engine.addin.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\NUnit3_Console\nunit.engine.api.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\NUnit3_Console\nunit.engine.api.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\NUnit3_Console\nunit.engine.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\NUnit3_Console\nunit3-console.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="chromedriver.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\Specflow\Gherkin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Tools\Specflow\Microsoft.Build.Utilities.v3.5.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\Specflow\Newtonsoft.Json.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\Specflow\specflow.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\Specflow\TechTalk.SpecFlow.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\Specflow\TechTalk.SpecFlow.Generator.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\Specflow\TechTalk.SpecFlow.Parser.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\Specflow\TechTalk.SpecFlow.Reporting.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="Tools\Specflow\TechTalk.SpecFlow.Utils.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Tools\NUnit3_Console\addins\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Resources\ErrorMessages.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -253,8 +352,10 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\NUnit3TestAdapter.3.8.0\build\net35\NUnit3TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit3TestAdapter.3.8.0\build\net35\NUnit3TestAdapter.props'))" />
     <Error Condition="!Exists('..\packages\Selenium.WebDriver.ChromeDriver.2.31.0\build\Selenium.WebDriver.ChromeDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.WebDriver.ChromeDriver.2.31.0\build\Selenium.WebDriver.ChromeDriver.targets'))" />
+    <Error Condition="!Exists('..\packages\OctoPack.3.6.1\build\OctoPack.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\OctoPack.3.6.1\build\OctoPack.targets'))" />
   </Target>
   <Import Project="..\packages\Selenium.WebDriver.ChromeDriver.2.31.0\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('..\packages\Selenium.WebDriver.ChromeDriver.2.31.0\build\Selenium.WebDriver.ChromeDriver.targets')" />
+  <Import Project="..\packages\OctoPack.3.6.1\build\OctoPack.targets" Condition="Exists('..\packages\OctoPack.3.6.1\build\OctoPack.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

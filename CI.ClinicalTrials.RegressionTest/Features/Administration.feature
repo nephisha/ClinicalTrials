@@ -39,6 +39,13 @@ Scenario: 27358 - Create new Hospital
 	Then I should see the Hospital created successfully
 
 @Users @Regression
+Scenario: 27359 - Modify Hospital
+	Given I login to Clinical Trial Application as Administrator
+	And I have an existing hospital
+	When I edit the hospital
+	Then I should see the changes made for the hospital
+
+@Users @Regression
 Scenario: 27369 - Create new Report Period
 	Given I login to Clinical Trial Application as Administrator
 	When I create new Report Period from the menu option
@@ -123,3 +130,10 @@ Scenario: 27357 Deprecate Clinical Trial Unit
 	And I have an existing clinical trial unit
 	When I deprecate the clinical trial unit
 	Then I should not see the clinical trial unit in dropdowns
+
+@Users @Regression @Working
+Scenario: 27354 - Edit Local Health District
+	Given I login to Clinical Trial Application as Administrator
+	And I have an existing Local Health District
+	When I edit the Local Health District
+	Then I should see the changes made for the Local Health District

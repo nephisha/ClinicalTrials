@@ -68,14 +68,19 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         [FindsBy(How = How.XPath, Using = "//tr[@class='trial-details-edit']/td/div[3]/div[3]/p/span/label")]
         private IWebElement TrialSummary_RecruitmentOpen { get; set; }
 
-        public void SearchAndSignOffTrials(string contextTrialTitle)
+        [FindsBy(How = How.XPath, Using = "//table[@id='signoffTrialList']/tbody/tr[1]/td[2]")]
+        private IWebElement SignOffTrialSummaryResult_ReportPeriod { get; set; }
+
+        public string SearchAndSignOffTrials(string contextTrialTitle)
         {
             SignOffTrialSummarySearch.SendKeys(contextTrialTitle);
             SignOffTrialSummaryResult_Title.Text.Should().BeEquivalentTo(contextTrialTitle);
+            var reportPeriod = SignOffTrialSummaryResult_ReportPeriod.Text;
             NewFTE.Click();
             FTEInput.SendKeys("2");
             SignOffCheckBox.Click();
             Submit.Click();
+            return reportPeriod;
         }
 
         public void VerifySignedOffTrials(string contextTrialTitle)

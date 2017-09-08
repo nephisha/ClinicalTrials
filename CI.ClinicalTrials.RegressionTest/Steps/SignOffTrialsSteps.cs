@@ -24,8 +24,9 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
         {
             menuPage.SelectSignOffMySiteTrialsFromToggleMenu();
             Console.WriteLine(context.TrialTitle);
-            signOffMySiteTrialsPage.SearchAndSignOffTrials(context.TrialTitle);
+            context.ReportPeriod = signOffMySiteTrialsPage.SearchAndSignOffTrials(context.TrialTitle);
             signOffMySiteTrialsPage.VerifySignedOffTrials(context.TrialTitle);
+            
         }
 
         [Then(@"I should verify the trial summary details")]

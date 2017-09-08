@@ -35,6 +35,9 @@ namespace CI.ClinicalTrials.RegressionTest.Pages.Administrator
         [FindsBy(How = How.XPath, Using = "//a[@class='btn']")]
         private IWebElement BackToList { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "//a[@class='btn btn-mini'][1]")]
+        private IWebElement EditHospital { get; set; }
+
         [FindsBy(How = How.XPath, Using = "//input[@type='search']")]
         private IWebElement HospitalSearch { get; set; }
 
@@ -60,6 +63,23 @@ namespace CI.ClinicalTrials.RegressionTest.Pages.Administrator
         {
             HospitalSearch.SendKeys(hospital);
             HospitalSearchResult_Name.Text.Should().BeEquivalentTo(hospital);
+        }
+
+        public void SearchAndEditHospital()
+        {
+            HospitalSearch.SendKeys(hospital);
+            PageHelper.WaitForElement(Driver, EditHospital).Click();
+            PageHelper.WaitForElement(Driver, Text).Click();
+            Text.Clear();
+            Text.SendKeys("Edited"+hospital);
+            CreateHospitalButton.Click();
+            PageHelper.WaitForElement(Driver, BackToList).Click();
+        }
+
+        public void SearchAndVerifyTheEditedHospital()
+        {
+            PageHelper.WaitForElement(Driver, HospitalSearch).SendKeys("Edited"+hospital);
+            HospitalSearchResult_Name.Text.Should().BeEquivalentTo("Edited" + hospital);
         }
     }
 }
