@@ -139,17 +139,26 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         [FindsBy(How = How.XPath, Using = "//div[@class='alert alert-info']/h4")]
         private IWebElement EmptyParticipatDetailsErrorMessage { get; set; }
 
+        /// <summary>
+        /// Verifies my site trials page is loaded.
+        /// </summary>
         public void VerifyMySiteTrialsPageIsLoaded()
         {
             PageHelper.WaitForElement(Driver, MySiteTrialsTitle).Text.Should()
                 .BeEquivalentTo("My Site Trials");
         }
 
+        /// <summary>
+        /// Selects a clinical trial unit.
+        /// </summary>
         public void SelectAClinicalTrialUnit()
         {
             PageHelper.PickRandomValueFromDropdown(CTUDropdown);
         }
 
+        /// <summary>
+        /// Verifies the report period details.
+        /// </summary>
         public void VerifyReportPeriodDetails()
         {
             ReportPeriodHeading.Text.Should()
@@ -157,12 +166,20 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
                     @"Report Period: (\d+)[-.\/](\d+)[-.\/](\d+) - (\d+)[-.\/](\d+)[-.\/](\d+) Submission Due Date: (\d+)[-.\/](\d+)[-.\/](\d+)");
         }
 
+        /// <summary>
+        /// Search and verify the added trial.
+        /// </summary>
+        /// <param name="context">The context.</param>
         public void SearchAndVerifyTheAddedTrial(string context)
         {
             MySiteTrialsSearch.SendKeys(context);
             CTUMySiteTrialResult_Acronym.Text.Should().Contain(context);
         }
 
+        /// <summary>
+        /// Removes a trial.
+        /// </summary>
+        /// <param name="contextTrialTitle">The context trial title.</param>
         public void RemoveATrial(string contextTrialTitle)
         {
             MySiteTrialsSearch.Clear();
@@ -174,6 +191,10 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             ConfirmRemoveButton.Click();
         }
 
+        /// <summary>
+        /// Search and verify the removed trial.
+        /// </summary>
+        /// <param name="contextTrialTitle">The context trial title.</param>
         public void SearchAndVerifyTheRemovedTrial(string contextTrialTitle)
         {
             Driver.Navigate().Refresh();
@@ -182,12 +203,20 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             SearchTrialResult.Text.Should().BeEquivalentTo("No results to show");
         }
 
+        /// <summary>
+        /// Search and verify the created trial.
+        /// </summary>
+        /// <param name="context">The context.</param>
         public void SearchAndVerifyTheCreatedTrial(string context)
         {
             MySiteTrialsSearch.SendKeys(context);
             CTUMySiteTrialResult_Title.Text.Should().Contain(context);
         }
 
+        /// <summary>
+        /// Abandons the created trial.
+        /// </summary>
+        /// <param name="contextTrialTitle">The context trial title.</param>
         public void AbandonTheCreatedTrial(string contextTrialTitle)
         {
             CreatedTrialRecord.Click();
@@ -206,6 +235,9 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             ConfirmArchiveButton.Click();
         }
 
+        /// <summary>
+        /// Fills in mandatory trial dates.
+        /// </summary>
         private void FIllInMandatoryTrialDates()
         {
             Thread.Sleep(TimeSpan.FromSeconds(5));
@@ -214,6 +246,9 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             PageHelper.PickRandomValueFromDropdown(SiteTarget_ExactDropdown);
         }
 
+        /// <summary>
+        /// Fills in trial details and activity.
+        /// </summary>
         private void FillInTrialDetailsAndActivity()
         {
             PrincipalInvestigator.SendKeys("RgPrincipal");
@@ -221,6 +256,10 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             Site_Responsible.Click();
         }
 
+        /// <summary>
+        /// Archives the abandoned trial.
+        /// </summary>
+        /// <param name="contextTrialTitle">The context trial title.</param>
         public void ArchiveTheAbandonedTrial(string contextTrialTitle)
         {
             Driver.Navigate().Refresh();
@@ -229,6 +268,11 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             SearchTrialResult.Text.Should().BeEquivalentTo("No results to show");
         }
 
+        /// <summary>
+        /// Applies the filter and verify trial data.
+        /// </summary>
+        /// <param name="filter">The filter.</param>
+        /// <param name="contextTrialTitle">The context trial title.</param>
         public void ApplyFilterAndVerifyTrialData(string filter, string contextTrialTitle)
         {
             Driver.Navigate().Refresh();
@@ -241,6 +285,10 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             CTUMySiteTrialResult_Title.Text.Should().BeEquivalentTo(contextTrialTitle);
         }
 
+        /// <summary>
+        /// Fills in the trial data and save.
+        /// </summary>
+        /// <param name="contextTrialTitle">The context trial title.</param>
         public void FillinTrialDataAndSave(string contextTrialTitle)
         {
             CreatedTrialRecord.Click();
@@ -250,6 +298,9 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             SaveAll.Click();
         }
 
+        /// <summary>
+        /// Fills in cancer participants data.
+        /// </summary>
         private void FillInCancerParticipantsData()
         {
             PreScreened.SendKeys("5");
@@ -261,6 +312,9 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             Discontinued.SendKeys("1");
         }
 
+        /// <summary>
+        /// Fills in trial date details.
+        /// </summary>
         private void FillInTrialDateDetails()
         {
             FIllInMandatoryTrialDates();
@@ -269,6 +323,10 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             PageHelper.WaitForElement(Driver, CalenderToday).Click();
         }
 
+        /// <summary>
+        /// Search and open the signed off trial.
+        /// </summary>
+        /// <param name="contextTrialTitle">The context trial title.</param>
         public void SearchAndOpenTheSignedOffTrial(string contextTrialTitle)
         {
             PageHelper.WaitForElement(Driver, MySiteTrialsSearch);
@@ -276,11 +334,17 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             SearchTrialResult.Click();
         }
 
+        /// <summary>
+        /// Verifies the trial data is disabled.
+        /// </summary>
         public void VerifyTheTrialDataIsDisabled()
         {
             PageHelper.WaitForElement(Driver, SignOffTrialDataMessage).Text.Should().BeEquivalentTo(ErrorMessages.SignedOffTrialData);
         }
 
+        /// <summary>
+        /// Saves the empty trial details.
+        /// </summary>
         public void SaveEmptyTrialDetails()
         {
             CreatedTrialRecord.Click();
@@ -289,23 +353,35 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             SaveTrialDetails.Click();
         }
 
+        /// <summary>
+        /// Verifies the trial detail mandatory error messages.
+        /// </summary>
         public void VerifyTrialDetailMandatoryErrorMessages()
         {
             PageHelper.WaitForElement(Driver, EmptyTrialDetailsMessage).Text.Should()
                 .BeEquivalentTo(ErrorMessages.EmptyTrialDetailMessage);
         }
 
+        /// <summary>
+        /// Saves the empty participant details.
+        /// </summary>
         public void SaveEmptyParticipantDetails()
         {
             PageHelper.WaitForElement(Driver, SaveAll).Click();
         }
 
+        /// <summary>
+        /// Verifies the participant mandatory error messages.
+        /// </summary>
         public void VerifyParticipantMandatoryErrorMessages()
         {
             PageHelper.WaitForElement(Driver, EmptyTrialDetailsMessage).Text.Should()
                 .BeEquivalentTo(ErrorMessages.EmptyParticipantErrorMessage);
         }
 
+        /// <summary>
+        /// Fills in trial date and activity details.
+        /// </summary>
         public void FillInTrialDateAndActivityDetails()
         {
             FillInTrialDateDetails();

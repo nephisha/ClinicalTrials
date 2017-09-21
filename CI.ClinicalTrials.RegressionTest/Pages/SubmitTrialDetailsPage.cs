@@ -142,7 +142,7 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         [FindsBy(How = How.XPath, Using = "//button[@value='Cancel']")]
         private IWebElement CancelButton { get; set; }
 
-        public void EnterScientificTitle(string text)
+        private void EnterScientificTitle(string text)
         {
             ScientificTitle.Click();
             ScientificTitle.SendKeys("Title" + text);
@@ -154,12 +154,12 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             PublicTitle.SendKeys("Public Title" + title);
         }
 
-        public void SelectASponsor(string sponsorType)
+        private void SelectASponsor(string sponsorType)
         {
             PageHelper.SelectValueFromDropdown(Sponsor, sponsorType);
         }
 
-        public void SelectACooperativeGroup()
+        private void SelectACooperativeGroup()
         {
             CooperativeGroups.Click();
             PageHelper.PickRandomValueFromDropList(CoopGroupResult);
@@ -175,28 +175,28 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             RegistrationNumber.SendKeys("Rego" + text);
         }
 
-        public void SelectAPhase()
+        private void SelectAPhase()
         {
             PageHelper.PickRandomValueFromDropdown(Phase);
         }
 
-        public void SelectAGroup()
+        private void SelectAGroup()
         {
             PageHelper.PickRandomValueFromDropList(Group);
         }
 
-        public void SelectATumourCategory()
+        private void SelectATumourCategory()
         {
             PageHelper.PickRandomValueFromDropdown(TumourCategory);
         }
 
-        public void SelectATumourGroup()
+        private void SelectATumourGroup()
         {
             TumourGroup.Click();
             PageHelper.PickRandomValueFromDropList(TumourGroupResult);
         }
 
-        public void SelectStagesOfDisease()
+        private void SelectStagesOfDisease()
         {
             StagesOfDisease.Click();
             PageHelper.PickRandomValueFromDropList(DiseaseStageResult);
@@ -278,6 +278,11 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             AddToMySiteListSectionYes.Click();
         }
 
+        /// <summary>
+        /// Fills up trial details.
+        /// </summary>
+        /// <param name="title">The title.</param>
+        /// <param name="sponsor">The sponsor.</param>
         public void FillUpTrialDetails(string title, string sponsor)
         {
             EnterScientificTitle(title);
@@ -297,7 +302,10 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             SelectBioMarkerSubstudy();
             SelectAMolecularTarget();
         }
-        
+
+        /// <summary>
+        /// Fills up bio marker details.
+        /// </summary>
         public void FillUpBioMarkerDetails()
         {
             IsthePresenceOfBiomarkerRequiredForTrialEligibility();
@@ -306,6 +314,10 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
 
         }
 
+        /// <summary>
+        /// Fills the trial type details.
+        /// </summary>
+        /// <param name="design">The design.</param>
         public void FillUpTrialType(string design)
         {
             SelectPrimaryPurposeOfTrial();
@@ -317,6 +329,10 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             SelectATypeOfIntervention();
         }
 
+        /// <summary>
+        /// Fills up portfolio inclusion.
+        /// </summary>
+        /// <param name="category">The category.</param>
         public void FillUpPortfolioInclusion(string category)
         {
             if (category.ToLower().Equals("portfolio"))
@@ -336,12 +352,18 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             }
         }
 
+        /// <summary>
+        /// Fills up reporting group.
+        /// </summary>
         public void FillUpReportingGroup()
         {
             SelectAddToMyTrialsList();
             SelectaActiveSite();
         }
 
+        /// <summary>
+        /// Submits the trial.
+        /// </summary>
         public void SubmitTrial()
         {
             SubmitTrialButton.Click();
@@ -358,6 +380,13 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             }
         }
 
+        /// <summary>
+        /// Fills all the trial details.
+        /// </summary>
+        /// <param name="title">The title.</param>
+        /// <param name="sponsor">The sponsor.</param>
+        /// <param name="design">The design.</param>
+        /// <param name="category">The category.</param>
         public void FillallTheTrialDetails(string title, string sponsor, string design, string category)
         {
             FillUpTrialDetails(title, sponsor);
@@ -367,11 +396,17 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             FillUpReportingGroup();
         }
 
+        /// <summary>
+        /// Cancels the trial.
+        /// </summary>
         public void CancelTrial()
         {
             CancelButton.Click();
         }
 
+        /// <summary>
+        /// Saves the edited trial.
+        /// </summary>
         public void SaveTheEditedTrial()
         {
             ChangeNickName();

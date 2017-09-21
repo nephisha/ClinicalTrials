@@ -19,6 +19,9 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             select.SelectByText(hospital);
         }
 
+        /// <summary>
+        /// Searches using the search box at the top navigation menu.
+        /// </summary>
         public void SearchByTopNavigationMenu()
         {
             SearchIcon.Click();

@@ -94,6 +94,9 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         [FindsBy(How = How.Id, Using = "PhoneNumber")]
         private IWebElement ProfilePhoneNumber { get; set; }
 
+        /// <summary>
+        /// Clicks the toggle menu.
+        /// </summary>
         public void ClickOnToggleMenu()
         {
             Thread.Sleep(TimeSpan.FromMilliseconds(500));
@@ -101,24 +104,36 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             Thread.Sleep(TimeSpan.FromMilliseconds(500));
         }
 
+        /// <summary>
+        /// Selects the submit a trial from toggle menu.
+        /// </summary>
         public void SelectSubmitATrialFromToggleMenu()
         {
             ClickOnToggleMenu();
             PageHelper.WaitForElement(Driver, SubmitATrial).Click();
         }
 
+        /// <summary>
+        /// Selects the master trial from toggle menu.
+        /// </summary>
         public void SelectMasterTrialFromToggleMenu()
         {
             ClickOnToggleMenu();
             PageHelper.WaitForElement(Driver, MasterTrials).Click();
         }
 
+        /// <summary>
+        /// Selects the sign off my site trials from toggle menu.
+        /// </summary>
         public void SelectSignOffMySiteTrialsFromToggleMenu()
         {
             ClickOnToggleMenu();
             PageHelper.WaitForElement(Driver, SignOffMySiteTrials).Click();
         }
 
+        /// <summary>
+        /// Selects the users from toggle menu.
+        /// </summary>
         public void SelectUsersFromToggleMenu()
         {
             ClickOnToggleMenu();
@@ -126,6 +141,9 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             PageHelper.WaitForElement(Driver, Users).Click();
         }
 
+        /// <summary>
+        /// Selects the sponsors from toggle menu.
+        /// </summary>
         public void SelectSponsorsFromToggleMenu()
         {
             ClickOnToggleMenu();
@@ -133,6 +151,9 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             PageHelper.WaitForElement(Driver, Sponsors).Click();
         }
 
+        /// <summary>
+        /// Selects the Local Health District from toggle menu.
+        /// </summary>
         public void SelectLHDsFromToggleMenu()
         {
             ClickOnToggleMenu();
@@ -140,6 +161,9 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             PageHelper.WaitForElement(Driver, LHDs).Click();
         }
 
+        /// <summary>
+        /// Selects the Clinical Trial Unit from toggle menu.
+        /// </summary>
         public void SelectCTUsFromToggleMenu()
         {
             ClickOnToggleMenu();
@@ -147,12 +171,19 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             PageHelper.WaitForElement(Driver, CTUs).Click();
         }
 
+        /// <summary>
+        /// Selects my site trials from toggle menu.
+        /// </summary>
         public void SelectMySiteTrialsFromToggleMenu()
         {
             ClickOnToggleMenu();
             PageHelper.WaitForElement(Driver, MySiteTrials).Click();
         }
 
+        /// <summary>
+        /// Determines whether [my site trials displayed].
+        /// </summary>
+        /// <returns><c>true</c> if [my site trials displayed]; otherwise, <c>false</c>.</returns>
         public bool IsMySiteTrialsDisplayed()
         {
             try
@@ -166,6 +197,11 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             }
         }
 
+        /// <summary>
+        /// Verifies the edited user.
+        /// </summary>
+        /// <param name="type">User type.</param>
+        /// <param name="editedEmail">The edited email.</param>
         public void VerifyTheEditedUser(string type, string editedEmail)
         {
             ClickOnToggleMenu();
@@ -176,6 +212,9 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             ProfileEmailAddress.GetAttribute("value").Should().BeEquivalentTo(editedEmail);
         }
 
+        /// <summary>
+        /// Selects the hospital listing from toggle menu.
+        /// </summary>
         public void SelectHospitalListingFromToggleMenu()
         {
             ClickOnToggleMenu();
@@ -183,6 +222,9 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             PageHelper.WaitForElement(Driver, HospitalListing).Click();
         }
 
+        /// <summary>
+        /// Selects the report period from toggle menu.
+        /// </summary>
         public void SelectReportPeriodFromToggleMenu()
         {
             ClickOnToggleMenu();
@@ -191,6 +233,9 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             PageHelper.WaitForElement(Driver, ReportPeriodsSubMenu).Click();
         }
 
+        /// <summary>
+        /// Selects the report period extension from toggle menu.
+        /// </summary>
         public void SelectReportPeriodExtensionFromToggleMenu()
         {
             ClickOnToggleMenu();
@@ -199,6 +244,9 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             PageHelper.WaitForElement(Driver, Extensions).Click();
         }
 
+        /// <summary>
+        /// Logs off the application.
+        /// </summary>
         public void LogOffTheApplication()
         {
             ToggleMenu.Click();
@@ -206,6 +254,9 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             PageHelper.WaitForElement(Driver, LogOff).Click();
         }
 
+        /// <summary>
+        /// Selects the email logs from toggle menu.
+        /// </summary>
         public void SelectEmailLogsFromToggleMenu()
         {
             ToggleMenu.Click();
@@ -213,6 +264,9 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             PageHelper.WaitForElement(Driver, EmailLogs).Click();
         }
 
+        /// <summary>
+        /// Selects the reconciliation from toggle menu.
+        /// </summary>
         public void SelectReconciliationFromToggleMenu()
         {
             ToggleMenu.Click();
@@ -220,7 +274,10 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             PageHelper.WaitForElement(Driver, Reconciliation).Click();
         }
 
-        public void ClickOnSignOffHistory()
+        /// <summary>
+        /// Selects the sign off history from toggle menu.
+        /// </summary>
+        public void SelectSignOffHistoryFromToggleMenu()
         {
             ClickOnToggleMenu();
             PageHelper.WaitForElement(Driver, Administration).Click();

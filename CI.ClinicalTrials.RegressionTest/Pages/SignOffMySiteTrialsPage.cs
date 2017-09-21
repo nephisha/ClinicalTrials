@@ -71,6 +71,11 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         [FindsBy(How = How.XPath, Using = "//table[@id='signoffTrialList']/tbody/tr[1]/td[2]")]
         private IWebElement SignOffTrialSummaryResult_ReportPeriod { get; set; }
 
+        /// <summary>
+        /// Search and sign off trials.
+        /// </summary>
+        /// <param name="contextTrialTitle">The context trial title.</param>
+        /// <returns>System.String.</returns>
         public string SearchAndSignOffTrials(string contextTrialTitle)
         {
             SignOffTrialSummarySearch.SendKeys(contextTrialTitle);
@@ -83,6 +88,10 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             return reportPeriod;
         }
 
+        /// <summary>
+        /// Verifies the signed off trials.
+        /// </summary>
+        /// <param name="contextTrialTitle">The context trial title.</param>
         public void VerifySignedOffTrials(string contextTrialTitle)
         {
             Thread.Sleep(TimeSpan.FromSeconds(3));
@@ -90,6 +99,10 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             SignOffTrialHistoryResult_Title.Text.Should().BeEquivalentTo(contextTrialTitle);
         }
 
+        /// <summary>
+        /// Verifies the trial summary details.
+        /// </summary>
+        /// <param name="contextTrialTitle">The context trial title.</param>
         public void VerifyTrialSummaryDetails(string contextTrialTitle)
         {
             PageHelper.WaitForElement(Driver, SignOffTrialSummarySearch);
@@ -108,6 +121,10 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             TrialSummary_PatientsDiscontinued.Text.Should().BeEquivalentTo("1");
         }
 
+        /// <summary>
+        /// Determines whether is sign off option displayed.
+        /// </summary>
+        /// <returns><c>true</c> if [is sign off option displayed]; otherwise, <c>false</c>.</returns>
         public bool IsSignOffOptionDisplayed()
         {
             return SignOffDisclaimer.Text.Contains("Report Period Sign-Off Disclaimer");

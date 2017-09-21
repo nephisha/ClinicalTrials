@@ -37,11 +37,17 @@ namespace CI.ClinicalTrials.RegressionTest.Pages.Administrator
         [FindsBy(How = How.Id, Using = "regSaveLHDButton")]
         private IWebElement SaveLHDButton { get; set; }
 
+        /// <summary>
+        /// Click to create new LHD.
+        /// </summary>
         public void ClickonCreateNewLHD()
         {
             CreateNewLHD.Click();
         }
 
+        /// <summary>
+        /// Fills in LHD details and click create.
+        /// </summary>
         public void FillInLHDDetailsAndClickCreate()
         {
             lName = "RegTestLHD" + PageHelper.RandomNumber(4);
@@ -52,12 +58,18 @@ namespace CI.ClinicalTrials.RegressionTest.Pages.Administrator
             BackToListButton.Click();
         }
 
+        /// <summary>
+        /// Searches and verify the created LHD.
+        /// </summary>
         public void SearchAndVerifyTheCreatedLHD()
         {
             LHDSearch.SendKeys(lName);
             LHDSearchResult_Name.Text.Should().BeEquivalentTo(lName);
         }
 
+        /// <summary>
+        /// Searches and edit the LHD.
+        /// </summary>
         public void SearchAndEditTheLHD()
         {
             PageHelper.WaitForElement(Driver, LHDSearch).Click();
@@ -70,6 +82,9 @@ namespace CI.ClinicalTrials.RegressionTest.Pages.Administrator
             BackToListButton.Click();
         }
 
+        /// <summary>
+        /// Searches and verify the edited LHD.
+        /// </summary>
         public void SearchAndVerifyTheEditedLHD()
         {
             LHDSearch.SendKeys("Edited" + lName);

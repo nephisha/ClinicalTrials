@@ -83,11 +83,18 @@ namespace CI.ClinicalTrials.RegressionTest.Pages.Administrator
         [FindsBy(How = How.ClassName, Using = "btn")]
         private IWebElement BackToListButton { get; set; }
 
+        /// <summary>
+        /// Click to create new user.
+        /// </summary>
         public void ClickonCreateNewUser()
         {
             CreateNewUser.Click();
         }
 
+        /// <summary>
+        /// Fills in user details and click create.
+        /// </summary>
+        /// <param name="user">The user.</param>
         public void FillInUserDetailsAndClickCreate(string user)
         {
             uName = "Regression"+ user + PageHelper.RandomNumber(3);
@@ -119,6 +126,10 @@ namespace CI.ClinicalTrials.RegressionTest.Pages.Administrator
             BackToListButton.Click();
         }
 
+        /// <summary>
+        /// Search and verify the created user.
+        /// </summary>
+        /// <param name="user">The user.</param>
         public void SearchAndVerifyTheCreatedUser(string user)
         {
             UserSearch.SendKeys(uName);
@@ -126,6 +137,12 @@ namespace CI.ClinicalTrials.RegressionTest.Pages.Administrator
             UserSearchResult_Role.Text.Should().Contain(user, "Searched User Role doesn't match up");
         }
 
+        /// <summary>
+        /// Search and edit the created user.
+        /// </summary>
+        /// <param name="fromUser">From user.</param>
+        /// <param name="toUser">To user.</param>
+        /// <param name="editedEmail">The edited email.</param>
         public void SearchAndEditTheCreatedUser(string fromUser, string toUser, string editedEmail)
         {
             UserSearch.SendKeys(uName);
@@ -164,12 +181,18 @@ namespace CI.ClinicalTrials.RegressionTest.Pages.Administrator
             BackToListButton.Click();
         }
 
+        /// <summary>
+        /// Search and login as the edited user.
+        /// </summary>
         public void SearchAndLoginAsTheEditedUser()
         {
             UserSearch.SendKeys(uName);
             LoginAs.Click();
         }
 
+        /// <summary>
+        /// Disables the user.
+        /// </summary>
         public void DisableTheUser()
         {
             try
@@ -192,11 +215,18 @@ namespace CI.ClinicalTrials.RegressionTest.Pages.Administrator
             }
         }
 
+        /// <summary>
+        /// Gets the created user details.
+        /// </summary>
         public Tuple<string, string> GetCreatedUserDetails()
         {
             return Tuple.Create(uName, uniqueEmail);
         }
 
+        /// <summary>
+        /// Searches the existing user.
+        /// </summary>
+        /// <param name="username">The username.</param>
         public void SearchTheExistingUser(string username)
         {
             UserSearch.SendKeys(username);

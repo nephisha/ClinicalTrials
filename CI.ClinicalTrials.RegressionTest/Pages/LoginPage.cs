@@ -19,11 +19,19 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         [FindsBy(How = How.XPath, Using = "//div[@class='validation-summary-errors alert alert-error']/span")]
         private IWebElement LoginError { get; set; }
 
+        /// <summary>
+        /// Launches the browser with the given URL.
+        /// </summary>
         public void LaunchTheApplication()
         {
             Driver.Navigate().GoToUrl(ConfigurationManager.AppSettings["URL"]);
         }
 
+        /// <summary>
+        /// Logins to application.
+        /// </summary>
+        /// <param name="user">The user.</param>
+        /// <param name="pwd">The password.</param>
         public void LoginToApplication(string user, string pwd)
         {
             UserName.SendKeys(user);
@@ -31,6 +39,10 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             Submit.Click();
         }
 
+        /// <summary>
+        /// Gets the login validation error.
+        /// </summary>
+        /// <value>The login validation error.</value>
         public string LoginValidationError => LoginError.Text;
     }
 }

@@ -8,10 +8,18 @@ using OpenQA.Selenium.Support.UI;
 
 namespace CI.ClinicalTrials.RegressionTest.CommonMethods
 {
+    /// <summary>
+    /// List of all helper functions available
+    /// </summary>
     public static class PageHelper
     {
         private static readonly Random Random = new Random();
 
+        /// <summary>
+        /// Selects the value from drop list.
+        /// </summary>
+        /// <param name="dropdownElement">The dropdown element.</param>
+        /// <param name="selectedTextValue">The selected text value.</param>
         public static void SelectValueFromDropList(IList<IWebElement> dropdownElement, string selectedTextValue)
         {
             var dSize = dropdownElement.Count;
@@ -28,6 +36,11 @@ namespace CI.ClinicalTrials.RegressionTest.CommonMethods
             }
         }
 
+        /// <summary>
+        /// Picks the random value from drop list.
+        /// </summary>
+        /// <param name="droplistElement">The droplist element.</param>
+        /// <param name="excludedList">The excluded list.</param>
         public static void PickRandomValueFromDropList(IList<IWebElement> droplistElement, List<string> excludedList = null)
         {
             var list = new List<string>();
@@ -59,6 +72,12 @@ namespace CI.ClinicalTrials.RegressionTest.CommonMethods
             }
         }
 
+        /// <summary>
+        /// Waits for element to load.
+        /// </summary>
+        /// <param name="driver">The driver.</param>
+        /// <param name="element">The element.</param>
+        /// <returns>IWebElement.</returns>
         public static IWebElement WaitForElement(IWebDriver driver, IWebElement element)
         {
             Thread.Sleep(TimeSpan.FromMilliseconds(1000));
@@ -67,13 +86,23 @@ namespace CI.ClinicalTrials.RegressionTest.CommonMethods
             return element;
         }
 
-        public static void SelectValueFromDropdown(IWebElement category, string type)
+        /// <summary>
+        /// Selects the value from dropdown.
+        /// </summary>
+        /// <param name="selectWebElement">The select web element.</param>
+        /// <param name="type">The type.</param>
+        public static void SelectValueFromDropdown(IWebElement selectWebElement, string type)
         {
-            var select = new SelectElement(category);
+            var select = new SelectElement(selectWebElement);
             select.SelectByText(type);
         }
 
-        
+
+        /// <summary>
+        /// Generates a Random String.
+        /// </summary>
+        /// <param name="length">The length.</param>
+        /// <returns>System.String.</returns>
         public static string RandomString(int length)
         {
             //var randomGuid = Guid.NewGuid();
@@ -83,6 +112,11 @@ namespace CI.ClinicalTrials.RegressionTest.CommonMethods
               .Select(s => s[Random.Next(s.Length)]).ToArray());
         }
 
+        /// <summary>
+        /// Generates a Random Number.
+        /// </summary>
+        /// <param name="length">The length.</param>
+        /// <returns>System.String.</returns>
         public static string RandomNumber(int length)
         {
             const string numbers = "0123456789";
@@ -90,6 +124,10 @@ namespace CI.ClinicalTrials.RegressionTest.CommonMethods
                 .Select(s => s[Random.Next(s.Length)]).ToArray());
         }
 
+        /// <summary>
+        /// Picks the random value from dropdown.
+        /// </summary>
+        /// <param name="element">The element.</param>
         public static void PickRandomValueFromDropdown(IWebElement element)
         {
             var select = new SelectElement(element);
@@ -97,6 +135,10 @@ namespace CI.ClinicalTrials.RegressionTest.CommonMethods
             select.Options[1].Click();
         }
 
+        /// <summary>
+        /// Picks all values from dropdown.
+        /// </summary>
+        /// <param name="element">The element.</param>
         public static void PickAllValuesFromDropdown(IWebElement element)
         {
             var select = new SelectElement(element);
@@ -106,6 +148,11 @@ namespace CI.ClinicalTrials.RegressionTest.CommonMethods
                 SetSelected(option, true);
         }
 
+        /// <summary>
+        /// Sets the selected option.
+        /// </summary>
+        /// <param name="option">The option.</param>
+        /// <param name="select">if set to <c>true</c> [select].</param>
         private static void SetSelected(IWebElement option, bool select)
         {
             var selected = option.Selected;
@@ -114,16 +161,30 @@ namespace CI.ClinicalTrials.RegressionTest.CommonMethods
             option.Click();
         }
 
+        /// <summary>
+        /// Generates a Random Email address.
+        /// </summary>
+        /// <returns>System.String.</returns>
         public static string RandomEmailAddress()
         {
             return "test.user" + Random.Next(0, 10000) + "@cancerinstitute.com";
         }
 
+        /// <summary>
+        /// Edit the Random Email address.
+        /// </summary>
+        /// <returns>System.String.</returns>
         public static string EditedEmailAddress()
         {
             return "test_user" + Random.Next(0, 10000) + "@cancerinstitute.org";
         }
 
+        /// <summary>
+        /// Converts the date to format.
+        /// </summary>
+        /// <param name="dateString">The date string.</param>
+        /// <param name="format">The format.</param>
+        /// <returns>DateTime.</returns>
         public static DateTime ConvertDateToFormat(string dateString, string format)
         {
             CultureInfo provider = CultureInfo.InvariantCulture;
@@ -131,6 +192,10 @@ namespace CI.ClinicalTrials.RegressionTest.CommonMethods
             return result;
         }
 
+        /// <summary>
+        /// Picks the only enabled value from dropdown.
+        /// </summary>
+        /// <param name="element">The element.</param>
         public static void PickOnlyEnabledValueFromDropdown(IWebElement element)
         {
             var select = new SelectElement(element);

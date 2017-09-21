@@ -70,11 +70,17 @@ namespace CI.ClinicalTrials.RegressionTest.Pages.Administrator
         [FindsBy(How = How.XPath, Using = "//table[@id='dataTable']/tbody/tr[1]/td")]
         private IWebElement NoResults { get; set; }
 
+        /// <summary>
+        /// Click to create new report period.
+        /// </summary>
         public void ClickonCreateNewReportPeriod()
         {
             CreateNewReportReriod.Click();
         }
 
+        /// <summary>
+        /// Fills in report period details and click create.
+        /// </summary>
         public void FillInReportPeriodDetailsAndClickCreate()
         {
             var dateString = BeginsOn.Text;
@@ -92,13 +98,19 @@ namespace CI.ClinicalTrials.RegressionTest.Pages.Administrator
             CreateReportingPeriodButton.Click();
             BackToList.Click();
         }
-        
+
+        /// <summary>
+        /// Search and verify the created report period.
+        /// </summary>
         public void SearchAndVerifyTheCreatedReportPeriod()
         {
             ReportPeriodSearch.SendKeys(rDescription);
             ReportPeriodSearchResult_Desc.Text.Should().BeEquivalentTo(rDescription);
         }
 
+        /// <summary>
+        /// Search and edit the report period.
+        /// </summary>
         public void SearchAndEditTheReportPeriod()
         {
             ReportPeriodSearch.SendKeys(rDescription);
@@ -119,18 +131,27 @@ namespace CI.ClinicalTrials.RegressionTest.Pages.Administrator
             BackToList.Click();
         }
 
+        /// <summary>
+        /// Deletes the report period.
+        /// </summary>
         public void DeleteTheReportPeriod()
         {
             DeleteButton.Click();
             PageHelper.WaitForElement(Driver, ConfirmDeleteButton).Click();
         }
 
+        /// <summary>
+        /// Search and verify the deleted report period.
+        /// </summary>
         public void SearchAndVerifyTheDeletedReportPeriod()
         {
             ReportPeriodSearch.SendKeys(rDescription);
             NoResults.Text.Should().BeEquivalentTo("No results to show");
         }
 
+        /// <summary>
+        /// Search and verify the edited report period.
+        /// </summary>
         public void SearchAndVerifyTheEditedReportPeriod()
         {
             ReportPeriodSearch.SendKeys("Edited" + rDescription);

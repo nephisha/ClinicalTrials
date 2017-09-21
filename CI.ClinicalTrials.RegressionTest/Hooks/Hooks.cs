@@ -11,21 +11,30 @@ namespace CI.ClinicalTrials.RegressionTest.Hooks
     [Binding]
     public class Hooks
     {
-        private IWebDriver _driver;
+        private IWebDriver driver;
 
+        /// <summary>
+        /// Runs before the scenario.
+        /// </summary>
         [BeforeScenario]
         public void BeforeScenario()
         {
-            _driver = DriverBase.GetDefaultDriver();
+            driver = DriverBase.GetDefaultDriver();
         }
 
+        /// <summary>
+        /// Runs after the scenario.
+        /// </summary>
         [AfterScenario]
         public void AfterScenario()
         {
             ScenarioTearDown();
-            _driver.Quit();
+            driver.Quit();
         }
 
+        /// <summary>
+        /// Runs after every feature
+        /// </summary>
         [AfterFeature]
         public static void AfterAll()
         {
@@ -37,6 +46,9 @@ namespace CI.ClinicalTrials.RegressionTest.Hooks
             }
         }
 
+        /// <summary>
+        /// Gets executed when a test fails
+        /// </summary>
         [TearDown]
         public virtual void ScenarioTearDown()
         {
@@ -45,15 +57,15 @@ namespace CI.ClinicalTrials.RegressionTest.Hooks
                 if (Equals(TestContext.CurrentContext.Result.Outcome, ResultState.Success)) return;
                 const string path = @"C:\Reports\Screenshot\";
                 var timestamp = DateTime.Now.ToString("MM-dd-hh-mm-ss");
-                var screenshot = ((ITakesScreenshot)_driver).GetScreenshot();
+                var screenshot = ((ITakesScreenshot)driver).GetScreenshot();
                 screenshot.SaveAsFile(path + timestamp+".jpeg", ScreenshotImageFormat.Jpeg);
             }
             catch (Exception e)
             {
-                _driver.SwitchTo().Alert().Accept();
+                driver.SwitchTo().Alert().Accept();
                 const string path = @"C:\Reports\Screenshot\";
                 var timestamp = DateTime.Now.ToString("MM-dd-hh-mm-ss");
-                var screenshot = ((ITakesScreenshot)_driver).GetScreenshot();
+                var screenshot = ((ITakesScreenshot)driver).GetScreenshot();
                 screenshot.SaveAsFile(path + timestamp + ".jpeg", ScreenshotImageFormat.Jpeg);
                 Console.WriteLine(@"Exception while taking screen shot: {0}", e);
             }

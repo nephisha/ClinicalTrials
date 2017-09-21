@@ -21,16 +21,25 @@ namespace CI.ClinicalTrials.RegressionTest.Pages.Administrator
         [FindsBy(How = How.Id, Using = "btn-finalise")]
         private IWebElement FinalizeButton { get; set; }
 
+        /// <summary>
+        /// Select the LHD from dropdown in reconciliation page.
+        /// </summary>
         public void SelectTheReconciliationLHD()
         {
             PageHelper.SelectValueFromDropdown(ReconcileLHD, "RegressionLHD");
         }
 
+        /// <summary>
+        /// Approves the signed off trials.
+        /// </summary>
         public void ApproveSignedOffTrials()
         {
             PageHelper.WaitForElement(Driver, ApproveButton).Click();
         }
 
+        /// <summary>
+        /// Finalizes the approved trials.
+        /// </summary>
         public void FinalizeApprovedTrials()
         {
             PageHelper.WaitForElement(Driver, FinalizeButton).Click();

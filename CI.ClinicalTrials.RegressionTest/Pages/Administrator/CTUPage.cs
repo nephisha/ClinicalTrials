@@ -56,11 +56,17 @@ namespace CI.ClinicalTrials.RegressionTest.Pages.Administrator
         [FindsBy(How = How.Id, Using = "regSaveCTUButton")]
         private IWebElement SaveCTUButton { get; set; }
 
+        /// <summary>
+        /// Click to create a new clinical trial unit.
+        /// </summary>
         public void ClickonCreateNewCTU()
         {
             CreateNewCTU.Click();
         }
 
+        /// <summary>
+        /// Fills in the CTU details and click create.
+        /// </summary>
         public void FillInCTUDetailsAndClickCreate()
         {
             cName = "RegCTU" + PageHelper.RandomNumber(5);
@@ -75,12 +81,18 @@ namespace CI.ClinicalTrials.RegressionTest.Pages.Administrator
             BackToListButton.Click();
         }
 
+        /// <summary>
+        /// Searches and verify the created ctu.
+        /// </summary>
         public void SearchAndVerifyTheCreatedCTU()
         {
             CTUSearch.SendKeys(cName);
             CTUSearchResult_Name.Text.Should().BeEquivalentTo(cName);
         }
 
+        /// <summary>
+        /// Searches and edit the ctu.
+        /// </summary>
         public void SearchAndEditTheCTU()
         {
             CTUSearch.SendKeys(cName);
@@ -91,12 +103,20 @@ namespace CI.ClinicalTrials.RegressionTest.Pages.Administrator
             BackToListButton.Click();
         }
 
-        public void SerchAndVerifyTheEditedCTU()
+
+        /// <summary>
+        /// Searches and verify the edited ctu.
+        /// </summary>
+        public void SearchAndVerifyTheEditedCTU()
         {
             CTUSearch.SendKeys(cName);
             CTUSearchResult_Description.Text.Should().BeEquivalentTo("Edited CTU details");
         }
 
+        /// <summary>
+        /// Deprecates the clinical trial unit.
+        /// </summary>
+        /// <returns>System.String.</returns>
         public string DeprecateClinicalTrialUnit()
         {
             CTUSearch.SendKeys(cName);

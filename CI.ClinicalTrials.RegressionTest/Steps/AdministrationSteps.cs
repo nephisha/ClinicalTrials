@@ -128,7 +128,7 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
         [Then(@"I should see the changes made for the clinical trial unit")]
         public void ThenIShouldSeeTheChangesMadeForTheClinicalTrialUnit()
         {
-            ctuPage.SerchAndVerifyTheEditedCTU();
+            ctuPage.SearchAndVerifyTheEditedCTU();
         }
 
         [When(@"I deprecate the clinical trial unit")]
@@ -337,7 +337,7 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
         [When(@"I see the sign off history page")]
         public void WhenISeeTheSignOffHistoryPage()
         {
-            menuPage.ClickOnSignOffHistory();
+            menuPage.SelectSignOffHistoryFromToggleMenu();
         }
 
         [Then(@"I should see the sign off date listed for this CTU")]

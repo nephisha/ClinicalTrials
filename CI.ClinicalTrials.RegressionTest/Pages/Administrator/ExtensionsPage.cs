@@ -45,19 +45,28 @@ namespace CI.ClinicalTrials.RegressionTest.Pages.Administrator
         [FindsBy(How = How.XPath, Using = "//div[@role='dialog']/div[3]/a")]
         private IWebElement ConfirmDelete { get; set; }
 
+        /// <summary>
+        /// Clicks the create new report period extension.
+        /// </summary>
         public void ClickonCreateNewReportPeriodExtension()
         {
             CreateNewReportReriodExtension.Click();
         }
-        
+
+        /// <summary>
+        /// Fills in the extension details and click create.
+        /// </summary>
         public void FillInExtensionDetailsAndClickCreate()
         {
-            PageHelper.SelectValueFromDropdown(Site, "Bankstown Hospital");
+            PageHelper.SelectValueFromDropdown(Site, "San Clinical Trials Unit");
             PageHelper.SelectValueFromDropdown(Extension_ReportingPeriod, "2015");
             Driver.ExecuteJavaScript(@"$('#Extension_ExtensionDate').val('01/01/2018')");
             CreateButton.Click();
         }
 
+        /// <summary>
+        /// Searches and verify the created extension.
+        /// </summary>
         public void SearchAndVerifyTheCreatedExtension()
         {
             CreatedOnAscSort.Click();
@@ -65,6 +74,9 @@ namespace CI.ClinicalTrials.RegressionTest.Pages.Administrator
             ExtensionResult_Date.Text.Should().BeEquivalentTo("01/01/2018");
         }
 
+        /// <summary>
+        /// Deletes the created extension.
+        /// </summary>
         public void DeleteTheCreatedExtension()
         {
             PageHelper.WaitForElement(Driver, DeleteButton).Click();

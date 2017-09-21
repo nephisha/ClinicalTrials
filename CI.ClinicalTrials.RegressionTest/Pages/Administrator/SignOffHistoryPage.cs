@@ -31,12 +31,19 @@ namespace CI.ClinicalTrials.RegressionTest.Pages.Administrator
         [FindsBy(How = How.XPath, Using = "//a[@class='paginate_button current']")]
         private IWebElement Load_DataTable { get; set; }
 
+        /// <summary>
+        /// Runs the report for current report period.
+        /// </summary>
+        /// <param name="contextReportPeriod">The context report period.</param>
         public void RunReportForCurrentReportPeriod(string contextReportPeriod)
         {
             PageHelper.SelectValueFromDropdown(SignOffReportPeriod, contextReportPeriod);
             RunReport.Click();
         }
 
+        /// <summary>
+        /// Search and verify sign off history details.
+        /// </summary>
         public void SearchAndVerifySignOffHistoryDetails()
         {
             PageHelper.WaitForElement(Driver, SignOffHistorySearch).SendKeys("RegClinicalTrialUnit02");

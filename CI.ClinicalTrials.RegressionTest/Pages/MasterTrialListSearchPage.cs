@@ -76,6 +76,9 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         [FindsBy(How = How.XPath, Using = "//a[@class='paginate_button current']")]
         private IWebElement Load_DataTable { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "//table[@id='dataTable_trials']/tbody/tr[1]/td[6]")]
+        private IWebElement CTUSearchTrialResult_RegoNumber { get; set; }
+
         [FindsBy(How = How.XPath, Using = "//table[@id='dataTable_trials']/tbody/tr[1]/td[3]")]
         private IWebElement CTUSearchTrialResult_Acronym { get; set; }
 
@@ -145,12 +148,19 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         [FindsBy(How = How.XPath, Using = "//div[@class='validation-summary-errors']")]
         private IWebElement ValidationError { get; set; }
 
+        /// <summary>
+        /// Verifies the master trial list search page is loaded.
+        /// </summary>
         public void VerifyMasterTrialListSearchPageIsLoaded()
         {
             PageHelper.WaitForElement(Driver, MasterTrialListSearch).Text.Should()
                 .BeEquivalentTo("Master Trial List Search");
         }
 
+        /// <summary>
+        /// Search and verify the created trial by admin.
+        /// </summary>
+        /// <param name="title">The title.</param>
         public void SearchAndVerifyTheCreatedTrialByAdmin(string title)
         {
             PageHelper.WaitForElement(Driver, Load_DataTable);
@@ -159,6 +169,10 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             PageHelper.WaitForElement(Driver, AdminSearchTrialResult_Name).Text.Should().Contain(title);
         }
 
+        /// <summary>
+        /// Search and verify the created trial by ctu user.
+        /// </summary>
+        /// <param name="title">The title.</param>
         public void SearchAndVerifyTheCreatedTrialByCTUUser(string title)
         {
             PageHelper.WaitForElement(Driver, Load_DataTable);
@@ -167,6 +181,10 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             PageHelper.WaitForElement(Driver, CTUSearchTrialResult_Name).Text.Should().Contain(title);
         }
 
+        /// <summary>
+        /// Searches for created trial.
+        /// </summary>
+        /// <param name="text">The text.</param>
         private void SearchForCreatedTrial(string text)
         {
             Query.Clear();
@@ -176,12 +194,18 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             Thread.Sleep(TimeSpan.FromMilliseconds(100));
         }
 
+        /// <summary>
+        /// Searches by query.
+        /// </summary>
         public void SearchByQuery()
         {
             Query.SendKeys(SearchCriteria);
             PageHelper.WaitForElement(Driver, SearchButton).Click();
         }
 
+        /// <summary>
+        /// Verifies the search results.
+        /// </summary>
         public void VerifySearchResults()
         {
             PageHelper.WaitForElement(Driver, Load_DataTable);
@@ -189,29 +213,44 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             CTUSearchTrialResult_Acronym.Text.Should().Contain(SearchCriteria);
         }
 
+        /// <summary>
+        /// Searches by sponsor.
+        /// </summary>
         public void SearchBySponsor()
         {
-            PageHelper.SelectValueFromDropdown(Sponsor, "Abbott");
+            PageHelper.SelectValueFromDropdown(Sponsor, "Kosan");
             PageHelper.WaitForElement(Driver, SearchButton).Click();
         }
 
+        /// <summary>
+        /// Verifies the sponsor search results.
+        /// </summary>
         public void VerifySponsorSearchResults()
         {
             PageHelper.WaitForElement(Driver, Load_DataTable);
-            CTUSearchTrialResult_Sponsor.Text.Should().BeEquivalentTo("Abbott");
+            CTUSearchTrialResult_Sponsor.Text.Should().BeEquivalentTo("Kosan");
         }
 
+        /// <summary>
+        /// Searches by ctu.
+        /// </summary>
         public void SearchByCTU()
         {
-            PageHelper.SelectValueFromDropdown(CTU, "Bankstown Hospital");
+            PageHelper.SelectValueFromDropdown(CTU, "Calvary Healthcare Sydney");
             PageHelper.WaitForElement(Driver, SearchButton).Click();
         }
 
+        /// <summary>
+        /// Verifies the ctu search results.
+        /// </summary>
         public void VerifyCTUSearchResults()
         {
             
         }
 
+        /// <summary>
+        /// Searches by tumour groups.
+        /// </summary>
         public void SearchByTumourGroups()
         {
             TumourGroup.Click();
@@ -219,36 +258,55 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             PageHelper.WaitForElement(Driver, SearchButton).Click();
         }
 
+        /// <summary>
+        /// Verifies the tumour group results.
+        /// </summary>
         public void VerifyTumourGroupResults()
         {
             PageHelper.WaitForElement(Driver, Load_DataTable);
             CTUSearchTrialResult_TumourGroup.Text.Should().BeEquivalentTo("Brain");
         }
 
+        /// <summary>
+        /// Searches by trial classification.
+        /// </summary>
         public void SearchByTrialClassification()
         {
             PageHelper.SelectValueFromDropdown(TrialClassification, "Portfolio");
             PageHelper.WaitForElement(Driver, SearchButton).Click();
         }
 
+        /// <summary>
+        /// Verifies the classification search results.
+        /// </summary>
         public void VerifyClassificationSearchResults()
         {
             PageHelper.WaitForElement(Driver, Load_DataTable);
             AdminSearchTrialResult_ClassificationStatus.Text.Should().BeEquivalentTo("Portfolio");
         }
 
+        /// <summary>
+        /// Searches by verification status.
+        /// </summary>
         public void SearchByVerificationStatus()
         {
             PageHelper.SelectValueFromDropdown(TrialVerification, "Verified");
             PageHelper.WaitForElement(Driver, SearchButton).Click();
         }
 
+        /// <summary>
+        /// Verifies the verification status search results.
+        /// </summary>
         public void VerifyVerificationStatusSearchResults()
         {
             PageHelper.WaitForElement(Driver, Load_DataTable);
             AdminSearchTrialResult_VerificationStatus.Text.Should().BeEquivalentTo("Verified");
         }
 
+        /// <summary>
+        /// Adds the trial to my site trial list.
+        /// </summary>
+        /// <returns>System.String.</returns>
         public string AddTrialToMySiteTrialList()
         {
             var sAcronym = SearchAndAddTrial();
@@ -256,29 +314,43 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             return sAcronym;
         }
 
+        /// <summary>
+        /// Joins the added trial to site.
+        /// </summary>
         private void JoinAddedTrialToSite()
         {
             PageHelper.PickOnlyEnabledValueFromDropdown(JoinTrialSite);
             JoinTrial.Click();
         }
 
+        /// <summary>
+        /// Searches and add trial.
+        /// </summary>
+        /// <returns>System.String.</returns>
         private string SearchAndAddTrial()
         {
             SearchByTrialClassification();
             TrialAcronym = CTUSearchTrialResult_Acronym.Text;
-            Query.SendKeys(TrialAcronym);
+            TrialRegoNumber = CTUSearchTrialResult_RegoNumber.Text;
+            Query.SendKeys(TrialRegoNumber);
             PageHelper.WaitForElement(Driver, SearchButton).Click();
             PageHelper.WaitForElement(Driver, Load_DataTable);
             AddToMyTrialsList.Click();
             return TrialAcronym;
         }
 
+        /// <summary>
+        /// Edits an existing trial.
+        /// </summary>
         public void EditanExistingTrial()
         {
             GetanExistingTrialData();
             EditTrials.Click();
         }
 
+        /// <summary>
+        /// Get an existing trial data.
+        /// </summary>
         private void GetanExistingTrialData()
         {
             Query.SendKeys("NickRegTest");
@@ -289,6 +361,9 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             PageHelper.WaitForElement(Driver, SearchButton).Click();
         }
 
+        /// <summary>
+        /// Search and verify the edited trial.
+        /// </summary>
         public void SearchAndVerifyTheEditedTrial()
         {
             Query.SendKeys(TrialRegoNumber);
@@ -296,6 +371,9 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             AdminSearchTrialResult_Acronym.Text.Should().Contain("Modified");
         }
 
+        /// <summary>
+        /// Removes an existing trial.
+        /// </summary>
         public void RemoveAnExistingTrial()
         {
             GetanExistingTrialData();
@@ -304,6 +382,9 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             ConfirmRemoveTrial.Click();
         }
 
+        /// <summary>
+        /// Search and verify the removed trial.
+        /// </summary>
         public void SearchAndVerifyTheRemovedTrial()
         {
             Driver.Navigate().Refresh();
@@ -314,6 +395,10 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             SearchTrialResult.Text.Should().BeEquivalentTo("No results to show");
         }
 
+        /// <summary>
+        /// Adds the created trial to my site trial.
+        /// </summary>
+        /// <param name="trialTitle">The trial title.</param>
         public void AddCreatedTrialToMySiteTrial(string trialTitle)
         {
             Query.Clear();
@@ -324,6 +409,10 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             JoinAddedTrialToSite();
         }
 
+        /// <summary>
+        /// Verifies and classify the trial.
+        /// </summary>
+        /// <param name="contextTrialTitle">The context trial title.</param>
         public void VerifyAndClassifyTheTrial(string contextTrialTitle)
         {
             Query.Clear();
@@ -336,6 +425,10 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             ClassifyTheTrial();
         }
 
+        /// <summary>
+        /// Searches and verify the classified trial.
+        /// </summary>
+        /// <param name="contextTrialTitle">The context trial title.</param>
         public void SearchAndVerifyTheClassifiedTrial(string contextTrialTitle)
         {
             PageHelper.WaitForElement(Driver, Load_DataTable);
@@ -346,6 +439,9 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             AdminSearchTrialResult_ClassificationStatus.Text.Should().BeEquivalentTo("Portfolio");
         }
 
+        /// <summary>
+        /// Verifies the trial.
+        /// </summary>
         public void VerifyTheTrial()
         {
             Verified.Click();
@@ -353,6 +449,9 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             SaveVerifyButton.Click();
         }
 
+        /// <summary>
+        /// Classifies the trial.
+        /// </summary>
         public void ClassifyTheTrial()
         {
             ClassificationSection.Click();
@@ -363,6 +462,11 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             SaveClassification.Click();
         }
 
+        /// <summary>
+        /// Verifies the deprecated sponsor is not listed.
+        /// </summary>
+        /// <param name="deprecatedSponsor">The deprecated sponsor.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool VerifyDeprecatedSponsorIsNotListed(string deprecatedSponsor)
         {
             try
@@ -377,6 +481,11 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             }
         }
 
+        /// <summary>
+        /// Verifies the deprecated ctu is not listed.
+        /// </summary>
+        /// <param name="deprecatedCTU">The deprecated ctu.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool VerifyDeprecatedCTUIsNotListed(string deprecatedCTU)
         {
             try
@@ -391,6 +500,10 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             }
         }
 
+        /// <summary>
+        /// Searches for pending verification trials.
+        /// </summary>
+        /// <returns>System.String.</returns>
         public string SearchForPendingVerificationTrials()
         {
             PageHelper.SelectValueFromDropdown(TrialVerification, "Pending Verification");
@@ -398,6 +511,10 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             return AdminSearchTrialResult_Acronym.Text;
         }
 
+        /// <summary>
+        /// Searches for portfolio pending verification trials.
+        /// </summary>
+        /// <returns>System.String.</returns>
         public string SearchForPortfolioPendingVerificationTrials()
         {
             PageHelper.SelectValueFromDropdown(Sponsor, "ACT Health");
@@ -406,6 +523,10 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             return AdminSearchTrialResult_Acronym.Text;
         }
 
+        /// <summary>
+        /// Searches and edit the selected trial.
+        /// </summary>
+        /// <param name="contextSelectedTrial">The context selected trial.</param>
         public void SearchAndEditTheSelectedTrial(string contextSelectedTrial)
         {
             Query.Clear();
@@ -415,6 +536,10 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             PageHelper.WaitForElement(Driver, EditTrials).Click();
         }
 
+        /// <summary>
+        /// Searches and verify the verified trial.
+        /// </summary>
+        /// <param name="contextSelectedTrial">The context selected trial.</param>
         public void SearchAndVerifyTheVerifiedTrial(string contextSelectedTrial)
         {
             Query.Clear();
@@ -424,6 +549,9 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             AdminSearchTrialResult_VerificationStatus.Text.Should().BeEquivalentTo("Verified");
         }
 
+        /// <summary>
+        /// Rejects the trial.
+        /// </summary>
         public void RejectTheTrial()
         {
             Rejected.Click();
@@ -431,6 +559,10 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             SaveVerifyButton.Click();
         }
 
+        /// <summary>
+        /// Search and verify the rejected trial.
+        /// </summary>
+        /// <param name="contextSelectedTrial">The context selected trial.</param>
         public void SearchAndVerifyTheRejectedTrial(string contextSelectedTrial)
         {
             Query.Clear();
@@ -440,6 +572,9 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             AdminSearchTrialResult_VerificationStatus.Text.Should().BeEquivalentTo("Rejected");
         }
 
+        /// <summary>
+        /// Reviews the trial.
+        /// </summary>
         public void ReviewTheTrial()
         {
             VerifyInReview.Click();
@@ -447,6 +582,10 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             SaveVerifyButton.Click();
         }
 
+        /// <summary>
+        /// Search and verify the reviewed trial.
+        /// </summary>
+        /// <param name="contextSelectedTrial">The context selected trial.</param>
         public void SearchAndVerifyTheReviewedTrial(string contextSelectedTrial)
         {
             Query.Clear();
@@ -456,6 +595,9 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             AdminSearchTrialResult_VerificationStatus.Text.Should().BeEquivalentTo("Pending Verification (In Review)");
         }
 
+        /// <summary>
+        /// Classifies the verified trial as in review.
+        /// </summary>
         public void ClassifyTheVerifiedTrialAsInReview()
         {
             PageHelper.WaitForElement(Driver, ClassifyInReview).Click();
@@ -463,6 +605,11 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             SaveClassification.Click();
         }
 
+        /// <summary>
+        /// Search and verify the classified trial status.
+        /// </summary>
+        /// <param name="contextSelectedTrial">The context selected trial.</param>
+        /// <param name="status">The status.</param>
         public void SearchAndVerifyTheClassifiedTrialStatus(string contextSelectedTrial, string status)
         {
             Query.Clear();
@@ -472,6 +619,9 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             AdminSearchTrialResult_ClassificationStatus.Text.Should().BeEquivalentTo(status);
         }
 
+        /// <summary>
+        /// Classifies the verified trial as portfolio.
+        /// </summary>
         public void ClassifyTheVerifiedTrialAsPortfolio()
         {
             PageHelper.WaitForElement(Driver, Classified).Click();
@@ -481,6 +631,9 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             SaveClassification.Click();
         }
 
+        /// <summary>
+        /// Classifies the verified trial as non portfolio.
+        /// </summary>
         public void ClassifyTheVerifiedTrialAsNonPortfolio()
         {
             PageHelper.WaitForElement(Driver, Classified).Click();
@@ -491,6 +644,9 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             SaveClassification.Click();
         }
 
+        /// <summary>
+        /// Verifies the that trial submission error is displayed.
+        /// </summary>
         public void VerifyThatTrialSubmissionErrorIsDisplayed()
         {
             ValidationError.Text.Should().BeEquivalentTo(ErrorMessages.ClassificationError);

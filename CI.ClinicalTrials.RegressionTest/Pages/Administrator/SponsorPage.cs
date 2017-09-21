@@ -46,11 +46,17 @@ namespace CI.ClinicalTrials.RegressionTest.Pages.Administrator
         [FindsBy(How = How.Id, Using = "regSaveSponsorButton")]
         private IWebElement SaveSponsorButton { get; set; }
 
+        /// <summary>
+        /// Click to create new sponsor.
+        /// </summary>
         public void ClickonCreateNewSponsor()
         {
             CreateNewSponsor.Click();
         }
 
+        /// <summary>
+        /// Fills in sponsor details and click create.
+        /// </summary>
         public void FillInSponsorDetailsAndClickCreate()
         {
             sName = "Reg_Sponsor" + PageHelper.RandomNumber(4);
@@ -61,12 +67,18 @@ namespace CI.ClinicalTrials.RegressionTest.Pages.Administrator
             BackToListButton.Click();
         }
 
+        /// <summary>
+        /// Search and verify the created sponsor.
+        /// </summary>
         public void SearchAndVerifyTheCreatedSponsor()
         {
             SponsorSearch.SendKeys(sName);
             SponsorSearchResult_Name.Text.Should().BeEquivalentTo(sName);
         }
 
+        /// <summary>
+        /// Search and edit the created sponsor.
+        /// </summary>
         public void SearchAndEditTheCreatedSponsor()
         {
             SponsorSearch.SendKeys(sName);
@@ -77,12 +89,19 @@ namespace CI.ClinicalTrials.RegressionTest.Pages.Administrator
             BackToListButton.Click();
         }
 
+        /// <summary>
+        /// Search and verify the edited sponsor.
+        /// </summary>
         public void SearchAndVerifyTheEditedSponsor()
         {
             SponsorSearch.SendKeys(sName);
             SponsorSearchResult_Description.Text.Should().BeEquivalentTo("Edited Sponsor Details");
         }
 
+        /// <summary>
+        /// Deprecates a sponsor.
+        /// </summary>
+        /// <returns>System.String.</returns>
         public string DeprecateASponsor()
         {
             SponsorSearch.SendKeys(sName);
