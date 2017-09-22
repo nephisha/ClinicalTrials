@@ -1,17 +1,12 @@
 ﻿Feature: Dashboard
 
 @Dashboard
-  Scenario Outline: As Admin I needs to view the dashboard
+  Scenario: 27110 - Dashboard - Number of days left and last maintained by
 
-  Given I login to Clinical Trial Application with <UserName> and <Password>
-  And I select the <hospital>
-  Then I should see the dashboard of the selected hospital
-
-  Examples: 
-  | UserName            | Password    | hospital          |
-  | Emmanuel Russel | Welcome@123 | Canberra Hospital |
-
-
+  Given I login to Clinical Trial Application as CTU User
+  When I select a clinical trial unit
+  Then I should see the days left and last updated by details
+  
 @MasterTrial
   Scenario Outline: As Admin I needs to view the MasterTrial List
 

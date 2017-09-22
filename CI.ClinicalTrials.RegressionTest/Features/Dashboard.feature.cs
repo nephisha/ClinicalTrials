@@ -64,26 +64,20 @@ namespace CI.ClinicalTrials.RegressionTest.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("As Admin I needs to view the dashboard")]
+        [NUnit.Framework.DescriptionAttribute("27110 - Dashboard - Number of days left and last maintained by")]
         [NUnit.Framework.CategoryAttribute("Dashboard")]
-        [NUnit.Framework.TestCaseAttribute("Emmanuel Russel", "Welcome@123", "Canberra Hospital", null)]
-        public virtual void AsAdminINeedsToViewTheDashboard(string userName, string password, string hospital, string[] exampleTags)
+        public virtual void _27110_Dashboard_NumberOfDaysLeftAndLastMaintainedBy()
         {
-            string[] @__tags = new string[] {
-                    "Dashboard"};
-            if ((exampleTags != null))
-            {
-                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
-            }
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("As Admin I needs to view the dashboard", @__tags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("27110 - Dashboard - Number of days left and last maintained by", new string[] {
+                        "Dashboard"});
 #line 4
   this.ScenarioSetup(scenarioInfo);
 #line 6
-  testRunner.Given(string.Format("I login to Clinical Trial Application with {0} and {1}", userName, password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+  testRunner.Given("I login to Clinical Trial Application as CTU User", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 7
-  testRunner.And(string.Format("I select the {0}", hospital), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.When("I select a clinical trial unit", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 8
-  testRunner.Then("I should see the dashboard of the selected hospital", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+  testRunner.Then("I should see the days left and last updated by details", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -101,11 +95,11 @@ namespace CI.ClinicalTrials.RegressionTest.Features
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("As Admin I needs to view the MasterTrial List", @__tags);
-#line 16
+#line 11
   this.ScenarioSetup(scenarioInfo);
-#line 18
+#line 13
   testRunner.Given(string.Format("I login to Clinical Trial Application with {0} and {1}", userName, password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 19
+#line 14
   testRunner.And("I see the Master Trial List", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();

@@ -30,5 +30,12 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
             masterTrialListSearchPage.VerifyMasterTrialListSearchPageIsLoaded();
         }
 
+        [Then(@"I should see the days left and last updated by details")]
+        public void ThenIShouldSeeTheDaysLeftAndLastUpdatedByDetails()
+        {
+            homePage.VerifyDaysLeftPanel();
+            homePage.VerifyLastUpdatedPanel();
+        }
+
     }
 }
