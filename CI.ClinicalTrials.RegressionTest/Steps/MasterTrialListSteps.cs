@@ -131,12 +131,27 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
             masterTrialListSearchPage.VerifyVerificationStatusSearchResults();
         }
 
+        [When(@"I search a portfolio trial")]
+        public void WhenISearchAPortfolioTrial()
+        {
+            menuPage.SelectMasterTrialFromToggleMenu();
+            context.TrialTitle = masterTrialListSearchPage.SearchForPortfolioPendingVerificationTrials();
+            Console.WriteLine(context.TrialTitle);
+        }
+
         [When(@"I add a trial to my site")]
         public void WhenIAddATrialToMySite()
         {
             menuPage.SelectMasterTrialFromToggleMenu();
             context.Acronym = masterTrialListSearchPage.AddTrialToMySiteTrialList();
             Console.WriteLine(context.Acronym);
+        }
+
+        [When(@"I add the existing trial to my site")]
+        public void WhenIAddTheExistingTrialToMySite()
+        {
+            masterTrialListSearchPage.AddCreatedTrialToMySiteTrial(context.SelectedTrial);
+            Console.WriteLine(context.SelectedTrial);
         }
 
         [When(@"I add the created trial to my site")]
@@ -203,8 +218,8 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
         public void WhenIVerifyAndClassifyTheTrial()
         {
             menuPage.SelectMasterTrialFromToggleMenu();
-            masterTrialListSearchPage.VerifyAndClassifyTheTrial(context.TrialTitle);
-            Console.WriteLine(context.TrialTitle);
+            masterTrialListSearchPage.VerifyAndClassifyTheTrial(context.SelectedTrial);
+            Console.WriteLine(context.SelectedTrial);
         }
 
         [Then(@"I should see the trial classified successfully")]
@@ -238,6 +253,7 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
         {
             menuPage.SelectMasterTrialFromToggleMenu();
             context.SelectedTrial = masterTrialListSearchPage.SearchForPortfolioPendingVerificationTrials();
+            context.Acronym = context.SelectedTrial;
             Console.WriteLine(context.SelectedTrial);
         }
 

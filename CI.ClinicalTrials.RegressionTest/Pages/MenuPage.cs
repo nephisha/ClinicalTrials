@@ -283,5 +283,11 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             PageHelper.WaitForElement(Driver, Administration).Click();
             PageHelper.WaitForElement(Driver, SignOffHistory).Click();
         }
+
+        public void SelectDashboardFromToggleMenu()
+        {
+            ClickOnToggleMenu();
+            PageHelper.WaitForElement(Driver, Dashboard).Click();
+        }
     }
 }

@@ -4,7 +4,7 @@
   As a User
   I should be able to submit new Trials
 
-  @Clinical @Regression
+  @Clinical @Regression @Working
   Scenario Outline: 26612 - Submit a Portfolio Clinical Trial
 
     Given I login to Clinical Trial Application as Administrator

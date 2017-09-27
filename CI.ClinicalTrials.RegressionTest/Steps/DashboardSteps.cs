@@ -1,4 +1,5 @@
 ﻿using CI.ClinicalTrials.RegressionTest.Pages;
+using FluentAssertions;
 using TechTalk.SpecFlow;
 
 namespace CI.ClinicalTrials.RegressionTest.Steps
@@ -37,5 +38,11 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
             homePage.VerifyLastUpdatedPanel();
         }
 
+        [Then(@"I should see the portfolio trial details in dashboard")]
+        public void ThenIShouldSeeThePortfolioTrialDetailsInDashboard()
+        {
+            menuPage.SelectDashboardFromToggleMenu();
+            homePage.VerifyTrialCategoryIsDisplayed().Should().Contain("%");
+        }
     }
 }

@@ -20,6 +20,9 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         [FindsBy(How = How.XPath, Using = "//div[@id='last-updated-panel']/div")]
         private IWebElement LastUpdated { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "//div[@id='trial-category']/div/div[1]/div/child::*[1]")]
+        private IWebElement TrialCategory { get; set; }
+
         public void SelectAHospital(string hospital)
         {
             var select = new SelectElement(Hospital);
@@ -50,6 +53,12 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         public void VerifyLastUpdatedPanel()
         {
             LastUpdated.Text.Should().StartWithEquivalent("Last updated by");
+        }
+
+        public string VerifyTrialCategoryIsDisplayed()
+        {
+            var category = TrialCategory.GetAttribute("textContent");
+            return category;
         }
     }
 }

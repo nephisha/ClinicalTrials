@@ -66,10 +66,12 @@ namespace CI.ClinicalTrials.RegressionTest.Features
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("27110 - Dashboard - Number of days left and last maintained by")]
         [NUnit.Framework.CategoryAttribute("Dashboard")]
+        [NUnit.Framework.CategoryAttribute("Regression")]
         public virtual void _27110_Dashboard_NumberOfDaysLeftAndLastMaintainedBy()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("27110 - Dashboard - Number of days left and last maintained by", new string[] {
-                        "Dashboard"});
+                        "Dashboard",
+                        "Regression"});
 #line 4
   this.ScenarioSetup(scenarioInfo);
 #line 6
@@ -83,24 +85,30 @@ namespace CI.ClinicalTrials.RegressionTest.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("As Admin I needs to view the MasterTrial List")]
-        [NUnit.Framework.CategoryAttribute("MasterTrial")]
-        [NUnit.Framework.TestCaseAttribute("Emmanuel Russel", "Welcome@123", null)]
-        public virtual void AsAdminINeedsToViewTheMasterTrialList(string userName, string password, string[] exampleTags)
+        [NUnit.Framework.DescriptionAttribute("27122 - Dashboard - Recruiting Portfolio by Portfolio Category graph")]
+        [NUnit.Framework.CategoryAttribute("Dashboard")]
+        [NUnit.Framework.CategoryAttribute("Regression")]
+        public virtual void _27122_Dashboard_RecruitingPortfolioByPortfolioCategoryGraph()
         {
-            string[] @__tags = new string[] {
-                    "MasterTrial"};
-            if ((exampleTags != null))
-            {
-                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
-            }
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("As Admin I needs to view the MasterTrial List", @__tags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("27122 - Dashboard - Recruiting Portfolio by Portfolio Category graph", new string[] {
+                        "Dashboard",
+                        "Regression"});
 #line 11
   this.ScenarioSetup(scenarioInfo);
 #line 13
-  testRunner.Given(string.Format("I login to Clinical Trial Application with {0} and {1}", userName, password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+  testRunner.Given("I login to Clinical Trial Application as Administrator", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 14
-  testRunner.And("I see the Master Trial List", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And("I have an existing portfolio trial pending for verification", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 15
+  testRunner.When("I verify and classify the trial", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 16
+  testRunner.And("I add the existing trial to my site", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 17
+  testRunner.Then("I should see the trial added successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 18
+  testRunner.And("When I save the trial data for the trial", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 19
+  testRunner.And("I should see the portfolio trial details in dashboard", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }

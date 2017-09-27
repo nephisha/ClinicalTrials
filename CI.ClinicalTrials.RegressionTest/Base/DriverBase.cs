@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Configuration;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Remote;
 
 namespace CI.ClinicalTrials.RegressionTest.Base
 {
@@ -21,9 +23,12 @@ namespace CI.ClinicalTrials.RegressionTest.Base
         /// <returns>IWebDriver.</returns>
         public static IWebDriver GetDefaultDriver()
         {
-            Driver = new ChromeDriver();
-            //Driver = new ChromeDriver(@"C:\Drivers");
-            new ChromeOptions().AddArguments("--no-sandbox");
+            var options = new ChromeOptions();
+            options.AddArguments("--no-sandbox");
+            if (bool.Parse(ConfigurationManager.AppSettings["RegressionTest.HeadlessChrome"]))
+                options.AddArguments("--headless", "--disable-gpu");
+            Driver = new ChromeDriver(options);
+
             Driver.Manage().Window.Maximize();
             //Driver.Manage().Timeouts().AsynchronousJavaScript = TimeSpan.FromSeconds(30);
             Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);

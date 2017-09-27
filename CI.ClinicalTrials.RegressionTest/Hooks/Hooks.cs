@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Configuration;
 using System.Diagnostics;
+using System.IO;
 using CI.ClinicalTrials.RegressionTest.Base;
 using NUnit.Framework;
 using NUnit.Framework.Interfaces;
@@ -11,6 +13,8 @@ namespace CI.ClinicalTrials.RegressionTest.Hooks
     [Binding]
     public class Hooks
     {
+        private static string _baseDirectory = ConfigurationManager.AppSettings["RegressionTest.BaseDirectory"];
+
         private IWebDriver driver;
 
         /// <summary>
@@ -52,21 +56,20 @@ namespace CI.ClinicalTrials.RegressionTest.Hooks
         [TearDown]
         public virtual void ScenarioTearDown()
         {
+            var screenshotDir = Path.Combine(_baseDirectory, @"Reports\\Screenshot");
+            var screenshotPath = Path.Combine(screenshotDir, DateTime.Now.ToString("MM-dd-hh-mm-ss") + ".jpg");
             try
             {
                 if (Equals(TestContext.CurrentContext.Result.Outcome, ResultState.Success)) return;
-                const string path = @"C:\Reports\Screenshot\";
-                var timestamp = DateTime.Now.ToString("MM-dd-hh-mm-ss");
+                if (!Directory.Exists(screenshotDir)) Directory.CreateDirectory(screenshotDir);
                 var screenshot = ((ITakesScreenshot)driver).GetScreenshot();
-                screenshot.SaveAsFile(path + timestamp+".jpeg", ScreenshotImageFormat.Jpeg);
+                screenshot.SaveAsFile(screenshotPath, ScreenshotImageFormat.Jpeg);
             }
             catch (Exception e)
             {
                 driver.SwitchTo().Alert().Accept();
-                const string path = @"C:\Reports\Screenshot\";
-                var timestamp = DateTime.Now.ToString("MM-dd-hh-mm-ss");
                 var screenshot = ((ITakesScreenshot)driver).GetScreenshot();
-                screenshot.SaveAsFile(path + timestamp + ".jpeg", ScreenshotImageFormat.Jpeg);
+                screenshot.SaveAsFile(screenshotPath, ScreenshotImageFormat.Jpeg);
                 Console.WriteLine(@"Exception while taking screen shot: {0}", e);
             }
         }

@@ -50,7 +50,7 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
         [Then(@"I should see the new trial created by CTU User")]
         public void ThenIShouldSeeTheNewTrialCreatedByCTUUser()
         {
-            masterTrialListSearchPage.SearchAndVerifyTheCreatedTrialByCTUUser(title);
+            context.SelectedTrial = masterTrialListSearchPage.SearchAndVerifyTheCreatedTrialByCTUUser(title);
             context.TrialTitle = "Title" + title;
             Console.WriteLine(context.TrialTitle);
         }

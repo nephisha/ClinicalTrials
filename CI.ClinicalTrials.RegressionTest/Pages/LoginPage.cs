@@ -24,7 +24,7 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         /// </summary>
         public void LaunchTheApplication()
         {
-            Driver.Navigate().GoToUrl(ConfigurationManager.AppSettings["URL"]);
+            Driver.Navigate().GoToUrl(ConfigurationManager.AppSettings["RegressionTest.URL"]);
         }
 
         /// <summary>

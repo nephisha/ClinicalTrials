@@ -72,12 +72,19 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
             mySiteTrialsPage.ApplyFilterAndVerifyTrialData(filter, context.TrialTitle);
             Console.WriteLine(context.TrialTitle);
         }
-
+        
         [When(@"I save the trial data for the trial")]
         public void WhenISaveTheTrialDataForTheTrial()
         {
             mySiteTrialsPage.FillinTrialDataAndSave(context.TrialTitle);
             Console.WriteLine(context.TrialTitle);
+        }
+
+        [Then(@"When I save the trial data for the trial")]
+        public void ThenWhenISaveTheTrialDataForTheTrial()
+        {
+            mySiteTrialsPage.FillinTrialDataAndSave(context.SelectedTrial);
+            Console.WriteLine(context.SelectedTrial);
         }
 
         [Then(@"When I open the signed off trial in My Site trials")]

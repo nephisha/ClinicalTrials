@@ -68,12 +68,14 @@ namespace CI.ClinicalTrials.RegressionTest.Features
         [NUnit.Framework.DescriptionAttribute("26612 - Submit a Portfolio Clinical Trial")]
         [NUnit.Framework.CategoryAttribute("Clinical")]
         [NUnit.Framework.CategoryAttribute("Regression")]
+        [NUnit.Framework.CategoryAttribute("Working")]
         [NUnit.Framework.TestCaseAttribute("Portfolio", "ACT Health", "Interventional", null)]
         public virtual void _26612_SubmitAPortfolioClinicalTrial(string category, string sponsor, string design, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "Clinical",
-                    "Regression"};
+                    "Regression",
+                    "Working"};
             if ((exampleTags != null))
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));

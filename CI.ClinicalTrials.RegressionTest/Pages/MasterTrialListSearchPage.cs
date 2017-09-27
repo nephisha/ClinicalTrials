@@ -173,12 +173,13 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         /// Search and verify the created trial by ctu user.
         /// </summary>
         /// <param name="title">The title.</param>
-        public void SearchAndVerifyTheCreatedTrialByCTUUser(string title)
+        public string SearchAndVerifyTheCreatedTrialByCTUUser(string title)
         {
             PageHelper.WaitForElement(Driver, Load_DataTable);
             SearchForCreatedTrial(title);
             PageHelper.WaitForElement(Driver, Load_DataTable);
             PageHelper.WaitForElement(Driver, CTUSearchTrialResult_Name).Text.Should().Contain(title);
+            return CTUSearchTrialResult_Acronym.Text;
         }
 
         /// <summary>

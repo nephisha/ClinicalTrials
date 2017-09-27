@@ -290,11 +290,11 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             SelectASponsor(sponsor);
             SelectACooperativeGroup();
             EnterNickName(title);
-            EnterRegistrationNumber(title);
-            SelectAPhase();
             SelectAGroup();
             SelectATumourCategory();
             SelectATumourGroup();
+            EnterRegistrationNumber(title);
+            SelectAPhase();
             SelectStagesOfDisease();
             SelectAPopulation();
             SelectMultiCentreTrial();
