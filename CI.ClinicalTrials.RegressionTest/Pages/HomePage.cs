@@ -1,4 +1,5 @@
 ﻿using CI.ClinicalTrials.RegressionTest.Base;
+using CI.ClinicalTrials.RegressionTest.CommonMethods;
 using FluentAssertions;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
@@ -34,6 +35,8 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         /// </summary>
         public void SearchByTopNavigationMenu()
         {
+            Driver.Manage().Window.Maximize();
+            PageHelper.WaitForElement(Driver, SearchIcon);
             SearchIcon.Click();
             SearchIcon.SendKeys("NickRegTest");
             SearchIcon.SendKeys(Keys.Enter);

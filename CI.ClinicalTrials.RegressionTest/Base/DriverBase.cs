@@ -23,14 +23,28 @@ namespace CI.ClinicalTrials.RegressionTest.Base
         /// <returns>IWebDriver.</returns>
         public static IWebDriver GetDefaultDriver()
         {
+            //DesiredCapabilities cap = DesiredCapabilities.Chrome();
+            //ChromePerformanceLoggingPreferences perfLogPrefs = new ChromePerformanceLoggingPreferences()
+            //{
+            //    IsCollectingTimelineEvents = true,
+            //    IsCollectingPageEvents = true
+            //};
+            //perfLogPrefs.AddTracingCategories(new string[] { "devtools.timeline" });
+            //options.PerformanceLoggingPreferences = perfLogPrefs;
+            //options.AddAdditionalCapability(CapabilityType.EnableProfiling, true, true);
+            //options.SetLoggingPreference("performance", LogLevel.All);
+
             var options = new ChromeOptions();
             options.AddArguments("--no-sandbox");
             if (bool.Parse(ConfigurationManager.AppSettings["RegressionTest.HeadlessChrome"]))
                 options.AddArguments("--headless", "--disable-gpu");
+                                   
+            //var service = ChromeDriverService.CreateDefaultService();
+            //service.LogPath = "chromedriver.log";
+            //service.EnableVerboseLogging = true;
             Driver = new ChromeDriver(options);
 
             Driver.Manage().Window.Maximize();
-            //Driver.Manage().Timeouts().AsynchronousJavaScript = TimeSpan.FromSeconds(30);
             Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
             return Driver;
         }

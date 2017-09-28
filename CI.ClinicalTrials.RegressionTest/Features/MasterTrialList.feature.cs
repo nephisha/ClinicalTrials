@@ -89,11 +89,13 @@ this.ScenarioSetup(scenarioInfo);
         [NUnit.Framework.DescriptionAttribute("27013 - Master Trial List Search By Top Navigation")]
         [NUnit.Framework.CategoryAttribute("Search")]
         [NUnit.Framework.CategoryAttribute("Regression")]
+        [NUnit.Framework.CategoryAttribute("Test")]
         public virtual void _27013_MasterTrialListSearchByTopNavigation()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("27013 - Master Trial List Search By Top Navigation", new string[] {
                         "Search",
-                        "Regression"});
+                        "Regression",
+                        "Test"});
 #line 13
 this.ScenarioSetup(scenarioInfo);
 #line 14

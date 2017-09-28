@@ -100,7 +100,8 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         public void ClickOnToggleMenu()
         {
             Thread.Sleep(TimeSpan.FromMilliseconds(500));
-            ToggleMenu.Click();
+            PageHelper.WaitForElement(Driver, ToggleMenu);
+            PageHelper.WaitForElement(Driver, ToggleMenu).Click();
             Thread.Sleep(TimeSpan.FromMilliseconds(500));
         }
 

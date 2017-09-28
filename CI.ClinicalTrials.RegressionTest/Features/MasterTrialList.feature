@@ -9,7 +9,7 @@ Scenario: 27012 - Master Trial List - Basic Search
 	When I perform a basic search in Master Trial
 	Then I should see the search results
 
-@Search @Regression
+@Search @Regression @Test
 Scenario: 27013 - Master Trial List Search By Top Navigation
 	Given I login to Clinical Trial Application as CTU User
 	When I search in the top navigation bar

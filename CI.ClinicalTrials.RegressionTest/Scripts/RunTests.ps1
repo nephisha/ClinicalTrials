@@ -1,6 +1,7 @@
 ﻿param(
 	[String]$PackageLocation=(Split-Path $script:MyInvocation.MyCommand.Path),
-	[String]$NUnitCategory="Regression"
+	[String]$NUnitCategory="Regression",
+	[String]$ReportLocation="C:\Temp\ReportsDistribution"
 )
 
 $OutDir=Join-Path -Path "$PackageLocation" -ChildPath "Reports"
@@ -9,7 +10,7 @@ Write-Host "PackageLocation: $PackageLocation"
 Write-Host "OutDir: $OutDir"
 
 $reportUnitExe = "$PackageLocation\Tools\ReportUnit\ReportUnit.exe"
-$NUnitExecutablePath = "$PackageLocation\Tools\NUnit3_Console\nunit3-console.exe"
+$NUnitExecutablePath = "$PackageLocation\Tools\NUnit3.2_Console\nunit3-console.exe"
 $NUnitTestAssemblies = "$PackageLocation\CI.ClinicalTrials.RegressionTest.dll"
 
 $date = Get-Date -UFormat %Y-%m-%d-%H-%M-%S
@@ -78,11 +79,10 @@ Write-Host "Let's execute the ReportUnit XML beautifier..."
  
 Invoke-Expression $runReportUnit
 
-$reportFile = "Reports\$date\TestResult.html"
+$localReportPath = Join-Path -Path $packageLocation -ChildPath "Reports"
+$reportFile = "$date\TestResult.html"
 
-$reportUncPath = Join-Path -Path $PackageLocation -ChildPath $reportFile
-$reportUncPath = $reportUncPath.Replace(":", "$").Insert(0, "\\$env:computername\")
-Write-Host $reportUncPath
+$localReportPath = Join-Path -Path $localReportPath -ChildPath $reportFile
 
 $inOctopusContext = [bool](Get-Command "Set-OctopusVariable" -errorAction SilentlyContinue)
 if ($inOctopusContext)
@@ -96,8 +96,27 @@ if ($inOctopusContext)
 	Set-OctopusVariable -name "TotalPassedPercent" -value ("{0:P0}" -f $percentPassed)
 
 	Set-OctopusVariable -name "TestResult" -value $xml_testresult
-	Set-OctopusVariable -name "ReportHtmlFile" -value $reportFile
-	Set-OctopusVariable -name "ReportUncPathFile" -value $reportUncPath
+
+	$remoteReportPath = Join-Path -Path $ReportLocation -ChildPath $reportFile
+	Write-Host "remoteReportPath: $remoteReportPath"
+	$reportUncPath = $remoteReportPath  -replace "^\w:\\*", "\\$env:computername\"
+	Write-Host "reportUncPath: $reportUncPath"
+
+	Set-OctopusVariable -name "ReportPath" -value $reportUncPath
+
+	$remoteDir = [System.IO.Path]::GetDirectoryName("$remoteReportPath") + "\"
+	Write-Host "Copying report to remote location: $remoteDir"
+	Try {
+		If (!(Test-Path $remoteDir))
+		{
+			New-Item -ItemType Directory -Force -Path $remoteDir
+		}
+
+		xcopy /F $localReportPath "$remoteDir"
+	}
+	Catch {
+		Write-Host "Copy failed: $_.Exception.Message"
+	}
 }
 
 $ReportUnitExit = $lastExitCode

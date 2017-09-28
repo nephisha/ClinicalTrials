@@ -296,7 +296,7 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             FillInTrialDetailsAndActivity();
             FillInCancerParticipantsData();
             SaveAll.Click();
-            Thread.Sleep(TimeSpan.FromSeconds(4));
+            Thread.Sleep(TimeSpan.FromSeconds(12));
         }
 
         /// <summary>

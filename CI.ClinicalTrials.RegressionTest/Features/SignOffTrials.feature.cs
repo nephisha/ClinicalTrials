@@ -103,12 +103,14 @@ this.ScenarioSetup(scenarioInfo);
         [NUnit.Framework.DescriptionAttribute("27096 - Sign Off Trials for Approval")]
         [NUnit.Framework.CategoryAttribute("SignOff")]
         [NUnit.Framework.CategoryAttribute("Regression")]
+        [NUnit.Framework.CategoryAttribute("Test")]
         [NUnit.Framework.TestCaseAttribute("Portfolio", "ACT Health", "Interventional", null)]
         public virtual void _27096_SignOffTrialsForApproval(string category, string sponsor, string design, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "SignOff",
-                    "Regression"};
+                    "Regression",
+                    "Test"};
             if ((exampleTags != null))
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));

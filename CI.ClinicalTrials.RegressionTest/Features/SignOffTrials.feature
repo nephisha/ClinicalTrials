@@ -18,7 +18,7 @@ Scenario Outline: 27095 - Trial SignOff - Trial Summary List
 	| Portfolio | ACT Health | Interventional |
 
 
-@SignOff @Regression
+@SignOff @Regression @Test
 Scenario Outline: 27096 - Sign Off Trials for Approval
 	Given I login to Clinical Trial Application as AutomationCTU User
 	When I submit a new trial with details <Sponsor> and <Design> and <Category>
