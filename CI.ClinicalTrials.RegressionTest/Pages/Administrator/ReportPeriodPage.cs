@@ -1,6 +1,4 @@
-﻿using System;
-using System.Globalization;
-using CI.ClinicalTrials.RegressionTest.Base;
+﻿using CI.ClinicalTrials.RegressionTest.Base;
 using CI.ClinicalTrials.RegressionTest.CommonMethods;
 using FluentAssertions;
 using OpenQA.Selenium;

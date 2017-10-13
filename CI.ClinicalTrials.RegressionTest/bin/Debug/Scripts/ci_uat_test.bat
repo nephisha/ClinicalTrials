@@ -17,6 +17,6 @@ set xmlfilename=%~n0-%month%_%day%-%hour%_%min%.xml
 set txtfilename=%~n0-%month%_%day%-%hour%_%min%.txt
 set htmlfilename=%~n0-%month%_%day%-%hour%_%min%.html
 
-"%targetDir%\CI.ClinicalTrials.RegressionTest\Tools\NUnit3_Console\nunit3-console.exe" --labels=On --result=%root%\%xmlfilename%;format=nunit2 --out=%root%\%txtfilename% "%targetDir%\CI.ClinicalTrials.RegressionTest\bin\Debug\CI.ClinicalTrials.RegressionTest.dll" --where "cat == Regression"
+"%targetDir%\CI.ClinicalTrials.RegressionTest\Tools\NUnit3_Console\nunit3-console.exe" "%targetDir%\CI.ClinicalTrials.RegressionTest\bin\Debug\CI.ClinicalTrials.RegressionTest.dll" --labels=All --work=%root% --where "cat == Regression"
 
-"%targetDir%\CI.ClinicalTrials.RegressionTest\Tools\Specflow\specflow.exe" nunitexecutionreport "%targetDir%\CI.ClinicalTrials.RegressionTest\CI.ClinicalTrials.RegressionTest.csproj" /xmlTestResult:%root%\%xmlfilename% /testOutput:%root%\%txtfilename% /out:%root%\%htmlfilename%
+"%targetDir%\CI.ClinicalTrials.RegressionTest\Tools\ReportUnit\ReportUnit.exe" "%root%\TestResult.xml" "%root%\TestResult.html"

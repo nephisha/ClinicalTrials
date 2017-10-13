@@ -198,16 +198,29 @@ namespace CI.ClinicalTrials.RegressionTest.CommonMethods
         /// <param name="element">The element.</param>
         public static void PickOnlyEnabledValueFromDropdown(IWebElement element)
         {
+            //var select = new SelectElement(element);
+            //var count = Random.Next(select.Options.Count);
+            //try
+            //{
+            //    select.Options[2].Click();
+            //}
+            //catch (Exception)
+            //{
+            //    count = Random.Next(select.Options.Count);
+            //    select.Options[count].Click();
+            //}
+
             var select = new SelectElement(element);
-            var count = Random.Next(select.Options.Count);
-            try
+            var listElement = select.Options;
+            
+            for (int i = 0; i < listElement.Count; i++)
             {
-                select.Options[2].Click();
-            }
-            catch (Exception)
-            {
-                count = Random.Next(select.Options.Count);
-                select.Options[count].Click();
+                var t = listElement[i+1];
+                if (t.Enabled)
+                {
+                    t.Click();  
+                    break; 
+                }
             }
         }
     }

@@ -3034,6 +3034,11 @@
             <param name="message">The format string that represents the failure message.</param>
             <param name="args">Optional arguments to any numbered placeholders.</param>
         </member>
+        <member name="M:FluentAssertions.Execution.AssertionScope.AddFailure(System.String)">
+            <summary>
+            Adds a pre-formatted failure message to the current scope. 
+            </summary>
+        </member>
         <member name="M:FluentAssertions.Execution.AssertionScope.Discard">
             <summary>
             Discards and returns the failures that happened up to now.

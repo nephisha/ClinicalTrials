@@ -1,6 +1,5 @@
 ﻿using System.Reflection;
 using System.Runtime.InteropServices;
-using NUnit.Framework;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
@@ -13,7 +12,7 @@ using NUnit.Framework;
 [assembly: AssemblyCopyright("Copyright © Hewlett-Packard 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-[assembly: Parallelizable(ParallelScope.Self)]
+//[assembly: Parallelizable(ParallelScope.Self)]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Threading;
 using CI.ClinicalTrials.RegressionTest.Base;
 using CI.ClinicalTrials.RegressionTest.CommonMethods;
-using CI.ClinicalTrials.RegressionTest.Pages.Administrator;
 using CI.ClinicalTrials.RegressionTest.Resources;
 using FluentAssertions;
 using OpenQA.Selenium;
@@ -518,10 +517,17 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         /// <returns>System.String.</returns>
         public string SearchForPortfolioPendingVerificationTrials()
         {
-            PageHelper.SelectValueFromDropdown(Sponsor, "ACT Health");
-            PageHelper.SelectValueFromDropdown(TrialVerification, "Pending Verification");
-            PageHelper.WaitForElement(Driver, SearchButton).Click();
-            return AdminSearchTrialResult_Acronym.Text;
+            try {
+                PageHelper.SelectValueFromDropdown(Sponsor, "ACT Health");
+                PageHelper.SelectValueFromDropdown(TrialVerification, "Pending Verification");
+                PageHelper.WaitForElement(Driver, SearchButton).Click();
+                return AdminSearchTrialResult_Acronym.Text;
+            }
+            catch (Exception)
+            {
+                PageHelper.WaitForElement(Driver, SearchButton).Click();
+                return AdminSearchTrialResult_Acronym.Text;
+            }            
         }
 
         /// <summary>

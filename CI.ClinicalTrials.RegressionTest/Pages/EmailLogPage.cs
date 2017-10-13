@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using CI.ClinicalTrials.RegressionTest.Base;
-using CI.ClinicalTrials.RegressionTest.CommonMethods;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 

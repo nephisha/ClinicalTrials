@@ -18,8 +18,8 @@ namespace CI.ClinicalTrials.RegressionTest.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.2.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Submit a Clinical Trial for the Patient")]
-    public partial class SubmitAClinicalTrialForThePatientFeature
+    [NUnit.Framework.DescriptionAttribute("AA Submit a Clinical Trial for the Patient")]
+    public partial class AASubmitAClinicalTrialForThePatientFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
@@ -31,7 +31,7 @@ namespace CI.ClinicalTrials.RegressionTest.Features
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Submit a Clinical Trial for the Patient", "  In order to participate in clinical trials\r\n  As a User\r\n  I should be able to " +
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "AA Submit a Clinical Trial for the Patient", "  In order to participate in clinical trials\r\n  As a User\r\n  I should be able to " +
                     "submit new Trials", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
@@ -69,8 +69,11 @@ namespace CI.ClinicalTrials.RegressionTest.Features
         [NUnit.Framework.CategoryAttribute("Clinical")]
         [NUnit.Framework.CategoryAttribute("Regression")]
         [NUnit.Framework.CategoryAttribute("Test")]
-        [NUnit.Framework.TestCaseAttribute("Portfolio", "ACT Health", "Interventional", null)]
-        public virtual void _26612_SubmitAPortfolioClinicalTrial(string category, string sponsor, string design, string[] exampleTags)
+        [NUnit.Framework.TestCaseAttribute("1", "Portfolio", "ACT Health", "Interventional", null)]
+        [NUnit.Framework.TestCaseAttribute("2", "Portfolio", "ACT Health", "Interventional", null)]
+        [NUnit.Framework.TestCaseAttribute("3", "Portfolio", "ACT Health", "Interventional", null)]
+        [NUnit.Framework.TestCaseAttribute("4", "Portfolio", "ACT Health", "Interventional", null)]
+        public virtual void _26612_SubmitAPortfolioClinicalTrial(string test, string category, string sponsor, string design, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "Clinical",
@@ -97,8 +100,9 @@ namespace CI.ClinicalTrials.RegressionTest.Features
         [NUnit.Framework.DescriptionAttribute("26623 - Submit a Non - Portfolio Clinical Trial")]
         [NUnit.Framework.CategoryAttribute("Clinical")]
         [NUnit.Framework.CategoryAttribute("Regression")]
-        [NUnit.Framework.TestCaseAttribute("NonPortfolio", "Cancer Council NSW", "Other", null)]
-        public virtual void _26623_SubmitANon_PortfolioClinicalTrial(string category, string sponsor, string design, string[] exampleTags)
+        [NUnit.Framework.TestCaseAttribute("1", "NonPortfolio", "Cancer Council NSW", "Other", null)]
+        [NUnit.Framework.TestCaseAttribute("2", "NonPortfolio", "Cancer Council NSW", "Other", null)]
+        public virtual void _26623_SubmitANon_PortfolioClinicalTrial(string test, string category, string sponsor, string design, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "Clinical",
@@ -108,13 +112,13 @@ namespace CI.ClinicalTrials.RegressionTest.Features
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("26623 - Submit a Non - Portfolio Clinical Trial", @__tags);
-#line 19
-  this.ScenarioSetup(scenarioInfo);
-#line 21
-    testRunner.Given("I login to Clinical Trial Application as CTU User", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 22
+  this.ScenarioSetup(scenarioInfo);
+#line 24
+    testRunner.Given("I login to Clinical Trial Application as CTU User", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 25
  testRunner.When(string.Format("I submit a new trial with details {0} and {1} and {2}", sponsor, design, category), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 23
+#line 26
  testRunner.Then("I should see the new trial created by CTU User", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -124,8 +128,9 @@ namespace CI.ClinicalTrials.RegressionTest.Features
         [NUnit.Framework.DescriptionAttribute("26625 - Submit a Industrial Clinical Trial")]
         [NUnit.Framework.CategoryAttribute("Clinical")]
         [NUnit.Framework.CategoryAttribute("Regression")]
-        [NUnit.Framework.TestCaseAttribute("Industry", "Kosan", "Interventional", null)]
-        public virtual void _26625_SubmitAIndustrialClinicalTrial(string category, string sponsor, string design, string[] exampleTags)
+        [NUnit.Framework.TestCaseAttribute("1", "Industry", "Kosan", "Interventional", null)]
+        [NUnit.Framework.TestCaseAttribute("2", "Industry", "Kosan", "Interventional", null)]
+        public virtual void _26625_SubmitAIndustrialClinicalTrial(string test, string category, string sponsor, string design, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "Clinical",
@@ -135,13 +140,13 @@ namespace CI.ClinicalTrials.RegressionTest.Features
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("26625 - Submit a Industrial Clinical Trial", @__tags);
-#line 30
-  this.ScenarioSetup(scenarioInfo);
-#line 32
-    testRunner.Given("I login to Clinical Trial Application as CTU User", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 33
- testRunner.When(string.Format("I submit a new trial with details {0} and {1} and {2}", sponsor, design, category), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 34
+  this.ScenarioSetup(scenarioInfo);
+#line 36
+    testRunner.Given("I login to Clinical Trial Application as CTU User", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 37
+ testRunner.When(string.Format("I submit a new trial with details {0} and {1} and {2}", sponsor, design, category), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 38
  testRunner.Then("I should see the new trial created by CTU User", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -162,13 +167,13 @@ namespace CI.ClinicalTrials.RegressionTest.Features
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("26627 - Cancel a Non - Portfolio Clinical Trial", @__tags);
-#line 41
+#line 46
   this.ScenarioSetup(scenarioInfo);
-#line 43
+#line 48
     testRunner.Given("I login to Clinical Trial Application as CTU User", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 44
+#line 49
  testRunner.When(string.Format("I cancel a new trial with entered details {0} and {1} and {2}", sponsor, design, category), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 45
+#line 50
  testRunner.Then("the new trial should not get created", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

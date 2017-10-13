@@ -10,7 +10,7 @@ Write-Host "PackageLocation: $PackageLocation"
 Write-Host "OutDir: $OutDir"
 
 $reportUnitExe = "$PackageLocation\Tools\ReportUnit\ReportUnit.exe"
-$NUnitExecutablePath = "$PackageLocation\Tools\NUnit3.2_Console\nunit3-console.exe"
+$NUnitExecutablePath = "$PackageLocation\Tools\NUnit3_Console\nunit3-console.exe"
 $NUnitTestAssemblies = "$PackageLocation\CI.ClinicalTrials.RegressionTest.dll"
 
 $date = Get-Date -UFormat %Y-%m-%d-%H-%M-%S

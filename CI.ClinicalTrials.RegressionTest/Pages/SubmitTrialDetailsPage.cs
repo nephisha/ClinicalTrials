@@ -127,6 +127,9 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         [FindsBy(How = How.Id, Using = "regAddToMySiteListSectionYes")]
         private IWebElement AddToMySiteListSectionYes { get; set; }
 
+        [FindsBy(How = How.Id, Using = "Details_Comment")]
+        private IWebElement Comment { get; set; }
+
         [FindsBy(How = How.Id, Using = "AddToMySiteListSection_CTUId")]
         private IWebElement ActiveSite { get; set; }
 
@@ -209,6 +212,7 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
 
         private void SelectMultiCentreTrial()
         {
+            PageHelper.WaitForElement(Driver, MultiTrialYes);
             MultiTrialYes.Click();
         }
 
@@ -275,6 +279,9 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
 
         private void SelectAddToMyTrialsList()
         {
+            PageHelper.WaitForElement(Driver, Comment);
+            Comment.Click();
+            PageHelper.WaitForElement(Driver, AddToMySiteListSectionYes);
             AddToMySiteListSectionYes.Click();
         }
 
@@ -289,16 +296,16 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
             EnterPublicTitle(title);
             SelectASponsor(sponsor);
             SelectACooperativeGroup();
-            EnterNickName(title);
             SelectAGroup();
             SelectATumourCategory();
+            EnterNickName(title);
             SelectATumourGroup();
-            EnterRegistrationNumber(title);
-            SelectAPhase();
             SelectStagesOfDisease();
             SelectAPopulation();
+            EnterRegistrationNumber(title);
             SelectMultiCentreTrial();
             SelectLeadSite();
+            SelectAPhase();
             SelectBioMarkerSubstudy();
             SelectAMolecularTarget();
         }
@@ -337,6 +344,7 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         {
             if (category.ToLower().Equals("portfolio"))
             {
+                PageHelper.WaitForElement(Driver, PortfolioInclusion);
                 PortfolioInclusion.Click();
                 PageHelper.WaitForElement(Driver, PorfolioInclusionPeerReviewedYes);
                 PorfolioInclusionPeerReviewedYes.Click();
@@ -357,8 +365,15 @@ namespace CI.ClinicalTrials.RegressionTest.Pages
         /// </summary>
         public void FillUpReportingGroup()
         {
-            SelectAddToMyTrialsList();
-            SelectaActiveSite();
+            try
+            {
+                if (!AddToMySiteListSectionYes.Displayed) return;
+                SelectAddToMyTrialsList();
+                SelectaActiveSite();
+            }
+            catch (Exception)
+            {}
+            
         }
 
         /// <summary>

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using CI.ClinicalTrials.RegressionTest.Base;
 using CI.ClinicalTrials.RegressionTest.CommonMethods;
 using FluentAssertions;

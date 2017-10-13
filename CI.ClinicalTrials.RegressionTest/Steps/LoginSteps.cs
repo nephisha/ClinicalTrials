@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using CI.ClinicalTrials.RegressionTest.Pages;
+﻿using CI.ClinicalTrials.RegressionTest.Pages;
 using CI.ClinicalTrials.RegressionTest.Resources;
 using TechTalk.SpecFlow;
 
@@ -33,6 +29,14 @@ namespace CI.ClinicalTrials.RegressionTest.Steps
             loginPage.LaunchTheApplication();
             loginPage.LoginToApplication(UserCredentials.AutoCTU_UserName, UserCredentials.AutoCTU_Password);
         }
+
+        [Given(@"I login to Clinical Trial Application as MySiteAdministrator")]
+        public void GivenILoginToClinicalTrialApplicationAsMySiteAdministrator()
+        {
+            loginPage.LaunchTheApplication();
+            loginPage.LoginToApplication(UserCredentials.MySiteAdmin_UserName, UserCredentials.Admin_Password);
+        }
+
 
     }
 }

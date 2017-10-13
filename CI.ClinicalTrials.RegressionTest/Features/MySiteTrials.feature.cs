@@ -75,7 +75,7 @@ namespace CI.ClinicalTrials.RegressionTest.Features
 #line 5
 this.ScenarioSetup(scenarioInfo);
 #line 6
- testRunner.Given("I login to Clinical Trial Application as Administrator", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I login to Clinical Trial Application as MySiteAdministrator", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 7
  testRunner.And("I open MySite trials from menu", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 8

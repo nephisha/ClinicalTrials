@@ -1,4 +1,4 @@
-﻿Feature: Submit a Clinical Trial for the Patient
+﻿Feature: AA Submit a Clinical Trial for the Patient
 
   In order to participate in clinical trials
   As a User
@@ -12,8 +12,11 @@
 	Then I should see the new trial created by Administrator
 
 	Examples: 
-	| Category  | Sponsor    | Design         |
-	| Portfolio | ACT Health | Interventional |
+	| Test | Category  | Sponsor    | Design         |
+	| 1    | Portfolio | ACT Health | Interventional |
+	| 2    | Portfolio | ACT Health | Interventional |
+	| 3    | Portfolio | ACT Health | Interventional |
+	| 4    | Portfolio | ACT Health | Interventional |
 
 @Clinical @Regression
   Scenario Outline: 26623 - Submit a Non - Portfolio Clinical Trial
@@ -23,8 +26,9 @@
 	Then I should see the new trial created by CTU User
 
 	Examples: 
-	| Category     |  Sponsor            | Design |
-	| NonPortfolio |  Cancer Council NSW | Other  |
+	| Test | Category     | Sponsor            | Design |
+	| 1    | NonPortfolio | Cancer Council NSW | Other  |
+	| 2    | NonPortfolio | Cancer Council NSW | Other  |
 
 @Clinical @Regression
   Scenario Outline: 26625 - Submit a Industrial Clinical Trial
@@ -34,8 +38,9 @@
 	Then I should see the new trial created by CTU User
 
 	Examples: 
-	| Category |  Sponsor | Design         |
-	| Industry |  Kosan   | Interventional |
+	| Test | Category | Sponsor | Design         |
+	| 1    | Industry | Kosan   | Interventional |
+	| 2    | Industry | Kosan   | Interventional |
 
 @Clinical @Regression
   Scenario Outline: 26627 - Cancel a Non - Portfolio Clinical Trial

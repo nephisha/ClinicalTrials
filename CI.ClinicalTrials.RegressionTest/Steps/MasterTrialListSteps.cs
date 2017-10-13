@@ -2,7 +2,6 @@
 using CI.ClinicalTrials.RegressionTest.CommonMethods;
 using CI.ClinicalTrials.RegressionTest.Pages;
 using FluentAssertions;
-using NUnit.Framework;
 using TechTalk.SpecFlow;
 
 namespace CI.ClinicalTrials.RegressionTest.Steps

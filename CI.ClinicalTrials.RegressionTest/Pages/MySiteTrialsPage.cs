@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using CI.ClinicalTrials.RegressionTest.Base;
 using CI.ClinicalTrials.RegressionTest.CommonMethods;
 using CI.ClinicalTrials.RegressionTest.Resources;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using FluentAssertions;
-using OpenQA.Selenium.Support.Extensions;
 
 namespace CI.ClinicalTrials.RegressionTest.Pages
 {

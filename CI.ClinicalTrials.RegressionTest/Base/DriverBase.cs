@@ -2,7 +2,6 @@
 using System.Configuration;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Remote;
 
 namespace CI.ClinicalTrials.RegressionTest.Base
 {
@@ -23,6 +22,8 @@ namespace CI.ClinicalTrials.RegressionTest.Base
         /// <returns>IWebDriver.</returns>
         public static IWebDriver GetDefaultDriver()
         {
+            /* Adding Chrome Logs */
+
             //DesiredCapabilities cap = DesiredCapabilities.Chrome();
             //ChromePerformanceLoggingPreferences perfLogPrefs = new ChromePerformanceLoggingPreferences()
             //{
@@ -34,19 +35,27 @@ namespace CI.ClinicalTrials.RegressionTest.Base
             //options.AddAdditionalCapability(CapabilityType.EnableProfiling, true, true);
             //options.SetLoggingPreference("performance", LogLevel.All);
 
-            var options = new ChromeOptions();
-            options.AddArguments("--no-sandbox");
-            if (bool.Parse(ConfigurationManager.AppSettings["RegressionTest.HeadlessChrome"]))
-                options.AddArguments("--headless", "--disable-gpu");
-                                   
             //var service = ChromeDriverService.CreateDefaultService();
             //service.LogPath = "chromedriver.log";
             //service.EnableVerboseLogging = true;
+
+            /* Setting Up Chrome Driver */
+
+            var options = new ChromeOptions();
+            options.AddArgument("--start-maximized");
+            options.AddArguments("--no-sandbox");
+            if (bool.Parse(ConfigurationManager.AppSettings["RegressionTest.HeadlessChrome"]))
+                options.AddArguments("--headless", "--disable-gpu");
             Driver = new ChromeDriver(options);
 
-            Driver.Manage().Window.Maximize();
+
+            /* Setting Up Phantom Ghost Driver */
+            //Driver = new PhantomJSDriver();
+
+            //Driver.Manage().Window.Maximize();
             Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
             return Driver;
+
         }
     }
 }

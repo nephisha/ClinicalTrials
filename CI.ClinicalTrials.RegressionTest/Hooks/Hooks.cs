@@ -17,6 +17,8 @@ namespace CI.ClinicalTrials.RegressionTest.Hooks
 
         private IWebDriver driver;
 
+        //private TestContext TestContext { get; set; }
+
         /// <summary>
         /// Runs before the scenario.
         /// </summary>
@@ -32,7 +34,7 @@ namespace CI.ClinicalTrials.RegressionTest.Hooks
         [AfterScenario]
         public void AfterScenario()
         {
-            ScenarioTearDown();
+            //ScenarioTearDown();
             driver.Quit();
         }
 
@@ -61,6 +63,7 @@ namespace CI.ClinicalTrials.RegressionTest.Hooks
             try
             {
                 if (Equals(TestContext.CurrentContext.Result.Outcome, ResultState.Success)) return;
+                //if (Equals(TestContext.CurrentTestOutcome, UnitTestOutcome.Passed)) return;
                 if (!Directory.Exists(screenshotDir)) Directory.CreateDirectory(screenshotDir);
                 var screenshot = ((ITakesScreenshot)driver).GetScreenshot();
                 screenshot.SaveAsFile(screenshotPath, ScreenshotImageFormat.Jpeg);

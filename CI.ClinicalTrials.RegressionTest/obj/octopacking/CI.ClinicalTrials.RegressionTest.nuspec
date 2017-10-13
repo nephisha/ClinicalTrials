@@ -1,0 +1,76 @@
+<package>
+  <metadata>
+    <id>CI.ClinicalTrials.RegressionTest</id>
+    <version>1.2.4</version>
+    <authors>eruss</authors>
+    <owners>eruss</owners>
+    <licenseUrl>http://example.com</licenseUrl>
+    <projectUrl>http://example.com</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>The CI.ClinicalTrials.RegressionTest deployment package, built on 21/09/2017</description>
+    <releaseNotes></releaseNotes>
+  </metadata>
+  <files>
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\NUnit3.TestAdapter.dll" target="NUnit3.TestAdapter.dll" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\nunit.engine.dll" target="nunit.engine.dll" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\nunit.engine.api.dll" target="nunit.engine.api.dll" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\Mono.Cecil.dll" target="Mono.Cecil.dll" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\Mono.Cecil.Pdb.dll" target="Mono.Cecil.Pdb.dll" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\Mono.Cecil.Mdb.dll" target="Mono.Cecil.Mdb.dll" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\Mono.Cecil.Rocks.dll" target="Mono.Cecil.Rocks.dll" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\chromedriver.exe" target="chromedriver.exe" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\Database\ClinicalTrialsWebRegressionTests_backup.bak" target="Database\ClinicalTrialsWebRegressionTests_backup.bak" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\Tools\NUnit3_Console\addins\nunit-v2-result-writer.dll" target="Tools\NUnit3_Console\addins\nunit-v2-result-writer.dll" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\Tools\NUnit3_Console\addins\nunit.v2.driver.dll" target="Tools\NUnit3_Console\addins\nunit.v2.driver.dll" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\Tools\NUnit3_Console\addins\vs-project-loader.dll" target="Tools\NUnit3_Console\addins\vs-project-loader.dll" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\Tools\ReportUnit\ReportUnit.exe" target="Tools\ReportUnit\ReportUnit.exe" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\Tools\Specflow\Gherkin.dll" target="Tools\Specflow\Gherkin.dll" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\Tools\Specflow\TechTalk.SpecFlow.Utils.dll" target="Tools\Specflow\TechTalk.SpecFlow.Utils.dll" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\Scripts\ci_uat_test.bat" target="Scripts\ci_uat_test.bat" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\Scripts\RunTests.ps1" target="Scripts\RunTests.ps1" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\Tools\NUnit3_Console\nunit-agent-x86.exe.config" target="Tools\NUnit3_Console\nunit-agent-x86.exe.config" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\Tools\NUnit3_Console\nunit-agent.exe.config" target="Tools\NUnit3_Console\nunit-agent.exe.config" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\Tools\NUnit3_Console\nunit.engine.addins" target="Tools\NUnit3_Console\nunit.engine.addins" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\Tools\NUnit3_Console\nunit3-console.exe.config" target="Tools\NUnit3_Console\nunit3-console.exe.config" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\CI.ClinicalTrials.RegressionTest.dll.config" target="Tools\Specflow\CI.ClinicalTrials.RegressionTest.dll.config" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\Tools\Specflow\plugincompability.config" target="Tools\Specflow\plugincompability.config" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\Tools\Specflow\specflow.exe.config" target="Tools\Specflow\specflow.exe.config" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\Tools\Specflow\TechTalk.SpecFlow.targets" target="Tools\Specflow\TechTalk.SpecFlow.targets" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\Tools\Specflow\TechTalk.SpecFlow.tasks" target="Tools\Specflow\TechTalk.SpecFlow.tasks" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\Tools\NUnit3_Console\addins\nunit-project-loader.dll" target="Tools\NUnit3_Console\addins\nunit-project-loader.dll" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\Tools\NUnit3_Console\addins\nunit.core.dll" target="Tools\NUnit3_Console\addins\nunit.core.dll" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\Tools\NUnit3_Console\addins\nunit.core.interfaces.dll" target="Tools\NUnit3_Console\addins\nunit.core.interfaces.dll" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\Tools\NUnit3_Console\Mono.Cecil.dll" target="Tools\NUnit3_Console\Mono.Cecil.dll" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\Tools\NUnit3_Console\nunit-agent-x86.exe" target="Tools\NUnit3_Console\nunit-agent-x86.exe" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\Tools\NUnit3_Console\nunit-agent.exe" target="Tools\NUnit3_Console\nunit-agent.exe" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\Tools\NUnit3_Console\nunit.engine.addin.xml" target="Tools\NUnit3_Console\nunit.engine.addin.xml" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\Tools\NUnit3_Console\nunit.engine.api.dll" target="Tools\NUnit3_Console\nunit.engine.api.dll" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\Tools\NUnit3_Console\nunit.engine.api.xml" target="Tools\NUnit3_Console\nunit.engine.api.xml" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\Tools\NUnit3_Console\nunit.engine.dll" target="Tools\NUnit3_Console\nunit.engine.dll" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\Tools\NUnit3_Console\nunit3-console.exe" target="Tools\NUnit3_Console\nunit3-console.exe" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\Tools\Specflow\Microsoft.Build.Utilities.v3.5.dll" target="Tools\Specflow\Microsoft.Build.Utilities.v3.5.dll" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\Tools\Specflow\Newtonsoft.Json.dll" target="Tools\Specflow\Newtonsoft.Json.dll" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\Tools\Specflow\specflow.exe" target="Tools\Specflow\specflow.exe" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\Tools\Specflow\TechTalk.SpecFlow.dll" target="Tools\Specflow\TechTalk.SpecFlow.dll" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\Tools\Specflow\TechTalk.SpecFlow.Generator.dll" target="Tools\Specflow\TechTalk.SpecFlow.Generator.dll" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\Tools\Specflow\TechTalk.SpecFlow.Parser.dll" target="Tools\Specflow\TechTalk.SpecFlow.Parser.dll" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\Tools\Specflow\TechTalk.SpecFlow.Reporting.dll" target="Tools\Specflow\TechTalk.SpecFlow.Reporting.dll" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\CI.ClinicalTrials.RegressionTest.dll.config" target="CI.ClinicalTrials.RegressionTest.dll.config" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\CI.ClinicalTrials.RegressionTest.dll" target="CI.ClinicalTrials.RegressionTest.dll" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\CI.ClinicalTrials.RegressionTest.pdb" target="CI.ClinicalTrials.RegressionTest.pdb" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\FluentAssertions.Core.dll" target="FluentAssertions.Core.dll" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\FluentAssertions.dll" target="FluentAssertions.dll" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\Newtonsoft.Json.dll" target="Newtonsoft.Json.dll" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\nunit.framework.dll" target="nunit.framework.dll" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\TechTalk.SpecFlow.dll" target="TechTalk.SpecFlow.dll" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\WebDriver.dll" target="WebDriver.dll" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\WebDriver.Support.dll" target="WebDriver.Support.dll" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\FluentAssertions.pdb" target="FluentAssertions.pdb" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\FluentAssertions.xml" target="FluentAssertions.xml" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\FluentAssertions.Core.pdb" target="FluentAssertions.Core.pdb" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\FluentAssertions.Core.xml" target="FluentAssertions.Core.xml" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\nunit.framework.xml" target="nunit.framework.xml" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\WebDriver.xml" target="WebDriver.xml" />
+    <file src="C:\ClinicalTrialWeb\ClinicalTrialsWeb\Development\CI.ClinicalTrials\CI.ClinicalTrials.RegressionTest\bin\Debug\WebDriver.Support.xml" target="WebDriver.Support.xml" />
+  </files>
+</package>

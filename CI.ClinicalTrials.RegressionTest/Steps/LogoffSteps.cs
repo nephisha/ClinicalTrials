@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using CI.ClinicalTrials.RegressionTest.Pages;
+﻿using CI.ClinicalTrials.RegressionTest.Pages;
 using TechTalk.SpecFlow;
 
 namespace CI.ClinicalTrials.RegressionTest.Steps

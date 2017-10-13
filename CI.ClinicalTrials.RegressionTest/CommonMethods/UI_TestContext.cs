@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CI.ClinicalTrials.RegressionTest.CommonMethods
+﻿namespace CI.ClinicalTrials.RegressionTest.CommonMethods
 {
     /// <summary>
     /// UI_TestContext is used for constructor context injection.
